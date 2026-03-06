@@ -1,26 +1,139 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* === BACKGROUNDS — Professional dark with green undertone === */
+  --bg-deepest: #0B1410;
+  --bg-dark:    #111E18;
+  --bg-mid:     #162420;
+
+  /* === PRIMARY ACCENT — Forest Green === */
+  --accent:       #3DA54A;
+  --accent-dim:   rgba(61,165,74,0.15);
+  --accent-glow:  rgba(61,165,74,0.10);
+  --accent-hover: #34913F;
+
+  /* === SECONDARY ACCENT — Safety Yellow === */
+  --secondary:      #E8A817;
+  --secondary-dim:  rgba(232,168,23,0.15);
+  --secondary-hover: #D09A14;
+
+  /* === TEXT — Opacity-based hierarchy === */
+  --text-primary:   #ffffff;
+  --text-secondary: rgba(255,255,255,0.8);
+  --text-muted:     rgba(255,255,255,0.6);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg-deepest: var(--bg-deepest);
+  --color-bg-dark: var(--bg-dark);
+  --color-bg-mid: var(--bg-mid);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-secondary: var(--secondary);
+  --color-secondary-hover: var(--secondary-hover);
+  --font-display: var(--font-plus-jakarta);
+  --font-body: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg-deepest);
+  color: var(--text-primary);
+  font-family: var(--font-body), "Inter", sans-serif;
+}
+
+/* === NOISE TEXTURE OVERLAY === */
+.noise-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  z-index: 1;
+}
+
+/* Content containers inside noise-overlay need z-index > 1 to sit above the ::before texture.
+   This is handled via Tailwind classes (relative z-10) on specific containers,
+   NOT via a blanket rule that would break absolutely-positioned decorative elements. */
+
+/* === KEYFRAMES === */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(2deg); }
+}
+
+@keyframes float-medium {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-14px) rotate(-1.5deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px 8px rgba(37, 211, 102, 0.15);
+  }
+}
+
+@keyframes shine-sweep {
+  0% { transform: translateX(-200%) skewX(-12deg); }
+  100% { transform: translateX(200%) skewX(-12deg); }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === HERO ENTRANCE — CSS-only, no JS dependency === */
+.hero-entrance {
+  animation: fade-in-up 0.7s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* === ANIMATED SECTION — entrance states === */
+.animate-on-scroll > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-on-scroll.in-view > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === REDUCED MOTION === */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .animate-on-scroll > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
