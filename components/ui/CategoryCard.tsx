@@ -44,7 +44,7 @@ export default function CategoryCard({ category }: CategoryCardProps) {
           {category.subtitle}
         </p>
         <span
-          className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-accent opacity-0 translate-y-2 transition-[opacity,transform] duration-300 group-hover:opacity-100 group-hover:translate-y-0"
+          className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-accent opacity-100 md:opacity-0 md:translate-y-2 transition-[opacity,transform] duration-300 md:group-hover:opacity-100 md:group-hover:translate-y-0"
         >
           Ver productos
           <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">

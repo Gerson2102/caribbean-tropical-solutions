@@ -1,24 +1,11 @@
-"use client";
-
-import { useEffect, useRef } from "react";
 import { CATEGORIES } from "@/lib/constants";
-import { animateSectionEntrance } from "@/lib/animations";
 import SectionLabel from "@/components/ui/SectionLabel";
 import CategoryCard from "@/components/ui/CategoryCard";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 
 export default function ProductCategories() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    if (!sectionRef.current) return;
-    const cards = sectionRef.current.querySelectorAll(".category-card");
-    const tl = animateSectionEntrance(sectionRef.current, cards, { stagger: 0.15 });
-    return () => { tl?.kill(); };
-  }, []);
-
   return (
     <section
-      ref={sectionRef}
       id="categorias"
       className="bg-offwhite py-20 lg:py-28"
     >
@@ -35,21 +22,16 @@ export default function ProductCategories() {
           </p>
         </div>
 
-        {/* Uniform Grid: 3 top + 2 bottom */}
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">
-          {CATEGORIES.slice(0, 3).map((cat) => (
-            <div key={cat.slug} className="category-card">
-              <CategoryCard category={cat} />
-            </div>
-          ))}
-        </div>
-        <div className="mx-auto mt-4 grid max-w-[66.666%] grid-cols-1 gap-4 md:mt-5 md:grid-cols-2 md:gap-5 max-md:max-w-full">
-          {CATEGORIES.slice(3).map((cat) => (
-            <div key={cat.slug} className="category-card">
-              <CategoryCard category={cat} />
-            </div>
-          ))}
-        </div>
+        {/* Uniform Grid: 3 top + 2 bottom (6-col) */}
+        <ScrollReveal selector=".category-card" stagger={0.15}>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-6 md:gap-5">
+            {CATEGORIES.map((cat, i) => (
+              <div key={cat.slug} className={`category-card ${i < 3 ? "md:col-span-2" : "md:col-span-3"}`}>
+                <CategoryCard category={cat} />
+              </div>
+            ))}
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

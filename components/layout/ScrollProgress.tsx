@@ -23,10 +23,10 @@ export default function ScrollProgress() {
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 z-[60] h-[3px] w-full bg-transparent">
+    <div className="fixed top-0 left-0 z-[60] h-1 w-full bg-transparent">
       <div
         ref={barRef}
-        className="h-full w-full origin-left bg-primary"
+        className="h-full w-full origin-left bg-accent"
         style={{ transform: "scaleX(0)", transitionProperty: "none" }}
       />
     </div>

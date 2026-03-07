@@ -43,7 +43,6 @@ body {
   background-color: var(--color-offwhite);
   color: var(--color-charcoal);
   line-height: 1.7;
-  overflow-x: hidden;
 }
 
 ::selection {
@@ -190,6 +189,16 @@ section[id] {
 
 .animate-hero-drift-3 {
   animation: hero-drift-3 14s ease-in-out infinite;
+}
+
+/* Marquee scroll — pure CSS replacement for GSAP */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-marquee-scroll {
+  animation: marquee-scroll 25s linear infinite;
 }
 
 /* ========================================

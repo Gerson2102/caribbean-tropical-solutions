@@ -8,7 +8,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { WHATSAPP_URL_WITH_MESSAGE } from "@/lib/constants";
 import { prefersReducedMotion } from "@/lib/animations";
 import Button from "@/components/ui/Button";
-import { WhatsAppIcon, ChevronDownIcon } from "@/components/ui/Icons";
+import { WhatsAppIcon } from "@/components/ui/Icons";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -109,9 +109,24 @@ const FLOATING_SLOTS: FloatingSlot[] = [
 
 // Layer config: opacity, blur, parallax factor
 const LAYER_CONFIG = {
-  1: { opacity: 0.2, blur: "blur-[2px]", parallaxFactor: -8, zIndex: "z-[5]" },
-  2: { opacity: 0.45, blur: "blur-[0.5px]", parallaxFactor: -15, zIndex: "z-[10]" },
+  1: { opacity: 0.2, blur: "", parallaxFactor: -8, zIndex: "z-[5]" },
+  2: { opacity: 0.45, blur: "", parallaxFactor: -15, zIndex: "z-[10]" },
   4: { opacity: 0.8, blur: "", parallaxFactor: 20, zIndex: "z-[35]" },
+} as const;
+
+// Hoisted static style objects to avoid re-creation on render
+const BG_GRADIENT_STYLE = {
+  background: "linear-gradient(135deg, #0f1f0f 0%, #142d14 40%, #1a1a1a 100%)",
+} as const;
+
+const BG_RADIAL_STYLE = {
+  background: "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(232,168,23,0.06) 0%, transparent 70%)",
+} as const;
+
+const BG_NOISE_STYLE = {
+  opacity: 0.035,
+  backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\")",
+  backgroundSize: "256px",
 } as const;
 
 export default function Hero() {
@@ -221,7 +236,7 @@ export default function Hero() {
   useEffect(() => {
     if (prefersReducedMotion()) {
       // Show everything immediately
-      gsap.set(".hero-bg, .hero-float-back, .hero-float-mid, .hero-float-front, .hero-badge, .hero-title-word, .hero-subtitle, .hero-cta, .hero-scroll", { opacity: 1, y: 0, x: 0, scale: 1 });
+      gsap.set(".hero-bg, .hero-float-back, .hero-float-mid, .hero-float-front", { opacity: 1, y: 0, x: 0, scale: 1 });
       return;
     }
 
@@ -239,61 +254,55 @@ export default function Hero() {
           0.2
         )
 
-        // 500ms: Pill badge
+        // 100ms: Pill badge (subtle y-only, already visible)
         .fromTo(
           ".hero-badge",
-          { opacity: 0, y: -20 },
-          { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" },
+          { y: -12 },
+          { y: 0, duration: 0.3, ease: "power2.out" },
+          0.1
+        )
+
+        // 150ms: Headline words stagger (subtle y-only, already visible)
+        .fromTo(
+          ".hero-title-word",
+          { y: 20 },
+          { y: 0, duration: 0.5, stagger: 0.04, ease: "power3.out" },
+          0.15
+        )
+
+        // 400ms: Subtitle (subtle y-only)
+        .fromTo(
+          ".hero-subtitle",
+          { y: 10 },
+          { y: 0, duration: 0.3, ease: "power3.out" },
+          0.4
+        )
+
+        // 500ms: CTA buttons (subtle y-only)
+        .fromTo(
+          ".hero-cta",
+          { y: 10 },
+          { y: 0, duration: 0.3, stagger: 0.08, ease: "back.out(1.4)" },
           0.5
         )
 
-        // 600ms: Headline words stagger
-        .fromTo(
-          ".hero-title-word",
-          { opacity: 0, y: 40 },
-          { opacity: 1, y: 0, duration: 0.7, stagger: 0.06, ease: "power3.out" },
-          0.6
-        )
-
-        // 1200ms: Subtitle
-        .fromTo(
-          ".hero-subtitle",
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" },
-          1.2
-        )
-
-        // 1400ms: CTA buttons
-        .fromTo(
-          ".hero-cta",
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.4, stagger: 0.1, ease: "back.out(1.4)" },
-          1.4
-        )
-
-        // 1600ms: Mid-layer images
+        // 600ms: Mid-layer images
         .fromTo(
           ".hero-float-mid",
           { opacity: 0, scale: 0.9 },
           { opacity: 1, scale: 1, duration: 0.6, stagger: 0.1, ease: "power2.out" },
-          1.0
+          0.6
         )
 
-        // 1800ms: Front-layer images last
+        // 800ms: Front-layer images last
         .fromTo(
           ".hero-float-front",
           { opacity: 0, scale: 0.85 },
           { opacity: 1, scale: 1, duration: 0.7, stagger: 0.12, ease: "back.out(1.2)" },
-          1.8
+          0.8
         )
 
-        // Scroll indicator
-        .fromTo(
-          ".hero-scroll",
-          { opacity: 0 },
-          { opacity: 1, duration: 0.5 },
-          2.0
-        );
+;
     }, sectionRef);
 
     return () => ctx.revert();
@@ -356,17 +365,6 @@ export default function Hero() {
         },
       });
 
-      // Scroll indicator fades out quickly
-      gsap.to(".hero-scroll", {
-        opacity: 0,
-        ease: "none",
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: "15% top",
-          scrub: true,
-        },
-      });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -385,7 +383,6 @@ export default function Hero() {
       slot.layer === 1 ? "hero-float-back" :
       slot.layer === 2 ? "hero-float-mid" : "hero-float-front";
     const currentImage = slot.images[imageIndices[slotIndex]];
-    const size = isMobile ? (slot.mobileSize || slot.size * 0.6) : slot.size;
     const pos = isMobile && slot.mobilePosition ? slot.mobilePosition : slot.position;
 
     if (isMobile && slot.hideOnMobile) return null;
@@ -400,12 +397,12 @@ export default function Hero() {
         <div
           className={`relative ${config.blur}`}
           style={{
-            width: size,
-            height: size,
+            width: isMobile ? (slot.mobileSize || slot.size * 0.6) : slot.size,
+            height: isMobile ? (slot.mobileSize || slot.size * 0.6) : slot.size,
             transform: `rotate(${slot.rotation}deg)`,
           }}
         >
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="sync">
             <motion.div
               key={currentImage}
               initial={{ opacity: 0 }}
@@ -418,8 +415,8 @@ export default function Hero() {
                 src={currentImage}
                 alt=""
                 fill
-                className="object-contain drop-shadow-[0_8px_24px_rgba(0,0,0,0.4)]"
-                sizes={`${size}px`}
+                className="object-contain"
+                sizes={`${isMobile ? (slot.mobileSize || slot.size * 0.6) : slot.size}px`}
               />
             </motion.div>
           </AnimatePresence>
@@ -432,43 +429,26 @@ export default function Hero() {
     <section
       ref={sectionRef}
       id="inicio"
-      className="relative min-h-screen overflow-hidden"
+      className="relative min-h-screen min-h-[600px] overflow-hidden"
     >
       {/* Layer 0: Background */}
       <div className="hero-bg absolute inset-0 z-0 opacity-0">
         {/* Multi-stop gradient */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: "linear-gradient(135deg, #0f1f0f 0%, #142d14 40%, #1a1a1a 100%)",
-          }}
-        />
+        <div className="absolute inset-0" style={BG_GRADIENT_STYLE} />
         {/* Radial gold spotlight from center */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(232,168,23,0.06) 0%, transparent 70%)",
-          }}
-        />
+        <div className="absolute inset-0" style={BG_RADIAL_STYLE} />
         {/* Noise overlay */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            opacity: 0.035,
-            backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\")",
-            backgroundSize: "256px",
-          }}
-        />
+        <div className="absolute inset-0 pointer-events-none" style={BG_NOISE_STYLE} />
       </div>
 
       {/* Floating product images — all layers */}
       {FLOATING_SLOTS.map((slot, i) => renderFloatingSlot(slot, i))}
 
       {/* Layer 3: Centered content */}
-      <div className="hero-content relative z-40 flex h-full items-center justify-center px-5 pt-20">
+      <div className="hero-content relative z-40 flex min-h-screen items-center justify-center px-5 pt-20 pb-16">
         <div className="text-center max-w-[800px]">
           {/* Pill badge */}
-          <div className="hero-badge mb-6 opacity-0">
+          <div className="hero-badge mb-6">
             <span className="inline-block rounded-full border border-accent/30 bg-accent/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-accent">
               Distribuidora en el Caribe
             </span>
@@ -478,7 +458,7 @@ export default function Hero() {
           <h1 className="text-hero font-display font-extrabold leading-[1.05] tracking-[-0.04em] text-offwhite">
             {titleWords.map((word, i) => (
               <span key={i}>
-                <span className="hero-title-word inline-block opacity-0 mr-[0.25em]">
+                <span className="hero-title-word inline-block mr-[0.25em]">
                   {word === "Duro" || word === "Vos" ? (
                     <span className="text-accent italic">{word}</span>
                   ) : (
@@ -491,24 +471,25 @@ export default function Hero() {
           </h1>
 
           {/* Subtitle */}
-          <p className="hero-subtitle mx-auto mt-6 max-w-[520px] text-base leading-relaxed text-offwhite/50 opacity-0 md:text-lg">
+          <p className="hero-subtitle mx-auto mt-6 max-w-[520px] text-base leading-relaxed text-offwhite/70 md:text-lg">
             Distribuidora de productos de mantenimiento, protección, limpieza,
             oficina y ferretería en el Caribe de Costa Rica.
           </p>
 
           {/* CTAs */}
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <div className="hero-cta opacity-0">
+            <div className="hero-cta w-full sm:w-auto">
               <Button
                 variant="primary"
                 href={WHATSAPP_URL_WITH_MESSAGE}
                 icon={<WhatsAppIcon className="h-5 w-5" />}
+                className="w-full sm:w-auto"
               >
                 Escríbenos por WhatsApp
               </Button>
             </div>
-            <div className="hero-cta opacity-0">
-              <Button variant="outline" href="#categorias">
+            <div className="hero-cta w-full sm:w-auto">
+              <Button variant="outline" href="#categorias" className="w-full sm:w-auto">
                 Conocé Nuestros Productos
               </Button>
             </div>
@@ -516,17 +497,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="hero-scroll absolute bottom-8 left-1/2 z-20 -translate-x-1/2 opacity-0">
-        <a
-          href="#marcas"
-          className="flex flex-col items-center gap-2 text-offwhite/30 transition-colors duration-200 hover:text-accent"
-          style={{ transitionProperty: "color" }}
-        >
-          <span className="text-[11px] uppercase tracking-[0.2em]">Deslizá para explorar</span>
-          <ChevronDownIcon className="h-5 w-5 animate-scroll-indicator" />
-        </a>
-      </div>
     </section>
   );
 }

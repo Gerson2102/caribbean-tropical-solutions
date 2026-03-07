@@ -36,7 +36,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${sora.variable} ${dmSans.variable}`}>
-      <body className="antialiased">{children}</body>
+      <head>
+        <link rel="preconnect" href="https://wa.me" />
+      </head>
+      <body className="antialiased">
+        <noscript>
+          <style>{`.hero-badge,.hero-title-word,.hero-subtitle,.hero-cta,.hero-scroll,.hero-bg,.hero-float-back,.hero-float-mid,.hero-float-front,.contact-animate,.category-card,.value-card,.step-item,.fp-header{opacity:1!important;transform:none!important}`}</style>
+        </noscript>
+        {children}
+      </body>
     </html>
   );
 }

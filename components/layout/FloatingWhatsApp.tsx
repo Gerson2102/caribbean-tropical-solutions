@@ -9,12 +9,38 @@ export default function FloatingWhatsApp() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    function onScroll() {
-      setVisible(window.scrollY > 400);
-    }
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
+    let pastThreshold = false;
+    let contactVisible = false;
+
+    // Observer for the 400px scroll threshold
+    const sentinel = document.createElement("div");
+    sentinel.style.cssText = "position:absolute;top:400px;left:0;width:1px;height:1px;pointer-events:none";
+    document.body.appendChild(sentinel);
+    const thresholdObserver = new IntersectionObserver(
+      ([entry]) => {
+        pastThreshold = !entry.isIntersecting;
+        setVisible(pastThreshold && !contactVisible);
+      },
+      { threshold: 1 }
+    );
+    thresholdObserver.observe(sentinel);
+
+    // Observer for contact section
+    const contactObserver = new IntersectionObserver(
+      ([entry]) => {
+        contactVisible = entry.isIntersecting;
+        setVisible(pastThreshold && !contactVisible);
+      },
+      { threshold: 0.3 }
+    );
+    const contactEl = document.getElementById("contacto");
+    if (contactEl) contactObserver.observe(contactEl);
+
+    return () => {
+      thresholdObserver.disconnect();
+      contactObserver.disconnect();
+      sentinel.remove();
+    };
   }, []);
 
   return (
@@ -32,7 +58,7 @@ export default function FloatingWhatsApp() {
           transition={{ type: "spring", stiffness: 400, damping: 25 }}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
-          className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg animate-pulse-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+          className="fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg animate-pulse-glow md:h-14 md:w-14 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
         >
           <WhatsAppIcon className="h-7 w-7" />
         </motion.a>

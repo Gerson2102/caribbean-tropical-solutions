@@ -29,7 +29,7 @@ export default function Button({
 
   const variantStyles = isPrimary
     ? "bg-accent text-charcoal-deep border-2 border-transparent btn-shine shadow-[var(--shadow-cta)] hover:shadow-[var(--shadow-cta-hover)] hover:bg-accent-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-deep-green"
-    : "border-2 border-offwhite/30 text-offwhite bg-transparent hover:border-accent hover:text-accent hover:bg-accent/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-deep-green";
+    : "border-2 border-offwhite/50 text-offwhite bg-offwhite/5 hover:border-accent hover:text-accent hover:bg-accent/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-deep-green";
 
   const combinedClasses = `${baseStyles} ${variantStyles} ${className}`;
 
