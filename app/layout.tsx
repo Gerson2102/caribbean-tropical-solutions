@@ -1,23 +1,32 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Inter } from "next/font/google";
+import { Sora, DM_Sans } from "next/font/google";
 import "./globals.css";
 
-const plusJakarta = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta",
+const sora = Sora({
+  variable: "--font-sora",
   subsets: ["latin"],
   weight: ["600", "700", "800"],
+  display: "swap",
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400", "500", "600"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Caribbean Tropical Solutions S.A. | Distribuidora Industrial Costa Rica",
+  title: "Caribbean Tropical Solutions S.A. | Distribuidora en Guácimo, Costa Rica",
   description:
-    "Distribuidora de productos de mantenimiento, limpieza, protección personal, oficina y ferretería en Costa Rica. Asesoría técnica en todas nuestras líneas.",
+    "Distribuidora de productos de mantenimiento, limpieza, desinfección, EPP, oficina y ferretería en el Caribe de Costa Rica. DeWalt, Elmerc, EVACOL, Try Me, Senior+Plus, IONICS y más.",
+  openGraph: {
+    title: "Caribbean Tropical Solutions S.A.",
+    description:
+      "Distribuidora de productos industriales, limpieza, EPP y ferretería en el Caribe de Costa Rica.",
+    locale: "es_CR",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -26,12 +35,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
-      <body
-        className={`${plusJakarta.variable} ${inter.variable} antialiased`}
-      >
-        {children}
-      </body>
+    <html lang="es" className={`${sora.variable} ${dmSans.variable}`}>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }
