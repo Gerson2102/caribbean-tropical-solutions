@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Sora, DM_Sans } from "next/font/google";
+import SmoothScroll from "@/components/layout/SmoothScroll";
 import "./globals.css";
 
 const sora = Sora({
@@ -43,6 +44,7 @@ export default function RootLayout({
         <noscript>
           <style>{`.hero-badge,.hero-title-word,.hero-subtitle,.hero-cta,.hero-scroll,.hero-bg,.hero-float-back,.hero-float-mid,.hero-float-front,.contact-animate,.category-card,.value-card,.step-item,.fp-header{opacity:1!important;transform:none!important}`}</style>
         </noscript>
+        <SmoothScroll />
         {children}
       </body>
     </html>
