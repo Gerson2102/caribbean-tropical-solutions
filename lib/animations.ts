@@ -46,3 +46,11 @@ export const imageZoom: Variants = {
     transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] },
   },
 };
+
+export const imageZoomEnhanced: Variants = {
+  rest: { scale: 1 },
+  hover: {
+    scale: 1.08,
+    transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] },
+  },
+};

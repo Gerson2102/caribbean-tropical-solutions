@@ -29,7 +29,7 @@ export default function ContactForm() {
   }
 
   const inputClass =
-    "w-full rounded-xl border border-offwhite/20 bg-offwhite/[0.08] px-4 py-3 text-offwhite placeholder-offwhite/25 transition-colors duration-200 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent";
+    "w-full rounded-xl border border-offwhite/20 bg-offwhite/[0.08] px-4 py-3 text-offwhite placeholder-offwhite/25 focus:border-accent focus:outline-none focus:ring-0 focus:shadow-[0_2px_12px_rgba(232,168,23,0.1)]";
 
   return (
     <form onSubmit={handleSubmit} className="contact-animate space-y-5">
@@ -81,7 +81,7 @@ export default function ContactForm() {
           required
           rows={4}
           ref={mensajeRef}
-          className="w-full resize-none rounded-xl border border-offwhite/20 bg-offwhite/[0.08] px-4 py-3 text-offwhite placeholder-offwhite/25 transition-colors duration-200 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+          className="w-full resize-none rounded-xl border border-offwhite/20 bg-offwhite/[0.08] px-4 py-3 text-offwhite placeholder-offwhite/25 focus:border-accent focus:outline-none focus:ring-0 focus:shadow-[0_2px_12px_rgba(232,168,23,0.1)]"
           placeholder="¿En qué podemos ayudarte?"
         />
       </div>

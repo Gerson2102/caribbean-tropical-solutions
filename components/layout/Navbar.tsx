@@ -99,10 +99,13 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 left-0 z-50 w-full transition-colors duration-300 ${
           scrolled
-            ? "bg-deep-green/95 backdrop-blur-md shadow-lg"
+            ? "bg-deep-green/95 backdrop-blur-xl"
             : "bg-transparent"
         }`}
-        style={{ transitionProperty: "background-color, box-shadow" }}
+        style={{
+          transitionProperty: "background-color, box-shadow",
+          boxShadow: scrolled ? "0 4px 30px rgba(0,0,0,0.3), inset 0 0 0 1px rgba(255,255,255,0.05)" : "none",
+        }}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 lg:px-8">
           {/* Logo */}
@@ -124,12 +127,19 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
-                className={`text-sm font-medium transition-colors duration-200 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-deep-green rounded ${
+                className={`relative pb-1 text-sm font-medium transition-colors duration-200 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-deep-green rounded ${
                   activeSection === link.href ? "text-accent" : "text-offwhite/80"
                 }`}
                 style={{ transitionProperty: "color" }}
               >
                 {link.label}
+                {activeSection === link.href && (
+                  <motion.div
+                    layoutId="navUnderline"
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent rounded-full"
+                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                  />
+                )}
               </a>
             ))}
           </div>
@@ -139,7 +149,7 @@ export default function Navbar() {
             href={WHATSAPP_URL_WITH_MESSAGE}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden items-center gap-2 rounded-full bg-accent px-5 py-2 text-sm font-semibold text-charcoal-deep transition-transform duration-200 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-deep-green lg:inline-flex"
+            className="hidden items-center gap-2 rounded-full bg-accent px-5 py-2 text-sm font-semibold text-charcoal-deep transition-transform duration-200 hover:scale-105 active:scale-95 animate-gold-glow-pulse focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-deep-green lg:inline-flex"
             style={{ transitionProperty: "transform" }}
           >
             <WhatsAppIcon className="h-4 w-4" />

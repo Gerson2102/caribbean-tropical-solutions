@@ -1,5 +1,6 @@
 import { CATEGORIES } from "@/lib/constants";
 import SectionLabel from "@/components/ui/SectionLabel";
+import ScrollTextReveal from "@/components/ui/ScrollTextReveal";
 import CategoryCard from "@/components/ui/CategoryCard";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
@@ -13,9 +14,9 @@ export default function ProductCategories() {
         {/* Header */}
         <div className="mb-12 text-center lg:mb-16">
           <SectionLabel>Lo Que Distribuimos</SectionLabel>
-          <h2 className="text-section mt-4 font-display font-extrabold text-charcoal-deep">
+          <ScrollTextReveal className="text-section mt-4 font-display font-extrabold text-charcoal-deep">
             Nuestras Líneas
-          </h2>
+          </ScrollTextReveal>
           <p className="mx-auto mt-4 max-w-2xl text-charcoal-light">
             Cinco líneas de productos para cubrir todas las necesidades de tu empresa.
             Desde protección personal hasta cuidado y bienestar.

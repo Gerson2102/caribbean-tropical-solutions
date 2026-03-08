@@ -1,8 +1,11 @@
-import { type ReactNode } from "react";
+"use client";
+
+import { useRef, type ReactNode } from "react";
+import { motion, useInView } from "framer-motion";
 import { WHATSAPP_URL_WITH_MESSAGE } from "@/lib/constants";
 import SectionLabel from "@/components/ui/SectionLabel";
+import ScrollTextReveal from "@/components/ui/ScrollTextReveal";
 import Button from "@/components/ui/Button";
-import ScrollReveal from "@/components/ui/ScrollReveal";
 import {
   SearchIcon,
   WhatsAppIcon,
@@ -50,7 +53,42 @@ const STEPS: Step[] = [
   },
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.2, delayChildren: 0.1 } },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] as const },
+  },
+};
+
+const iconPulse = {
+  hidden: { scale: 0.8, opacity: 0 },
+  visible: {
+    scale: [0.8, 1.12, 1],
+    opacity: 1,
+    transition: { duration: 0.5, ease: "easeOut" as const },
+  },
+};
+
+const lineDraw = {
+  hidden: { pathLength: 0, opacity: 0 },
+  visible: {
+    pathLength: 1,
+    opacity: 1,
+    transition: { duration: 0.8, ease: "easeInOut" as const, delay: 0.3 },
+  },
+};
+
 export default function HowToBuy() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
+
   return (
     <section
       id="como-comprar"
@@ -60,25 +98,46 @@ export default function HowToBuy() {
         {/* Header */}
         <div className="mb-14 text-center">
           <SectionLabel>Proceso</SectionLabel>
-          <h2 className="text-section mt-4 font-display font-extrabold text-charcoal-deep">
+          <ScrollTextReveal className="text-section mt-4 font-display font-extrabold text-charcoal-deep">
             ¿Cómo Comprar?
-          </h2>
+          </ScrollTextReveal>
           <p className="mx-auto mt-4 max-w-xl text-charcoal-light">
             Pedir es fácil. En 4 simples pasos tenés tus productos.
           </p>
         </div>
 
-        <ScrollReveal selector=".step-item" stagger={0.15}>
+        <div ref={sectionRef}>
           {/* Desktop: horizontal 4-column grid */}
-          <div className="hidden lg:grid lg:grid-cols-4 lg:gap-0">
+          <motion.div
+            className="hidden lg:grid lg:grid-cols-4 lg:gap-0"
+            variants={containerVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+          >
             {STEPS.map((step, i) => (
-              <div key={step.number} className="step-item relative flex flex-col items-center text-center px-6">
+              <motion.div
+                key={step.number}
+                className="relative flex flex-col items-center text-center px-6"
+                variants={itemVariants}
+              >
                 {/* Connector line (between icons, not on last item) */}
                 {i < STEPS.length - 1 && (
-                  <div
-                    className="absolute top-7 left-[calc(50%+28px)] right-[calc(-50%+28px)] border-t-2 border-dashed border-primary/30"
+                  <svg
+                    className="absolute top-7 left-[calc(50%+28px)] h-[2px] overflow-visible"
+                    style={{ width: "calc(100% - 56px)" }}
                     aria-hidden="true"
-                  />
+                  >
+                    <motion.line
+                      x1="0"
+                      y1="1"
+                      x2="100%"
+                      y2="1"
+                      stroke="rgba(61,122,61,0.3)"
+                      strokeWidth="2"
+                      strokeDasharray="6 4"
+                      variants={lineDraw}
+                    />
+                  </svg>
                 )}
 
                 {/* Step number watermark */}
@@ -89,16 +148,17 @@ export default function HowToBuy() {
                   {step.number}
                 </span>
 
-                {/* Icon circle */}
-                <div
+                {/* Icon circle with pulse */}
+                <motion.div
                   className={`relative z-10 flex h-14 w-14 items-center justify-center rounded-xl ${
                     step.accent
                       ? "bg-accent/15 text-accent"
                       : "bg-primary/10 text-primary"
                   }`}
+                  variants={iconPulse}
                 >
                   {step.icon}
-                </div>
+                </motion.div>
 
                 {/* Text */}
                 <h3 className="mt-5 font-display text-lg font-bold text-charcoal-deep">
@@ -107,31 +167,51 @@ export default function HowToBuy() {
                 <p className="mt-2 text-sm leading-relaxed text-charcoal-light">
                   {step.description}
                 </p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* Mobile/Tablet: vertical timeline */}
-          <div className="relative lg:hidden">
+          <motion.div
+            className="relative lg:hidden"
+            variants={containerVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+          >
             {/* Vertical timeline line */}
-            <div
-              className="absolute left-7 top-0 bottom-0 w-0.5 bg-primary/15"
+            <svg
+              className="absolute left-7 top-0 h-full w-[2px] overflow-visible"
               aria-hidden="true"
-            />
+            >
+              <motion.line
+                x1="1"
+                y1="0"
+                x2="1"
+                y2="100%"
+                stroke="rgba(61,122,61,0.15)"
+                strokeWidth="2"
+                variants={lineDraw}
+              />
+            </svg>
 
             <div className="flex flex-col gap-10">
               {STEPS.map((step) => (
-                <div key={step.number} className="step-item relative flex items-start gap-5 pl-0">
+                <motion.div
+                  key={step.number}
+                  className="relative flex items-start gap-5 pl-0"
+                  variants={itemVariants}
+                >
                   {/* Icon circle (overlapping the timeline) */}
-                  <div
+                  <motion.div
                     className={`relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-xl ${
                       step.accent
                         ? "bg-accent/15 text-accent"
                         : "bg-primary/10 text-primary"
                     }`}
+                    variants={iconPulse}
                   >
                     {step.icon}
-                  </div>
+                  </motion.div>
 
                   {/* Text */}
                   <div className="pt-1">
@@ -145,11 +225,11 @@ export default function HowToBuy() {
                       {step.description}
                     </p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
-        </ScrollReveal>
+          </motion.div>
+        </div>
 
         {/* Bottom CTA */}
         <div className="mt-14 text-center">

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PRODUCTS, FILTER_TABS, type FilterSlug } from "@/lib/constants";
 import SectionLabel from "@/components/ui/SectionLabel";
+import ScrollTextReveal from "@/components/ui/ScrollTextReveal";
 import ProductCard from "@/components/ui/ProductCard";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
@@ -31,9 +32,9 @@ export default function FeaturedProducts() {
           {/* Header */}
           <div className="fp-header mb-10 text-center">
             <SectionLabel>Catálogo</SectionLabel>
-            <h2 className="text-section mt-4 font-display font-extrabold text-offwhite">
+            <ScrollTextReveal className="text-section mt-4 font-display font-extrabold text-offwhite">
               Productos Destacados
-            </h2>
+            </ScrollTextReveal>
             <p className="mx-auto mt-4 max-w-2xl text-offwhite/70">
               Explorá nuestra selección completa. Hacé clic en cualquier producto
               para cotizar por WhatsApp.

@@ -5,6 +5,7 @@ import {
   ADDRESS,
 } from "@/lib/constants";
 import SectionLabel from "@/components/ui/SectionLabel";
+import ScrollTextReveal from "@/components/ui/ScrollTextReveal";
 import Button from "@/components/ui/Button";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import ContactForm from "@/components/ui/ContactForm";
@@ -25,9 +26,11 @@ export default function Contact() {
           <div className="contact-animate mb-6 text-center">
             <SectionLabel>Contacto</SectionLabel>
           </div>
-          <h2 className="contact-animate text-section text-center font-display font-extrabold text-offwhite">
-            ¿Listo para Hacer tu Pedido?
-          </h2>
+          <div className="contact-animate">
+            <ScrollTextReveal className="text-section text-center font-display font-extrabold text-offwhite">
+              ¿Listo para Hacer tu Pedido?
+            </ScrollTextReveal>
+          </div>
           <p className="contact-animate mx-auto mt-4 max-w-xl text-center text-offwhite/70">
             Escribinos por WhatsApp o completá el formulario. Te respondemos en minutos.
           </p>
