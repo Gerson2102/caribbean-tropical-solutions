@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# screenshot tooling
+take-screenshots*.mjs
+/temporary screenshots/
