@@ -45,7 +45,7 @@ export default function FloatingWhatsApp() {
 
   return (
     <AnimatePresence>
-      {visible && (
+      {visible ? (
         <motion.a
           key="whatsapp-float"
           href={WHATSAPP_URL_WITH_MESSAGE}
@@ -62,7 +62,7 @@ export default function FloatingWhatsApp() {
         >
           <WhatsAppIcon className="h-7 w-7" />
         </motion.a>
-      )}
+      ) : null}
     </AnimatePresence>
   );
 }

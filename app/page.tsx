@@ -1,14 +1,19 @@
+import dynamic from "next/dynamic";
 import Navbar from "@/components/layout/Navbar";
 import ScrollProgress from "@/components/layout/ScrollProgress";
 import FloatingWhatsApp from "@/components/layout/FloatingWhatsApp";
 import Footer from "@/components/layout/Footer";
+
+// Above fold — static
 import Hero from "@/components/sections/Hero";
 import BrandMarquee from "@/components/sections/BrandMarquee";
-import ProductCategories from "@/components/sections/ProductCategories";
-import FeaturedProducts from "@/components/sections/FeaturedProducts";
-import WhyCaribbean from "@/components/sections/WhyCaribbean";
-import HowToBuy from "@/components/sections/HowToBuy";
-import Contact from "@/components/sections/Contact";
+
+// Below fold — code-split
+const ProductCategories = dynamic(() => import("@/components/sections/ProductCategories"));
+const FeaturedProducts = dynamic(() => import("@/components/sections/FeaturedProducts"));
+const WhyCaribbean = dynamic(() => import("@/components/sections/WhyCaribbean"));
+const HowToBuy = dynamic(() => import("@/components/sections/HowToBuy"));
+const Contact = dynamic(() => import("@/components/sections/Contact"));
 
 export default function Home() {
   return (

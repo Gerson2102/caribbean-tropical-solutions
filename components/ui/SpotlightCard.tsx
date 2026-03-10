@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useCallback, useState, type ReactNode } from "react";
+import { useRef, useCallback, type ReactNode } from "react";
 
 export default function SpotlightCard({
   children,
@@ -15,7 +15,6 @@ export default function SpotlightCard({
 }) {
   const divRef = useRef<HTMLDivElement>(null);
   const spotlightRef = useRef<HTMLDivElement>(null);
-  const [opacity, setOpacity] = useState(0);
 
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     if (!divRef.current || !spotlightRef.current) return;
@@ -32,13 +31,19 @@ export default function SpotlightCard({
     }
   }, [spotlightColor, onMousePosition]);
 
-  const handleMouseEnter = useCallback(() => setOpacity(0.6), []);
+  const handleMouseEnter = useCallback(() => {
+    if (spotlightRef.current) spotlightRef.current.style.opacity = "0.6";
+  }, []);
   const handleMouseLeave = useCallback(() => {
-    setOpacity(0);
+    if (spotlightRef.current) spotlightRef.current.style.opacity = "0";
     onMousePosition?.(null);
   }, [onMousePosition]);
-  const handleFocus = useCallback(() => setOpacity(0.6), []);
-  const handleBlur = useCallback(() => setOpacity(0), []);
+  const handleFocus = useCallback(() => {
+    if (spotlightRef.current) spotlightRef.current.style.opacity = "0.6";
+  }, []);
+  const handleBlur = useCallback(() => {
+    if (spotlightRef.current) spotlightRef.current.style.opacity = "0";
+  }, []);
 
   return (
     <div
@@ -57,7 +62,7 @@ export default function SpotlightCard({
         ref={spotlightRef}
         className="pointer-events-none absolute inset-0 transition-opacity duration-500"
         style={{
-          opacity,
+          opacity: 0,
           transitionProperty: "opacity",
         }}
       />

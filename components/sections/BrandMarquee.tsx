@@ -1,20 +1,20 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { motion, useMotionValue, useAnimationFrame, useReducedMotion } from "framer-motion";
 import { BRANDS } from "@/lib/constants";
 import SectionLabel from "@/components/ui/SectionLabel";
 
 export default function BrandMarquee() {
   const allBrands = [...BRANDS, ...BRANDS];
-  const [hovered, setHovered] = useState(false);
+  const hoveredRef = useRef(false);
   const x = useMotionValue(0);
   const innerRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
 
   useAnimationFrame((_, delta) => {
     if (prefersReducedMotion) return;
-    const speed = hovered ? -2 : -50;
+    const speed = hoveredRef.current ? -2 : -50;
     let newX = x.get() + (speed * delta) / 1000;
 
     if (innerRef.current) {
@@ -34,8 +34,8 @@ export default function BrandMarquee() {
 
       <div
         className="relative overflow-hidden marquee-mask"
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
+        onMouseEnter={() => { hoveredRef.current = true; }}
+        onMouseLeave={() => { hoveredRef.current = false; }}
       >
         <motion.div
           ref={innerRef}

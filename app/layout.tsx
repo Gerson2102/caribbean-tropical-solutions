@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Sora, DM_Sans } from "next/font/google";
-import SmoothScroll from "@/components/layout/SmoothScroll";
+import dynamic from "next/dynamic";
+const SmoothScroll = dynamic(() => import("@/components/layout/SmoothScroll"));
 import "./globals.css";
 
 const sora = Sora({

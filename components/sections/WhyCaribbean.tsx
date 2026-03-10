@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useRef, useCallback } from "react";
 import { VALUE_PROPS } from "@/lib/constants";
 import SectionLabel from "@/components/ui/SectionLabel";
 import SpotlightCard from "@/components/ui/SpotlightCard";
@@ -16,16 +16,19 @@ const iconMap = {
 } as const;
 
 function ValueCard({ prop }: { prop: (typeof VALUE_PROPS)[number] }) {
-  const [mousePos, setMousePos] = useState<{ x: number; y: number } | null>(null);
+  const watermarkRef = useRef<HTMLSpanElement>(null);
   const IconComp = iconMap[prop.icon];
 
   const handleMousePosition = useCallback((pos: { x: number; y: number } | null) => {
-    setMousePos(pos);
+    if (!watermarkRef.current) return;
+    if (pos) {
+      watermarkRef.current.style.transform = `translate(${pos.x * 3}px, ${pos.y * 3}px)`;
+      watermarkRef.current.style.transition = "none";
+    } else {
+      watermarkRef.current.style.transform = "translate(0, 0)";
+      watermarkRef.current.style.transition = "transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)";
+    }
   }, []);
-
-  const watermarkTransform = mousePos
-    ? `translate(${mousePos.x * 3}px, ${mousePos.y * 3}px)`
-    : "translate(0, 0)";
 
   return (
     <SpotlightCard
@@ -34,10 +37,10 @@ function ValueCard({ prop }: { prop: (typeof VALUE_PROPS)[number] }) {
       onMousePosition={handleMousePosition}
     >
       <span
+        ref={watermarkRef}
         className="absolute -top-4 -right-2 font-display text-[50px] sm:text-[80px] md:text-[120px] font-extrabold leading-none text-offwhite/[0.06] select-none pointer-events-none"
         style={{
-          transform: watermarkTransform,
-          transition: mousePos ? "none" : "transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)",
+          transform: "translate(0, 0)",
           willChange: "transform",
         }}
       >

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, startTransition } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PRODUCTS, FILTER_TABS, type FilterSlug } from "@/lib/constants";
 import SectionLabel from "@/components/ui/SectionLabel";
@@ -47,7 +47,7 @@ export default function FeaturedProducts() {
               {FILTER_TABS.map((tab) => (
                 <button
                   key={tab.slug}
-                  onClick={() => { setActiveFilter(tab.slug); setShowAll(false); }}
+                  onClick={() => { startTransition(() => { setActiveFilter(tab.slug); setShowAll(false); }); }}
                   aria-current={activeFilter === tab.slug ? "true" : undefined}
                   className={`relative rounded-xl px-3 py-2.5 text-sm font-medium sm:px-5 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
                     activeFilter === tab.slug
@@ -93,7 +93,7 @@ export default function FeaturedProducts() {
         )}
 
         {/* Show More */}
-        {hasMore && (
+        {hasMore ? (
           <div className="mt-8 text-center">
             <button
               onClick={() => setShowAll(true)}
@@ -102,7 +102,7 @@ export default function FeaturedProducts() {
               Ver todos los productos ({allFiltered.length})
             </button>
           </div>
-        )}
+        ) : null}
 
         {/* Results count */}
         <p className="mt-8 text-center text-sm text-offwhite/30">

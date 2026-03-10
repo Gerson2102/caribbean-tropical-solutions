@@ -19,13 +19,8 @@ export default function ContactForm() {
     const telefono = telefonoRef.current?.value || "";
     const mensaje = mensajeRef.current?.value || "";
     const msg = `Hola, soy ${nombre}${empresa ? ` de ${empresa}` : ""}. ${mensaje}${telefono ? ` Mi teléfono: ${telefono}` : ""}`;
-    setTimeout(() => {
-      window.open(
-        `${WHATSAPP_URL}?text=${encodeURIComponent(msg)}`,
-        "_blank"
-      );
-      setSubmitting(false);
-    }, 400);
+    window.open(`${WHATSAPP_URL}?text=${encodeURIComponent(msg)}`, "_blank");
+    setSubmitting(false);
   }
 
   const inputClass =

@@ -171,7 +171,7 @@ export default function Navbar() {
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
-        {menuOpen && (
+        {menuOpen ? (
           <motion.div
             ref={menuRef}
             onKeyDown={handleMenuKeyDown}
@@ -209,7 +209,7 @@ export default function Navbar() {
               Escríbenos
             </motion.a>
           </motion.div>
-        )}
+        ) : null}
       </AnimatePresence>
     </>
   );

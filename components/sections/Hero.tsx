@@ -6,13 +6,9 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { AnimatePresence, motion } from "framer-motion";
 import { WHATSAPP_URL_WITH_MESSAGE } from "@/lib/constants";
-import { prefersReducedMotion } from "@/lib/animations";
+import { prefersReducedMotion } from "@/lib/animations"; // also centralizes gsap.registerPlugin(ScrollTrigger)
 import Button from "@/components/ui/Button";
 import { WhatsAppIcon } from "@/components/ui/Icons";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 // --- Floating image slot definitions ---
 interface FloatingSlot {
