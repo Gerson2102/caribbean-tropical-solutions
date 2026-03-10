@@ -8,7 +8,7 @@ import ScrollTextReveal from "@/components/ui/ScrollTextReveal";
 import ProductCard from "@/components/ui/ProductCard";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
-const INITIAL_COUNT = 12;
+const INITIAL_COUNT = 8;
 
 export default function FeaturedProducts() {
   const [activeFilter, setActiveFilter] = useState<FilterSlug>("todos");
@@ -48,6 +48,7 @@ export default function FeaturedProducts() {
                 <button
                   key={tab.slug}
                   onClick={() => { setActiveFilter(tab.slug); setShowAll(false); }}
+                  aria-current={activeFilter === tab.slug ? "true" : undefined}
                   className={`relative rounded-xl px-3 py-2.5 text-sm font-medium sm:px-5 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
                     activeFilter === tab.slug
                       ? "text-charcoal-deep"
@@ -74,7 +75,7 @@ export default function FeaturedProducts() {
             No hay productos en esta categoría.
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
+          <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3">
             <AnimatePresence mode="popLayout">
               {filtered.map((product) => (
                 <motion.div

@@ -24,14 +24,14 @@ interface Step {
 const STEPS: Step[] = [
   {
     number: "01",
-    icon: <SearchIcon className="h-6 w-6" />,
+    icon: <SearchIcon className="h-6 w-6" aria-hidden="true" />,
     title: "Explorá Nuestro Catálogo",
     description:
       "Revisá nuestra selección de productos arriba o preguntanos por WhatsApp qué tenemos disponible.",
   },
   {
     number: "02",
-    icon: <WhatsAppIcon className="h-6 w-6" />,
+    icon: <WhatsAppIcon className="h-6 w-6" aria-hidden="true" />,
     title: "Escribinos por WhatsApp",
     description:
       "Envianos un mensaje con los productos que te interesan. Te respondemos en minutos.",
@@ -39,14 +39,14 @@ const STEPS: Step[] = [
   },
   {
     number: "03",
-    icon: <ClipboardCheckIcon className="h-6 w-6" />,
+    icon: <ClipboardCheckIcon className="h-6 w-6" aria-hidden="true" />,
     title: "Confirmá tu Pedido",
     description:
       "Te enviamos cotización, confirmás cantidades y coordinamos los detalles de pago.",
   },
   {
     number: "04",
-    icon: <TruckIcon className="h-6 w-6" />,
+    icon: <TruckIcon className="h-6 w-6" aria-hidden="true" />,
     title: "Recibí tu Entrega",
     description:
       "Preparamos tu pedido y lo enviamos a cualquier punto del Caribe y Costa Rica.",
@@ -108,14 +108,14 @@ export default function HowToBuy() {
 
         <div ref={sectionRef}>
           {/* Desktop: horizontal 4-column grid */}
-          <motion.div
-            className="hidden lg:grid lg:grid-cols-4 lg:gap-0"
+          <motion.ol
+            className="hidden lg:grid lg:grid-cols-4 lg:gap-0 list-none"
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
           >
             {STEPS.map((step, i) => (
-              <motion.div
+              <motion.li
                 key={step.number}
                 className="relative flex flex-col items-center text-center px-6"
                 variants={itemVariants}
@@ -167,9 +167,9 @@ export default function HowToBuy() {
                 <p className="mt-2 text-sm leading-relaxed text-charcoal-light">
                   {step.description}
                 </p>
-              </motion.div>
+              </motion.li>
             ))}
-          </motion.div>
+          </motion.ol>
 
           {/* Mobile/Tablet: vertical timeline */}
           <motion.div
@@ -180,7 +180,7 @@ export default function HowToBuy() {
           >
             {/* Vertical timeline line */}
             <svg
-              className="absolute left-7 top-0 h-full w-[2px] overflow-visible"
+              className="absolute left-[22px] top-0 h-full w-[2px] overflow-visible"
               aria-hidden="true"
             >
               <motion.line
@@ -194,16 +194,16 @@ export default function HowToBuy() {
               />
             </svg>
 
-            <div className="flex flex-col gap-10">
+            <ol className="flex flex-col gap-5 list-none">
               {STEPS.map((step) => (
-                <motion.div
+                <motion.li
                   key={step.number}
-                  className="relative flex items-start gap-5 pl-0"
+                  className="relative flex items-start gap-4 pl-0"
                   variants={itemVariants}
                 >
                   {/* Icon circle (overlapping the timeline) */}
                   <motion.div
-                    className={`relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-xl ${
+                    className={`relative z-10 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${
                       step.accent
                         ? "bg-accent/15 text-accent"
                         : "bg-primary/10 text-primary"
@@ -214,20 +214,20 @@ export default function HowToBuy() {
                   </motion.div>
 
                   {/* Text */}
-                  <div className="pt-1">
-                    <span className="font-display text-xs font-bold uppercase tracking-widest text-primary/40">
+                  <div className="pt-0.5">
+                    <span className="font-display text-[10px] font-bold uppercase tracking-widest text-primary/40">
                       Paso {step.number}
                     </span>
-                    <h3 className="mt-1 font-display text-base font-bold text-charcoal-deep">
+                    <h3 className="mt-0.5 font-display text-sm font-bold text-charcoal-deep">
                       {step.title}
                     </h3>
-                    <p className="mt-1.5 text-sm leading-relaxed text-charcoal-light">
+                    <p className="mt-1 text-xs leading-relaxed text-charcoal-light">
                       {step.description}
                     </p>
                   </div>
-                </motion.div>
+                </motion.li>
               ))}
-            </div>
+            </ol>
           </motion.div>
         </div>
 

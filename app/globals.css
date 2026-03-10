@@ -32,6 +32,14 @@
    Base Styles
    ======================================== */
 
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a, button, input, select, textarea {
+  touch-action: manipulation;
+}
+
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -60,6 +68,15 @@ section[id] {
 }
 
 html {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ========================================
+   Carousel Scroll (hide scrollbar)
+   ======================================== */
+
+.carousel-scroll {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }

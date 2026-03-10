@@ -29,7 +29,7 @@ export default function ContactForm() {
   }
 
   const inputClass =
-    "w-full rounded-xl border border-offwhite/20 bg-offwhite/[0.08] px-4 py-3 text-offwhite placeholder-offwhite/25 focus:border-accent focus:outline-none focus:ring-0 focus:shadow-[0_2px_12px_rgba(232,168,23,0.1)]";
+    "w-full rounded-xl border border-offwhite/20 bg-offwhite/[0.08] px-4 py-3 text-offwhite placeholder-offwhite/25 focus-visible:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-deep-green";
 
   return (
     <form onSubmit={handleSubmit} className="contact-animate space-y-5">
@@ -40,10 +40,12 @@ export default function ContactForm() {
         <input
           type="text"
           id="nombre"
+          name="nombre"
+          autoComplete="name"
           required
           ref={nombreRef}
           className={inputClass}
-          placeholder="Tu nombre completo"
+          placeholder="Tu nombre completo…"
         />
       </div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -54,9 +56,11 @@ export default function ContactForm() {
           <input
             type="text"
             id="empresa"
+            name="empresa"
+            autoComplete="organization"
             ref={empresaRef}
             className={inputClass}
-            placeholder="Nombre de empresa"
+            placeholder="Nombre de empresa…"
           />
         </div>
         <div>
@@ -66,6 +70,8 @@ export default function ContactForm() {
           <input
             type="tel"
             id="telefono"
+            name="telefono"
+            autoComplete="tel"
             ref={telefonoRef}
             className={inputClass}
             placeholder="8888-8888"
@@ -78,11 +84,12 @@ export default function ContactForm() {
         </label>
         <textarea
           id="mensaje"
+          name="mensaje"
           required
           rows={4}
           ref={mensajeRef}
-          className="w-full resize-none rounded-xl border border-offwhite/20 bg-offwhite/[0.08] px-4 py-3 text-offwhite placeholder-offwhite/25 focus:border-accent focus:outline-none focus:ring-0 focus:shadow-[0_2px_12px_rgba(232,168,23,0.1)]"
-          placeholder="¿En qué podemos ayudarte?"
+          className="w-full resize-none rounded-xl border border-offwhite/20 bg-offwhite/[0.08] px-4 py-3 text-offwhite placeholder-offwhite/25 focus-visible:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-deep-green"
+          placeholder="¿En qué podemos ayudarte?…"
         />
       </div>
       <Button variant="primary" type="submit" className="w-full">

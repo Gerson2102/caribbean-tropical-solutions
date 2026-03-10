@@ -36,9 +36,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${sora.variable} ${dmSans.variable}`}>
+    <html lang="es" className={`${sora.variable} ${dmSans.variable}`} style={{ colorScheme: "dark" }}>
       <head>
-        <link rel="preconnect" href="https://wa.me" />
+        <meta name="theme-color" content="#0f1f0f" />
       </head>
       <body className="antialiased">
         <noscript>

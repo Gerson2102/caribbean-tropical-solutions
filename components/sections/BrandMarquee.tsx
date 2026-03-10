@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { motion, useMotionValue, useAnimationFrame } from "framer-motion";
+import { motion, useMotionValue, useAnimationFrame, useReducedMotion } from "framer-motion";
 import { BRANDS } from "@/lib/constants";
 import SectionLabel from "@/components/ui/SectionLabel";
 
@@ -10,8 +10,10 @@ export default function BrandMarquee() {
   const [hovered, setHovered] = useState(false);
   const x = useMotionValue(0);
   const innerRef = useRef<HTMLDivElement>(null);
+  const prefersReducedMotion = useReducedMotion();
 
   useAnimationFrame((_, delta) => {
+    if (prefersReducedMotion) return;
     const speed = hovered ? -2 : -50;
     let newX = x.get() + (speed * delta) / 1000;
 

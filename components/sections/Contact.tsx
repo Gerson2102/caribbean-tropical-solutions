@@ -106,7 +106,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-display text-sm font-bold text-offwhite">Ubicación</h4>
-                  <p className="text-sm text-offwhite/70">{ADDRESS}</p>
+                  <address className="text-sm text-offwhite/70 not-italic">{ADDRESS}</address>
                 </div>
               </div>
             </div>

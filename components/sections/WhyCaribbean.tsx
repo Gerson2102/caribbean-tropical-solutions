@@ -29,12 +29,12 @@ function ValueCard({ prop }: { prop: (typeof VALUE_PROPS)[number] }) {
 
   return (
     <SpotlightCard
-      className="value-card rounded-2xl border border-offwhite/8 bg-offwhite/[0.04] p-8 lg:p-10 hover:border-accent/20 transition-colors duration-300"
+      className="value-card rounded-2xl border border-offwhite/8 bg-offwhite/[0.04] p-4 sm:p-8 lg:p-10 hover:border-accent/20 transition-colors duration-300"
       spotlightColor="#e8a81725"
       onMousePosition={handleMousePosition}
     >
       <span
-        className="absolute -top-4 -right-2 font-display text-[80px] sm:text-[120px] font-extrabold leading-none text-offwhite/[0.06] select-none pointer-events-none"
+        className="absolute -top-4 -right-2 font-display text-[50px] sm:text-[80px] md:text-[120px] font-extrabold leading-none text-offwhite/[0.06] select-none pointer-events-none"
         style={{
           transform: watermarkTransform,
           transition: mousePos ? "none" : "transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)",
@@ -45,13 +45,13 @@ function ValueCard({ prop }: { prop: (typeof VALUE_PROPS)[number] }) {
       </span>
 
       <div className="relative z-10">
-        <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-accent/15">
-          <IconComp className="h-6 w-6 text-accent" />
+        <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-accent/15 sm:mb-5 sm:h-12 sm:w-12" aria-hidden="true">
+          <IconComp className="h-5 w-5 text-accent sm:h-6 sm:w-6" />
         </div>
-        <h3 className="font-display text-lg font-bold text-offwhite lg:text-xl">
+        <h3 className="font-display text-sm font-bold text-offwhite sm:text-lg lg:text-xl">
           {prop.title}
         </h3>
-        <p className="mt-3 text-sm text-offwhite/70 leading-relaxed lg:text-base">
+        <p className="mt-2 text-xs text-offwhite/70 leading-relaxed sm:text-sm lg:text-base">
           {prop.description}
         </p>
       </div>
@@ -76,7 +76,7 @@ export default function WhyCaribbean() {
 
         {/* Value Props Grid */}
         <ScrollReveal selector=".value-card" stagger={0.15}>
-          <div className="grid gap-6 sm:grid-cols-2 lg:gap-8">
+          <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:gap-8">
             {VALUE_PROPS.map((prop) => (
               <ValueCard key={prop.number} prop={prop} />
             ))}
