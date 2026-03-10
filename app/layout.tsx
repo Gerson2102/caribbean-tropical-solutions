@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Sora, DM_Sans } from "next/font/google";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import "./globals.css";
@@ -6,14 +6,12 @@ import "./globals.css";
 const sora = Sora({
   variable: "--font-sora",
   subsets: ["latin"],
-  weight: ["600", "700", "800"],
   display: "swap",
 });
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
   display: "swap",
 });
 
@@ -52,6 +50,10 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  themeColor: "#0f1f0f",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -59,8 +61,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${sora.variable} ${dmSans.variable}`} style={{ colorScheme: "dark" }}>
-      <head>
-        <meta name="theme-color" content="#0f1f0f" />
+      <body className="antialiased">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -110,8 +111,6 @@ export default function RootLayout({
             }),
           }}
         />
-      </head>
-      <body className="antialiased">
         <noscript>
           <style>{`.hero-badge,.hero-title-word,.hero-subtitle,.hero-cta,.hero-scroll,.hero-bg,.hero-float-back,.hero-float-mid,.hero-float-front,.contact-animate,.category-card,.value-card,.step-item,.fp-header{opacity:1!important;transform:none!important}`}</style>
         </noscript>
