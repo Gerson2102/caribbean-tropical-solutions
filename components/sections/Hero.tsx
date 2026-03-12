@@ -1,18 +1,25 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
-import Image from "next/image";
+import { type SVGProps, useEffect, useRef, useState, useCallback } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { AnimatePresence, motion } from "framer-motion";
 import { WHATSAPP_URL_WITH_MESSAGE } from "@/lib/constants";
 import { prefersReducedMotion } from "@/lib/animations"; // also centralizes gsap.registerPlugin(ScrollTrigger)
 import Button from "@/components/ui/Button";
-import { WhatsAppIcon } from "@/components/ui/Icons";
+import {
+  WhatsAppIcon,
+  HardHatIcon, BroomIcon, HammerIcon, ThermometerIcon,
+  SprayBottleIcon, AntIcon, ScrewdriverIcon, NotebookIcon,
+  BugIcon, GogglesIcon, MopIcon, PenIcon,
+  WrenchIcon, LeafIcon, SoapIcon, FolderIcon,
+  DropletIcon, HelmetIcon, BoltIcon, CalculatorIcon,
+  ShieldCheckIcon, BucketIcon, DrillIcon, StethoscopeIcon,
+  SparklesIcon, VestIcon, PlierIcon, HandIcon,
+} from "@/components/ui/Icons";
 
-// --- Floating image slot definitions ---
+// --- Floating icon slot definitions ---
 interface FloatingSlot {
-  images: string[];
+  icons: React.ComponentType<SVGProps<SVGSVGElement>>[]; // 4 icons per slot, cycled
   position: string; // tailwind classes for absolute positioning
   mobilePosition?: string; // override position on mobile
   size: number; // px width on desktop
@@ -25,8 +32,8 @@ interface FloatingSlot {
 
 const FLOATING_SLOTS: FloatingSlot[] = [
   {
-    // Top-left, back layer
-    images: ["/images/botas/bota1.webp", "/images/evacol/evacol3.webp", "/images/detectores/detector2.webp", "/images/cremas/crema4.webp"],
+    // Top-left, back layer — Safety/EPP
+    icons: [HardHatIcon, BroomIcon, HammerIcon, ThermometerIcon],
     position: "top-[8%] left-[3%]",
     size: 220,
     mobileSize: 120,
@@ -36,8 +43,8 @@ const FLOATING_SLOTS: FloatingSlot[] = [
     hideOnMobile: true,
   },
   {
-    // Top-right, mid layer
-    images: ["/images/cremas/crema1.webp", "/images/evacol/evacol5.webp", "/images/botas/bota2.webp", "/images/cleaners/cleaner2.webp"],
+    // Top-right, mid layer — Cleaning
+    icons: [SprayBottleIcon, AntIcon, ScrewdriverIcon, NotebookIcon],
     position: "top-[6%] right-[5%]",
     size: 180,
     mobileSize: 110,
@@ -46,8 +53,8 @@ const FLOATING_SLOTS: FloatingSlot[] = [
     driftClass: "animate-hero-drift-2",
   },
   {
-    // Mid-left, mid layer
-    images: ["/images/evacol/evacol1.webp", "/images/fumigacion/repelente.webp", "/images/cremas/crema3.webp", "/images/detectores/detector1.webp"],
+    // Mid-left, mid layer — Fumigation/Pest control
+    icons: [BugIcon, GogglesIcon, MopIcon, PenIcon],
     position: "top-[40%] left-[2%]",
     mobilePosition: "top-[25%] left-[2%]",
     size: 240,
@@ -58,8 +65,8 @@ const FLOATING_SLOTS: FloatingSlot[] = [
     hideOnMobile: true,
   },
   {
-    // Mid-right, back layer
-    images: ["/images/detectores/detector3.webp", "/images/botas/bota3.webp", "/images/cremas/crema5.webp", "/images/evacol/evacol7.webp"],
+    // Mid-right, back layer — Hardware/Tools
+    icons: [WrenchIcon, LeafIcon, SoapIcon, FolderIcon],
     position: "top-[38%] right-[3%]",
     size: 200,
     mobileSize: 110,
@@ -69,8 +76,8 @@ const FLOATING_SLOTS: FloatingSlot[] = [
     hideOnMobile: true,
   },
   {
-    // Bottom-left, mid layer
-    images: ["/images/cremas/crema2.webp", "/images/fumigacion/silicone.webp", "/images/evacol/evacol4.webp", "/images/seguridad/casco-seguridad.webp"],
+    // Bottom-left, mid layer — Personal care
+    icons: [DropletIcon, HelmetIcon, BoltIcon, CalculatorIcon],
     position: "bottom-[10%] left-[5%]",
     size: 160,
     rotation: 4,
@@ -79,8 +86,8 @@ const FLOATING_SLOTS: FloatingSlot[] = [
     hideOnMobile: true,
   },
   {
-    // Bottom-right, front layer
-    images: ["/images/zapatos/zapatos1.webp", "/images/seguridad/mascara.webp", "/images/cremas/crema1.webp", "/images/evacol/evacol2.webp"],
+    // Bottom-right, front layer — Protection/Safety
+    icons: [ShieldCheckIcon, BucketIcon, DrillIcon, StethoscopeIcon],
     position: "bottom-[8%] right-[4%]",
     mobilePosition: "bottom-[10%] right-[2%]",
     size: 260,
@@ -91,8 +98,8 @@ const FLOATING_SLOTS: FloatingSlot[] = [
     hideOnMobile: true,
   },
   {
-    // Top-center-right, front layer
-    images: ["/images/fumigacion/repelente.webp", "/images/cremas/crema3.webp", "/images/botas/bota1.webp", "/images/evacol/evacol6.webp"],
+    // Top-center-right, front layer — Quality/Cleaning
+    icons: [SparklesIcon, VestIcon, PlierIcon, HandIcon],
     position: "top-[12%] right-[12%]",
     size: 120,
     mobileSize: 90,
@@ -110,6 +117,31 @@ const LAYER_CONFIG = {
   4: { opacity: 0.8, blur: "", parallaxFactor: 20, zIndex: "z-[35]" },
 } as const;
 
+// Layer-specific glassmorphism container styling for icon orbs
+const ICON_CONTAINER_STYLES = {
+  1: {
+    background: "rgba(61, 122, 61, 0.10)",
+    border: "1px solid rgba(61, 122, 61, 0.15)",
+    boxShadow: "0 0 25px rgba(61, 122, 61, 0.15), inset 0 1px 0 rgba(255,255,255,0.05)",
+    backdropFilter: "blur(8px)",
+    iconColor: "rgba(255, 255, 255, 0.45)",
+  },
+  2: {
+    background: "rgba(61, 122, 61, 0.15)",
+    border: "1px solid rgba(61, 122, 61, 0.20)",
+    boxShadow: "0 0 30px rgba(61, 122, 61, 0.18), 0 4px 16px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.08)",
+    backdropFilter: "blur(12px)",
+    iconColor: "rgba(255, 255, 255, 0.65)",
+  },
+  4: {
+    background: "rgba(232, 168, 23, 0.08)",
+    border: "1px solid rgba(232, 168, 23, 0.15)",
+    boxShadow: "0 0 35px rgba(232, 168, 23, 0.12), 0 8px 24px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.1)",
+    backdropFilter: "blur(16px)",
+    iconColor: "rgba(245, 200, 66, 0.85)",
+  },
+} as const;
+
 // Hoisted static style objects to avoid re-creation on render
 const BG_GRADIENT_STYLE = {
   background: "linear-gradient(135deg, #0f1f0f 0%, #142d14 40%, #1a1a1a 100%)",
@@ -121,20 +153,23 @@ const BG_RADIAL_STYLE = {
 
 const BG_NOISE_STYLE = {
   opacity: 0.035,
-  backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\")",
-  backgroundSize: "256px",
+  backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 2048 2048' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\")",
+  backgroundSize: "2048px",
 } as const;
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
-  const [imageIndices, setImageIndices] = useState<number[]>(
-    () => FLOATING_SLOTS.map(() => 0)
-  );
   const [isMobile, setIsMobile] = useState(false);
   const mouseRef = useRef({ x: 0, y: 0 });
   const lerpedRef = useRef({ x: 0, y: 0 });
   const rafRef = useRef<number>(0);
   const layerRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  // Icon cycling state
+  const [iconIndices, setIconIndices] = useState<number[]>(() => FLOATING_SLOTS.map(() => 0));
+  const [transitionPhase, setTransitionPhase] = useState<('idle' | 'exiting' | 'entering')[]>(
+    () => FLOATING_SLOTS.map(() => 'idle')
+  );
 
   // Mobile detection
   useEffect(() => {
@@ -143,6 +178,64 @@ export default function Hero() {
     const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
     mql.addEventListener("change", handler);
     return () => mql.removeEventListener("change", handler);
+  }, []);
+
+  // Icon cycling — staggered group timers
+  useEffect(() => {
+    if (prefersReducedMotion()) return;
+
+    const ICON_COUNT = 4;
+    const EXIT_DURATION = 500;
+    const SWAP_DELAY = 50;
+    const ENTER_DURATION = 500;
+
+    const cycleGroup = (slotIndices: number[]) => {
+      // Phase 1: exit — blur + fade out
+      setTransitionPhase(prev => {
+        const next = [...prev];
+        slotIndices.forEach(i => { next[i] = 'exiting'; });
+        return next;
+      });
+
+      // Phase 2: swap icon + enter — fade in
+      setTimeout(() => {
+        setIconIndices(prev => {
+          const next = [...prev];
+          slotIndices.forEach(i => { next[i] = (prev[i] + 1) % ICON_COUNT; });
+          return next;
+        });
+        setTransitionPhase(prev => {
+          const next = [...prev];
+          slotIndices.forEach(i => { next[i] = 'entering'; });
+          return next;
+        });
+      }, EXIT_DURATION + SWAP_DELAY);
+
+      // Phase 3: back to idle
+      setTimeout(() => {
+        setTransitionPhase(prev => {
+          const next = [...prev];
+          slotIndices.forEach(i => { next[i] = 'idle'; });
+          return next;
+        });
+      }, EXIT_DURATION + SWAP_DELAY + ENTER_DURATION);
+    };
+
+    // Group A: slots 0, 2, 4, 6 — every 4.5s
+    const timerA = setInterval(() => cycleGroup([0, 2, 4, 6]), 4500);
+
+    // Group B: slots 1, 3, 5 — every 5s, offset by 2s
+    let timerB: ReturnType<typeof setInterval> | undefined;
+    const timerBDelay = setTimeout(() => {
+      cycleGroup([1, 3, 5]);
+      timerB = setInterval(() => cycleGroup([1, 3, 5]), 5000);
+    }, 2000);
+
+    return () => {
+      clearInterval(timerA);
+      clearTimeout(timerBDelay);
+      if (timerB) clearInterval(timerB);
+    };
   }, []);
 
   // Mouse parallax (desktop only)
@@ -162,11 +255,15 @@ export default function Hero() {
       lerpedRef.current.x = lerp(lerpedRef.current.x, mouseRef.current.x, 0.08);
       lerpedRef.current.y = lerp(lerpedRef.current.y, mouseRef.current.y, 0.08);
 
+      // Sub-pixel jitter prevents GPU compositor from caching stale backdrop-filter layers
+      // (fixes horizontal line artifact on large orbs when mouse is static)
+      const jitter = Math.sin(performance.now() * 0.002) * 0.05;
+
       layerRefs.current.forEach((el) => {
         if (!el) return;
         const factor = parseFloat(el.dataset.parallax || "0");
         const tx = lerpedRef.current.x * factor;
-        const ty = lerpedRef.current.y * factor;
+        const ty = lerpedRef.current.y * factor + jitter;
         el.style.transform = `translate(${tx}px, ${ty}px)`;
       });
 
@@ -181,52 +278,6 @@ export default function Hero() {
       cancelAnimationFrame(rafRef.current);
     };
   }, [isMobile]);
-
-  // Image rotation — staggered groups
-  useEffect(() => {
-    // Group A: slots 0, 2, 4 — every 4.5s
-    const timerA = setInterval(() => {
-      setImageIndices((prev) => {
-        const next = [...prev];
-        [0, 2, 4].forEach((i) => {
-          next[i] = (prev[i] + 1) % FLOATING_SLOTS[i].images.length;
-        });
-        return next;
-      });
-    }, 4500);
-
-    // Group B: slots 1, 3, 5, 6 — every 5s, offset by 2s
-    const timerBDelay = setTimeout(() => {
-      // Run once immediately after delay
-      setImageIndices((prev) => {
-        const next = [...prev];
-        [1, 3, 5, 6].forEach((i) => {
-          next[i] = (prev[i] + 1) % FLOATING_SLOTS[i].images.length;
-        });
-        return next;
-      });
-    }, 2000);
-
-    let timerB: ReturnType<typeof setInterval>;
-    const timerBStart = setTimeout(() => {
-      timerB = setInterval(() => {
-        setImageIndices((prev) => {
-          const next = [...prev];
-          [1, 3, 5, 6].forEach((i) => {
-            next[i] = (prev[i] + 1) % FLOATING_SLOTS[i].images.length;
-          });
-          return next;
-        });
-      }, 5000);
-    }, 2000);
-
-    return () => {
-      clearInterval(timerA);
-      clearTimeout(timerBDelay);
-      clearTimeout(timerBStart);
-      if (timerB) clearInterval(timerB);
-    };
-  }, []);
 
   // GSAP entrance sequence
   useEffect(() => {
@@ -372,16 +423,21 @@ export default function Hero() {
 
   const titleWords = ["Soluciones", "que", "Trabajan", "Tan", "Duro", "Como", "Vos"];
 
-  // Render a floating image slot
+  // Render a floating icon orb slot
   const renderFloatingSlot = (slot: FloatingSlot, slotIndex: number) => {
     const config = LAYER_CONFIG[slot.layer];
+    const containerStyle = ICON_CONTAINER_STYLES[slot.layer];
     const layerClass =
       slot.layer === 1 ? "hero-float-back" :
       slot.layer === 2 ? "hero-float-mid" : "hero-float-front";
-    const currentImage = slot.images[imageIndices[slotIndex]];
     const pos = isMobile && slot.mobilePosition ? slot.mobilePosition : slot.position;
 
     if (isMobile && slot.hideOnMobile) return null;
+
+    const displaySize = isMobile ? (slot.mobileSize || slot.size * 0.6) : slot.size;
+    const iconSize = Math.round(displaySize * 0.45);
+    const IconComponent = slot.icons[iconIndices[slotIndex]];
+    const phase = transitionPhase[slotIndex];
 
     return (
       <div
@@ -391,31 +447,35 @@ export default function Hero() {
         className={`absolute ${pos} ${config.zIndex} ${layerClass} opacity-0 pointer-events-none ${isMobile ? slot.driftClass : ""}`}
       >
         <div
-          className={`relative ${config.blur}`}
+          className="flex items-center justify-center rounded-full"
           style={{
-            width: isMobile ? (slot.mobileSize || slot.size * 0.6) : slot.size,
-            height: isMobile ? (slot.mobileSize || slot.size * 0.6) : slot.size,
+            width: displaySize,
+            height: displaySize,
             transform: `rotate(${slot.rotation}deg)`,
+            opacity: config.opacity,
+            background: containerStyle.background,
+            border: containerStyle.border,
+            boxShadow: containerStyle.boxShadow,
+            backdropFilter: containerStyle.backdropFilter,
+            WebkitBackdropFilter: containerStyle.backdropFilter,
+            backfaceVisibility: 'hidden',
+            WebkitBackfaceVisibility: 'hidden',
           }}
         >
-          <AnimatePresence mode="sync">
-            <motion.div
-              key={currentImage}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: config.opacity }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1.2, ease: "easeInOut" }}
-              className="absolute inset-0"
-            >
-              <Image
-                src={currentImage}
-                alt=""
-                fill
-                className="object-contain"
-                sizes={`${isMobile ? (slot.mobileSize || slot.size * 0.6) : slot.size}px`}
-              />
-            </motion.div>
-          </AnimatePresence>
+          <div
+            className="flex items-center justify-center"
+            style={{
+              width: '100%',
+              height: '100%',
+              transition: 'opacity 0.5s ease',
+              opacity: phase === 'exiting' ? 0 : 1,
+            }}
+          >
+            <IconComponent
+              style={{ width: iconSize, height: iconSize, color: containerStyle.iconColor }}
+              aria-hidden="true"
+            />
+          </div>
         </div>
       </div>
     );
@@ -433,12 +493,13 @@ export default function Hero() {
         <div className="absolute inset-0" style={BG_GRADIENT_STYLE} />
         {/* Radial gold spotlight from center */}
         <div className="absolute inset-0" style={BG_RADIAL_STYLE} />
-        {/* Noise overlay */}
+        {/* Noise texture — 2048px tiles eliminate visible seams */}
         <div className="absolute inset-0 pointer-events-none" style={BG_NOISE_STYLE} />
       </div>
 
-      {/* Floating product images — all layers */}
+      {/* Floating icon orbs — all layers */}
       {FLOATING_SLOTS.map((slot, i) => renderFloatingSlot(slot, i))}
+
 
       {/* Layer 3: Centered content */}
       <div className="hero-content relative z-40 flex min-h-screen items-center justify-center px-5 pt-20 pb-16">
