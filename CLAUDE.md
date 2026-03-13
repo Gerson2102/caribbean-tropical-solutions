@@ -52,3 +52,17 @@
 - Do not stop after one screenshot pass
 - Do not use `transition-all`
 - Do not use default Tailwind blue/indigo as primary color
+
+## Product Images
+
+All product images live in `public/product_images/` organized by brand:
+- `ionics/` — 12 images (cleaning/disinfection products)
+- `limpieza/` — 48 images (cleaning supplies)
+- `portwest/` — 22 images (PPE / workwear catalog pages)
+- `salud_ocupacional/` — 53 images (occupational health equipment)
+
+A machine-readable index is at `public/products_manifest.json`.
+Each entry has: filename, path, page (source PDF page), width, height, size_kb, format.
+
+To reference an image in code:
+`/product_images/ionics/ionics_p03_img04.jpeg`

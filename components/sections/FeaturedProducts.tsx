@@ -1,26 +1,42 @@
 "use client";
 
-import { useState, startTransition } from "react";
+import { useState, startTransition, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { PRODUCTS, FILTER_TABS, type FilterSlug } from "@/lib/constants";
+import {
+  PRODUCTS,
+  CATEGORIES,
+  FILTER_TABS,
+  groupProductsBySubcategory,
+  type FilterSlug,
+  type CategorySlug,
+} from "@/lib/constants";
 import SectionLabel from "@/components/ui/SectionLabel";
 import ScrollTextReveal from "@/components/ui/ScrollTextReveal";
-import ProductCard from "@/components/ui/ProductCard";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-
-const INITIAL_COUNT = 8;
+import ProductCarousel from "@/components/ui/ProductCarousel";
 
 export default function FeaturedProducts() {
   const [activeFilter, setActiveFilter] = useState<FilterSlug>("todos");
-  const [showAll, setShowAll] = useState(false);
 
-  const allFiltered =
-    activeFilter === "todos"
-      ? PRODUCTS
-      : PRODUCTS.filter((p) => p.category === activeFilter);
+  const carouselGroups = useMemo(() => {
+    if (activeFilter === "todos") {
+      return CATEGORIES.map((cat) => ({
+        key: cat.slug,
+        title: cat.name,
+        products: PRODUCTS.filter((p) => p.category === cat.slug),
+      }));
+    }
 
-  const filtered = showAll || activeFilter !== "todos" ? allFiltered : allFiltered.slice(0, INITIAL_COUNT);
-  const hasMore = activeFilter === "todos" && !showAll && allFiltered.length > INITIAL_COUNT;
+    const filtered = PRODUCTS.filter((p) => p.category === activeFilter);
+    const groups = groupProductsBySubcategory(filtered, activeFilter as CategorySlug);
+    return groups.map((g) => ({
+      key: g.subcategory,
+      title: g.subcategory,
+      products: g.products,
+    }));
+  }, [activeFilter]);
+
+  const totalCount = carouselGroups.reduce((sum, g) => sum + g.products.length, 0);
 
   return (
     <section
@@ -47,7 +63,11 @@ export default function FeaturedProducts() {
               {FILTER_TABS.map((tab) => (
                 <button
                   key={tab.slug}
-                  onClick={() => { startTransition(() => { setActiveFilter(tab.slug); setShowAll(false); }); }}
+                  onClick={() => {
+                    startTransition(() => {
+                      setActiveFilter(tab.slug);
+                    });
+                  }}
                   aria-current={activeFilter === tab.slug ? "true" : undefined}
                   className={`relative rounded-xl px-3 py-2.5 text-sm font-medium sm:px-5 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
                     activeFilter === tab.slug
@@ -69,44 +89,29 @@ export default function FeaturedProducts() {
           </div>
         </ScrollReveal>
 
-        {/* Product Grid */}
-        {filtered.length === 0 ? (
-          <div className="py-16 text-center text-offwhite/40">
-            No hay productos en esta categoría.
-          </div>
-        ) : (
-          <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3">
-            <AnimatePresence mode="popLayout">
-              {filtered.map((product) => (
-                <motion.div
-                  key={product.id}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                >
-                  <ProductCard product={product} />
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </div>
-        )}
-
-        {/* Show More */}
-        {hasMore ? (
-          <div className="mt-8 text-center">
-            <button
-              onClick={() => setShowAll(true)}
-              className="rounded-full border-2 border-offwhite/30 px-7 py-3 text-sm font-semibold text-offwhite transition-colors duration-200 hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-            >
-              Ver todos los productos ({allFiltered.length})
-            </button>
-          </div>
-        ) : null}
+        {/* Carousel Groups */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeFilter}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+            className="space-y-12"
+          >
+            {carouselGroups.map((group) => (
+              <ProductCarousel
+                key={group.key}
+                title={group.title}
+                products={group.products}
+              />
+            ))}
+          </motion.div>
+        </AnimatePresence>
 
         {/* Results count */}
         <p className="mt-8 text-center text-sm text-offwhite/30">
-          {filtered.length}{hasMore ? ` de ${allFiltered.length}` : ""} producto{filtered.length !== 1 ? "s" : ""}
+          {totalCount} producto{totalCount !== 1 ? "s" : ""}
         </p>
       </div>
     </section>

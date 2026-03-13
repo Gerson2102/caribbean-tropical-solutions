@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useCallback } from "react";
+import { useRef, useCallback, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
 import { type Product, WHATSAPP_URL } from "@/lib/constants";
@@ -18,6 +18,11 @@ export default function ProductCard({ product }: { product: Product }) {
   const springRotateX = useSpring(rotateX, springConfig);
   const springRotateY = useSpring(rotateY, springConfig);
   const springScale = useSpring(scale, springConfig);
+
+  // Gallery state
+  const images = product.images && product.images.length > 1 ? product.images : [product.image];
+  const hasGallery = images.length > 1;
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     if (!cardRef.current) return;
@@ -40,6 +45,31 @@ export default function ProductCard({ product }: { product: Product }) {
     scale.set(1);
   }, [rotateX, rotateY, scale]);
 
+  const handleImageClick = useCallback((e: React.MouseEvent) => {
+    if (!hasGallery) return;
+    e.preventDefault();
+    e.stopPropagation();
+    setActiveIndex((prev) => (prev + 1) % images.length);
+  }, [hasGallery, images.length]);
+
+  const handlePrev = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setActiveIndex((prev) => (prev - 1 + images.length) % images.length);
+  }, [images.length]);
+
+  const handleNext = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setActiveIndex((prev) => (prev + 1) % images.length);
+  }, [images.length]);
+
+  const handleDotClick = useCallback((e: React.MouseEvent, index: number) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setActiveIndex(index);
+  }, []);
+
   return (
     <motion.a
       ref={cardRef}
@@ -61,20 +91,97 @@ export default function ProductCard({ product }: { product: Product }) {
       onMouseLeave={handleMouseLeave}
     >
       {/* Image */}
-      <div className="relative aspect-[3/4] overflow-hidden">
+      <div
+        className="relative aspect-[3/4] overflow-hidden"
+        onClick={handleImageClick}
+        role={hasGallery ? "button" : undefined}
+        aria-label={hasGallery ? "Ver siguiente imagen" : undefined}
+      >
         <div className="absolute inset-0 bg-gradient-to-br from-[#f7f6f3] via-[#f2f0eb] to-[#eae7e0]" />
         <div className="relative h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.03]"
           style={{ transitionProperty: "transform" }}
         >
-          <Image
-            src={product.image}
-            alt={product.altText}
-            fill
-            loading="lazy"
-            className="object-contain"
-            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw"
-          />
+          {hasGallery ? (
+            // Multi-image gallery with crossfade
+            images.map((src, i) => (
+              <div
+                key={src}
+                className="absolute inset-0"
+                style={{
+                  opacity: i === activeIndex ? 1 : 0,
+                  transition: "opacity 0.3s ease-out",
+                  transitionProperty: "opacity",
+                }}
+              >
+                <Image
+                  src={src}
+                  alt={`${product.altText} - imagen ${i + 1}`}
+                  fill
+                  loading="lazy"
+                  className="object-contain"
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw"
+                />
+              </div>
+            ))
+          ) : (
+            // Single image (original behavior)
+            <Image
+              src={product.image}
+              alt={product.altText}
+              fill
+              loading="lazy"
+              className="object-contain"
+              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw"
+            />
+          )}
         </div>
+
+        {/* Gallery: Image counter badge */}
+        {hasGallery && (
+          <span className="absolute top-2 right-2 z-10 rounded-full bg-black/30 px-2 py-0.5 text-[10px] font-medium text-white/90 backdrop-blur-sm">
+            {activeIndex + 1}/{images.length}
+          </span>
+        )}
+
+        {/* Gallery: Desktop hover arrows */}
+        {hasGallery && (
+          <>
+            <button
+              className="absolute left-1 top-1/2 z-10 -translate-y-1/2 rounded-full bg-black/20 p-1 text-white opacity-0 transition-opacity duration-200 hover:bg-black/40 group-hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              onClick={handlePrev}
+              aria-label="Imagen anterior"
+              style={{ transitionProperty: "opacity" }}
+            >
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
+            </button>
+            <button
+              className="absolute right-1 top-1/2 z-10 -translate-y-1/2 rounded-full bg-black/20 p-1 text-white opacity-0 transition-opacity duration-200 hover:bg-black/40 group-hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              onClick={handleNext}
+              aria-label="Siguiente imagen"
+              style={{ transitionProperty: "opacity" }}
+            >
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+            </button>
+          </>
+        )}
+
+        {/* Gallery: Dot indicators */}
+        {hasGallery && (
+          <div className="absolute bottom-2 left-1/2 z-10 flex -translate-x-1/2 gap-1.5">
+            {images.map((_, i) => (
+              <button
+                key={i}
+                className={`h-1.5 rounded-full transition-[width,background-color] duration-200 ${
+                  i === activeIndex
+                    ? "w-4 bg-accent"
+                    : "w-1.5 bg-white/50 hover:bg-white/70"
+                }`}
+                onClick={(e) => handleDotClick(e, i)}
+                aria-label={`Imagen ${i + 1} de ${images.length}`}
+              />
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Info */}
