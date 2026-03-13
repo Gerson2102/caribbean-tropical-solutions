@@ -83,11 +83,7 @@ export default function ProductCard({ product }: { product: Product }) {
           {product.name}
         </h3>
         <div className="mt-1 flex items-center justify-between">
-          {product.price ? (
-            <p className="text-xs font-bold text-accent-dark">{product.price}</p>
-          ) : (
-            <p className="text-xs text-charcoal-light">{product.brand}</p>
-          )}
+          <p className="text-xs text-charcoal-light">{product.brand}</p>
           <span className="flex items-center gap-1 text-[10px] font-medium text-[#25D366] opacity-0 transition-opacity duration-200 group-hover:opacity-100 sm:opacity-100 sm:group-hover:opacity-100"
             style={{ transitionProperty: "opacity" }}
           >
