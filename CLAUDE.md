@@ -1,68 +1,73 @@
-# CLAUDE.md — Frontend Website Rules
+# CLAUDE.md — Caribbean Tropical Solutions
 
-## Always Do First
-- **Invoke the `frontend-design` skill** before writing any frontend code, every session, no exceptions.
+Single-page Next.js marketing site for a Costa Rican industrial distributor (Guácimo, Limón). Built and live — careful edits, not redesigns.
 
-## Reference Images
-- If a reference image is provided: match layout, spacing, typography, and color exactly. Swap in placeholder content (images via `https://placehold.co/`, generic copy). Do not improve or add to the design.
-- If no reference image: design from scratch with high craft (see guardrails below).
-- Screenshot your output, compare against reference, fix mismatches, re-screenshot. Do at least 2 comparison rounds. Stop only when no visible differences remain or user says so.
+## Stack
+- Next.js 16 (App Router, Turbopack) + React 19 + TypeScript strict
+- Tailwind CSS v4 via PostCSS (tokens in `app/globals.css` `@theme inline`, no CDN)
+- GSAP 3 (ScrollTrigger) + Framer Motion 12 + Lenis smooth scroll
+- Fonts: Sora (display) + DM Sans (body) via `next/font/google`
 
-## Local Server
-- **Always serve on localhost** — never screenshot a `file:///` URL.
-- Start the dev server: `node serve.mjs` (serves the project root at `http://localhost:3000`)
-- `serve.mjs` lives in the project root. Start it in the background before taking any screenshots.
-- If the server is already running, do not start a second instance.
+## Commands
+- `npm run dev` — local at http://localhost:3000
+- `npm run build` — production build (**must pass 9/9 pages** before claiming done)
+- `npm run lint` — ESLint (must be 0 errors, 0 warnings)
 
-## Screenshot Workflow
-- Puppeteer is installed at `C:/Users/nateh/AppData/Local/Temp/puppeteer-test/`. Chrome cache is at `C:/Users/nateh/.cache/puppeteer/`.
-- **Always screenshot from localhost:** `node screenshot.mjs http://localhost:3000`
-- Screenshots are saved automatically to `./temporary screenshots/screenshot-N.png` (auto-incremented, never overwritten).
-- Optional label suffix: `node screenshot.mjs http://localhost:3000 label` → saves as `screenshot-N-label.png`
-- `screenshot.mjs` lives in the project root. Use it as-is.
-- After screenshotting, read the PNG from `temporary screenshots/` with the Read tool — Claude can see and analyze the image directly.
-- When comparing, be specific: "heading is 32px but reference shows ~24px", "card gap is 16px but should be 24px"
-- Check: spacing/padding, font size/weight/line-height, colors (exact hex), alignment, border-radius, shadows, image sizing
+## File Layout
+- `app/` — routes, metadata (`layout.tsx`), error boundaries, `sitemap.ts`, `robots.ts`, `opengraph-image.tsx`
+- `app/globals.css` — design tokens, custom utilities (`.focus-ring-accent`, `.btn-shine`), keyframes
+- `components/{layout,sections,ui}/` — follow existing file patterns
+- `lib/constants.ts` — single source of truth for products, categories, brands, NAP/contact
+- `lib/animations.ts` — `prefersReducedMotion()` + side-effect registers GSAP ScrollTrigger
+- `public/images/` — logo + section/category images
+- `public/product_images/` — catalog images by brand (index at `products_manifest.json`)
 
-## Output Defaults
-- Single `index.html` file, all styles inline, unless user says otherwise
-- Tailwind CSS via CDN: `<script src="https://cdn.tailwindcss.com"></script>`
-- Placeholder images: `https://placehold.co/WIDTHxHEIGHT`
-- Mobile-first responsive
+## Design System — use the tokens, never invent hex codes
+- `bg-primary` `#3d7a3d` (green) · `bg-accent` `#e8a817` (gold) · `bg-deep-green` `#0f1f0f`
+- `text-offwhite` `#fafaf8` · `text-charcoal` / `-light` / `-deep`
+- Shadows: `var(--shadow-card)`, `var(--shadow-cta)`, `var(--shadow-cta-hover)`
+- Focus states: **always** use the `focus-ring-accent` class — never re-paste the 5-class snippet inline
 
-## Brand Assets
-- Always check the `brand_assets/` folder before designing. It may contain logos, color guides, style guides, or images.
-- If assets exist there, use them. Do not use placeholders where real assets are available.
-- If a logo is present, use it. If a color palette is defined, use those exact values — do not invent brand colors.
+## Code Patterns (codified from past cleanup — don't regress)
+- **Media queries:** `useSyncExternalStore` (see `Hero.tsx` `subscribeMobile`), never `useState + useEffect`
+- **RAF loops:** never read `scrollWidth`/`offsetWidth` inside the frame — cache via `ResizeObserver` (see `BrandMarquee.tsx`)
+- **Animation values:** Framer Motion `useMotionValue`/`useSpring` (no React re-render) or refs — not `useState`
+- **`prefers-reduced-motion`:** always check via `prefersReducedMotion()` before starting animations
+- **Global listeners:** attach only when needed (e.g. mousemove only while hovered) and pass `{ passive: true }` for scroll/touch/mousemove
+- **RSC boundary:** sections are `"use client"`; `app/page.tsx` and `layout.tsx` stay Server Components. JSON-LD uses inline `<script type="application/ld+json">` (not `next/script`).
 
-## Anti-Generic Guardrails
-- **Colors:** Never use default Tailwind palette (indigo-500, blue-600, etc.). Pick a custom brand color and derive from it.
-- **Shadows:** Never use flat `shadow-md`. Use layered, color-tinted shadows with low opacity.
-- **Typography:** Never use the same font for headings and body. Pair a display/serif with a clean sans. Apply tight tracking (`-0.03em`) on large headings, generous line-height (`1.7`) on body.
-- **Gradients:** Layer multiple radial gradients. Add grain/texture via SVG noise filter for depth.
-- **Animations:** Only animate `transform` and `opacity`. Never `transition-all`. Use spring-style easing.
-- **Interactive states:** Every clickable element needs hover, focus-visible, and active states. No exceptions.
-- **Images:** Add a gradient overlay (`bg-gradient-to-t from-black/60`) and a color treatment layer with `mix-blend-multiply`.
-- **Spacing:** Use intentional, consistent spacing tokens — not random Tailwind steps.
-- **Depth:** Surfaces should have a layering system (base → elevated → floating), not all sit at the same z-plane.
+## SEO Constraints
+- Title ≤ 60 chars · description ≤ 155 chars (`app/layout.tsx`)
+- JSON-LD `@type: "Store"` with `priceRange`, `paymentAccepted`, `hasMap`, E.164 phone
+- Sitemap uses static `LAST_UPDATED` constant — bump on real content changes, never `new Date()`
+- Image `alt` text: include brand + product type when applicable
+
+## Anti-Generic Design Rules
+- **Colors:** never default Tailwind palette (no indigo/blue/etc.) — use brand tokens
+- **Shadows:** layered, color-tinted, low-opacity — never flat `shadow-md`
+- **Typography:** display + body must be different fonts; tight tracking on large headings, generous line-height on body
+- **Animations:** only `transform` and `opacity`. Never `transition-all`. Spring easing.
+- **Interactive states:** every clickable element needs hover + `focus-visible` + active. Use `focus-ring-accent`.
+- **Depth:** surfaces layer (base → elevated → floating); don't flatten to one z-plane
 
 ## Hard Rules
-- Do not add sections, features, or content not in the reference
-- Do not "improve" a reference design — match it
-- Do not stop after one screenshot pass
-- Do not use `transition-all`
-- Do not use default Tailwind blue/indigo as primary color
+- Bug fix = minimal change. Don't refactor neighbors.
+- Don't introduce dead exports or unused imports — lint will catch
+- Don't invent business facts (hours, payment methods, prices) in JSON-LD or copy — confirm first
+- Don't claim "done" without `npm run build` passing
+- Don't break visual fidelity for code-cleanliness wins without flagging the trade-off
+- For risky operations (deletions, destructive git commands, schema changes) — confirm before acting
+
+## Screenshot Workflow (UI iteration)
+- `screenshot.mjs` lives in project root: `node screenshot.mjs http://localhost:3000 [label]`
+- Saves to `./temporary screenshots/screenshot-N[-label].png` (auto-incremented, never overwritten)
+- Read the PNG with the Read tool to compare against reference
+- Critique specifically: "heading 32px vs reference 24px", "card gap 16px should be 24px"
 
 ## Product Images
+`public/product_images/` organized by brand:
+- `ionics/` — cleaning/disinfection · `limpieza/` — cleaning supplies
+- `portwest/` — PPE/workwear · `salud_ocupacional/` — occupational health
 
-All product images live in `public/product_images/` organized by brand:
-- `ionics/` — 12 images (cleaning/disinfection products)
-- `limpieza/` — 48 images (cleaning supplies)
-- `portwest/` — 22 images (PPE / workwear catalog pages)
-- `salud_ocupacional/` — 53 images (occupational health equipment)
-
-A machine-readable index is at `public/products_manifest.json`.
-Each entry has: filename, path, page (source PDF page), width, height, size_kb, format.
-
-To reference an image in code:
-`/product_images/ionics/ionics_p03_img04.jpeg`
+Index at `public/products_manifest.json` (filename, path, source PDF page, width, height, size_kb, format).
+Reference path in code: `/product_images/ionics/ionics_p03_img04.webp`

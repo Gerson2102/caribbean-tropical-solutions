@@ -12,6 +12,24 @@ export const ADDRESS = "San Luis de Guácimo, Limón, Costa Rica";
 export const INSTAGRAM_URL = "https://www.instagram.com/caribbean_troprical_solutions/";
 export const FACEBOOK_URL = "https://www.facebook.com/people/Caribbean-Tropical-Solutions-SA/61561018101440/";
 
+// === FOUNDER ===
+// Personal WhatsApp line — distinct from the company line above.
+export const FOUNDER = {
+  name: "Kendall Ramírez Leitón",
+  role: "Cofundador · Asesor en Contratación Pública",
+  image: "/images/team/kendall-ramirez.webp",
+  altText: "Kendall Ramírez Leitón, cofundador de Caribbean Tropical Solutions",
+  whatsappNumber: "50660972410",
+  whatsappMessage: "Hola Kendall, me gustaría hablar sobre los servicios de Caribbean Tropical Solutions.",
+  bio: [
+    "Soy cofundador de una empresa con capital 100% del Caribe, comprometida con el desarrollo empresarial y la generación de valor sostenible. Me especializo en materia de contratación pública, desempeñándome como asesor y consultor en procesos relacionados con la gestión, análisis y participación en el ámbito de las compras públicas.",
+    "Como joven comerciante con visión empresarial, promuevo una gestión basada en principios de gobernanza, sostenibilidad y transparencia, donde los valores y la ética empresarial constituyen la base para el crecimiento responsable y la construcción de relaciones de confianza con el sector público y privado.",
+    "Mi enfoque profesional se orienta a impulsar proyectos y oportunidades que contribuyan al desarrollo económico, fortaleciendo prácticas empresariales sólidas, responsables y alineadas con los más altos estándares de integridad.",
+  ],
+} as const;
+
+export const FOUNDER_WHATSAPP_URL_WITH_MESSAGE = `https://wa.me/${FOUNDER.whatsappNumber}?text=${encodeURIComponent(FOUNDER.whatsappMessage)}`;
+
 // === NAVIGATION ===
 export const NAV_LINKS = [
   { label: "Inicio", href: "#inicio" },

@@ -12,6 +12,7 @@ import BrandMarquee from "@/components/sections/BrandMarquee";
 const ProductCategories = dynamic(() => import("@/components/sections/ProductCategories"));
 const FeaturedProducts = dynamic(() => import("@/components/sections/FeaturedProducts"));
 const WhyCaribbean = dynamic(() => import("@/components/sections/WhyCaribbean"));
+const Founder = dynamic(() => import("@/components/sections/Founder"));
 const HowToBuy = dynamic(() => import("@/components/sections/HowToBuy"));
 const Contact = dynamic(() => import("@/components/sections/Contact"));
 
@@ -33,6 +34,7 @@ export default function Home() {
         <ProductCategories />
         <FeaturedProducts />
         <WhyCaribbean />
+        <Founder />
         <HowToBuy />
         <Contact />
       </main>
