@@ -22,8 +22,8 @@ export default function Founder() {
         <ScrollReveal selector=".founder-block" stagger={0.15}>
           <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-16 lg:items-center">
             {/* Portrait */}
-            <div className="founder-block lg:col-span-5">
-              <div className="relative mx-auto max-w-sm lg:max-w-none">
+            <div className="founder-block lg:col-span-4">
+              <div className="relative mx-auto max-w-xs lg:max-w-none">
                 {/* Decorative offset accent (desktop only) */}
                 <div
                   aria-hidden="true"
@@ -39,7 +39,7 @@ export default function Founder() {
                     alt={FOUNDER.altText}
                     width={853}
                     height={1280}
-                    sizes="(max-width: 1024px) 90vw, 40vw"
+                    sizes="(max-width: 1024px) 80vw, 33vw"
                     className="h-auto w-full object-cover"
                   />
                 </div>
@@ -54,7 +54,7 @@ export default function Founder() {
             </div>
 
             {/* Text */}
-            <div className="founder-block lg:col-span-7">
+            <div className="founder-block lg:col-span-8">
               <h3 className="font-display text-3xl font-extrabold tracking-[-0.02em] text-charcoal-deep lg:text-4xl">
                 {FOUNDER.name}
               </h3>
