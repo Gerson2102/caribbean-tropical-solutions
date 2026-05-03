@@ -3,7 +3,7 @@
 import { type SVGProps, useEffect, useRef, useState, useCallback, useSyncExternalStore } from "react";
 import { gsap } from "gsap";
 import { WHATSAPP_URL_WITH_MESSAGE } from "@/lib/constants";
-import { prefersReducedMotion } from "@/lib/animations"; // also centralizes gsap.registerPlugin(ScrollTrigger)
+import { prefersReducedMotion } from "@/lib/animations"; // side-effect: registers gsap ScrollTrigger plugin
 import Button from "@/components/ui/Button";
 import {
   WhatsAppIcon,

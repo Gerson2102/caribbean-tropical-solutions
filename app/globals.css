@@ -270,6 +270,8 @@ html {
 .btn-shine {
   position: relative;
   overflow: hidden;
+  /* Preserves the CTA elevation shadow when focus-ring-accent is applied. */
+  --focus-ring-extra-shadow: var(--shadow-cta);
 }
 
 .btn-shine::after {
@@ -299,7 +301,10 @@ html {
 
 .focus-ring-accent:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--color-deep-green), 0 0 0 4px var(--color-accent);
+  box-shadow:
+    0 0 0 2px var(--color-deep-green),
+    0 0 0 4px var(--color-accent),
+    var(--focus-ring-extra-shadow, 0 0 #0000);
 }
 
 /* ========================================

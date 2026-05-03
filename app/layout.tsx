@@ -17,9 +17,9 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://caribbeantropical.cr"),
-  title: "Caribbean Tropical Solutions S.A. | Distribuidora en Guácimo, Costa Rica",
+  title: "EPP, Limpieza y Ferretería en Limón | Caribbean Tropical",
   description:
-    "Distribuidora de productos de mantenimiento, limpieza, desinfección, EPP, oficina y ferretería en el Caribe de Costa Rica. DeWalt, Elmerc, EVACOL, Try Me, Senior+Plus, IONICS y más.",
+    "Distribuidora en Guácimo, Limón. Productos de limpieza, EPP, ferretería y desinfección de DeWalt, IONICS, EVACOL y más. Cotizá por WhatsApp.",
   alternates: {
     canonical: "/",
   },
@@ -67,15 +67,18 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "LocalBusiness",
+              "@type": "Store",
               name: "Caribbean Tropical Solutions S.A.",
               description:
                 "Distribuidora de productos de mantenimiento, limpieza, desinfección, EPP, oficina y ferretería en el Caribe de Costa Rica.",
               url: "https://caribbeantropical.cr",
               logo: "https://caribbeantropical.cr/images/logo.webp",
               image: "https://caribbeantropical.cr/images/logo.webp",
-              telephone: "+506-7103-5467",
+              telephone: "+50671035467",
               email: "ventas@3dcaribbean.com",
+              priceRange: "$$",
+              paymentAccepted: "Cash, Credit Card, Bank Transfer",
+              hasMap: "https://www.google.com/maps?q=10.2167,-83.6833",
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "San Luis de Guácimo",
@@ -97,7 +100,7 @@ export default function RootLayout({
               ],
               contactPoint: {
                 "@type": "ContactPoint",
-                telephone: "+506-7103-5467",
+                telephone: "+50671035467",
                 contactType: "sales",
                 availableLanguage: "Spanish",
               },
