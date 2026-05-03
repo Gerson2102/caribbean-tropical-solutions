@@ -77,23 +77,22 @@ function Magnetic({
   const y = useMotionValue(0);
   const springX = useSpring(x, { stiffness: 260, damping: 18 });
   const springY = useSpring(y, { stiffness: 260, damping: 18 });
+  const intensityRef = useRef(intensity);
+  useEffect(() => { intensityRef.current = intensity; }, [intensity]);
 
   useEffect(() => {
+    if (!hovered) return;
     const move = (e: MouseEvent) => {
-      if (!ref.current || !hovered) {
-        x.set(0);
-        y.set(0);
-        return;
-      }
+      if (!ref.current) return;
       const rect = ref.current.getBoundingClientRect();
       const dx = e.clientX - (rect.left + rect.width / 2);
       const dy = e.clientY - (rect.top + rect.height / 2);
-      x.set(dx * intensity);
-      y.set(dy * intensity);
+      x.set(dx * intensityRef.current);
+      y.set(dy * intensityRef.current);
     };
-    document.addEventListener("mousemove", move);
+    document.addEventListener("mousemove", move, { passive: true });
     return () => document.removeEventListener("mousemove", move);
-  }, [hovered, intensity, x, y]);
+  }, [hovered, x, y]);
 
   return (
     <motion.div
@@ -394,7 +393,7 @@ export default function Footer() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className="group relative inline-flex w-fit items-center gap-1 py-2 text-sm transition-colors duration-200 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-deep-green"
+                  className="group relative inline-flex w-fit items-center gap-1 py-2 text-sm transition-colors duration-200 hover:text-accent focus-ring-accent"
                   style={{ transitionProperty: "color" }}
                 >
                   {/* Slide-in arrow */}
@@ -426,7 +425,7 @@ export default function Footer() {
               {/* Email */}
               <a
                 href={`mailto:${EMAIL}`}
-                className="group inline-flex items-center gap-3 rounded transition-colors duration-200 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-deep-green"
+                className="group inline-flex items-center gap-3 rounded transition-colors duration-200 hover:text-accent focus-ring-accent"
                 style={{ transitionProperty: "color" }}
               >
                 <span
@@ -445,7 +444,7 @@ export default function Footer() {
                 href={WHATSAPP_URL_WITH_MESSAGE}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3 rounded transition-colors duration-200 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-deep-green"
+                className="group inline-flex items-center gap-3 rounded transition-colors duration-200 hover:text-accent focus-ring-accent"
                 style={{ transitionProperty: "color" }}
               >
                 <span
@@ -464,7 +463,7 @@ export default function Footer() {
                 href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ADDRESS)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3 rounded transition-colors duration-200 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-deep-green"
+                className="group inline-flex items-center gap-3 rounded transition-colors duration-200 hover:text-accent focus-ring-accent"
                 style={{ transitionProperty: "color" }}
               >
                 <span
@@ -488,7 +487,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="flex h-12 w-12 items-center justify-center rounded-full bg-offwhite/[0.08] ring-1 ring-offwhite/10 transition-[background-color,color,box-shadow] duration-200 hover:bg-accent hover:text-charcoal-deep hover:ring-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-deep-green"
+                    className="flex h-12 w-12 items-center justify-center rounded-full bg-offwhite/[0.08] ring-1 ring-offwhite/10 transition-[background-color,color,box-shadow] duration-200 hover:bg-accent hover:text-charcoal-deep hover:ring-accent/40 focus-ring-accent"
                     whileHover={{
                       scale: 1.15,
                       boxShadow: "0 0 24px rgba(232,168,23,0.3)",

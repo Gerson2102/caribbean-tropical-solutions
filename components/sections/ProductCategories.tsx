@@ -96,7 +96,7 @@ export default function ProductCategories() {
         {/* Desktop: Grid (unchanged) */}
         <ScrollReveal selector=".category-card" stagger={0.15}>
           <div className="hidden md:grid md:grid-cols-6 md:gap-5">
-            {CATEGORIES.map((cat, i) => (
+            {CATEGORIES.map((cat) => (
               <div key={cat.slug} className="category-card md:col-span-2">
                 <CategoryCard category={cat} />
               </div>

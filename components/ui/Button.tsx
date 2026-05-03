@@ -28,8 +28,8 @@ export default function Button({
     "inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-3.5 text-sm font-semibold font-display cursor-pointer select-none";
 
   const variantStyles = isPrimary
-    ? "bg-accent text-charcoal-deep border-2 border-transparent btn-shine shadow-[var(--shadow-cta)] hover:shadow-[var(--shadow-cta-hover)] hover:bg-accent-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-deep-green"
-    : "border-2 border-offwhite/50 text-offwhite bg-offwhite/5 hover:border-accent hover:text-accent hover:bg-accent/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-deep-green";
+    ? "bg-accent text-charcoal-deep border-2 border-transparent btn-shine shadow-[var(--shadow-cta)] hover:shadow-[var(--shadow-cta-hover)] hover:bg-accent-light focus-ring-accent"
+    : "border-2 border-offwhite/50 text-offwhite bg-offwhite/5 hover:border-accent hover:text-accent hover:bg-accent/5 focus-ring-accent";
 
   const combinedClasses = `${baseStyles} ${variantStyles} ${className}`;
 

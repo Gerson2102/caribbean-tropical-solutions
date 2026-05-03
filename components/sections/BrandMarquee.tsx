@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { motion, useMotionValue, useAnimationFrame, useReducedMotion } from "framer-motion";
 import { BRANDS } from "@/lib/constants";
 import SectionLabel from "@/components/ui/SectionLabel";
@@ -10,18 +10,29 @@ export default function BrandMarquee() {
   const hoveredRef = useRef(false);
   const x = useMotionValue(0);
   const innerRef = useRef<HTMLDivElement>(null);
+  const halfWidthRef = useRef(0);
   const prefersReducedMotion = useReducedMotion();
+
+  // Cache scrollWidth via ResizeObserver — reading it inside the RAF loop
+  // forces a layout recalc on every frame.
+  useEffect(() => {
+    const el = innerRef.current;
+    if (!el) return;
+    const update = () => { halfWidthRef.current = el.scrollWidth / 2; };
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
 
   useAnimationFrame((_, delta) => {
     if (prefersReducedMotion) return;
     const speed = hoveredRef.current ? -2 : -50;
     let newX = x.get() + (speed * delta) / 1000;
 
-    if (innerRef.current) {
-      const halfWidth = innerRef.current.scrollWidth / 2;
-      if (halfWidth > 0 && Math.abs(newX) >= halfWidth) {
-        newX += halfWidth;
-      }
+    const halfWidth = halfWidthRef.current;
+    if (halfWidth > 0 && Math.abs(newX) >= halfWidth) {
+      newX += halfWidth;
     }
     x.set(newX);
   });

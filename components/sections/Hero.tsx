@@ -1,8 +1,7 @@
 "use client";
 
-import { type SVGProps, useEffect, useRef, useState, useCallback } from "react";
+import { type SVGProps, useEffect, useRef, useState, useCallback, useSyncExternalStore } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { WHATSAPP_URL_WITH_MESSAGE } from "@/lib/constants";
 import { prefersReducedMotion } from "@/lib/animations"; // also centralizes gsap.registerPlugin(ScrollTrigger)
 import Button from "@/components/ui/Button";
@@ -157,9 +156,19 @@ const BG_NOISE_STYLE = {
   backgroundSize: "2048px",
 } as const;
 
+const MOBILE_QUERY = "(max-width: 768px)";
+
+const subscribeMobile = (cb: () => void) => {
+  const mql = window.matchMedia(MOBILE_QUERY);
+  mql.addEventListener("change", cb);
+  return () => mql.removeEventListener("change", cb);
+};
+const getMobileSnapshot = () => window.matchMedia(MOBILE_QUERY).matches;
+const getMobileServerSnapshot = () => false;
+
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
-  const [isMobile, setIsMobile] = useState(false);
+  const isMobile = useSyncExternalStore(subscribeMobile, getMobileSnapshot, getMobileServerSnapshot);
   const mouseRef = useRef({ x: 0, y: 0 });
   const lerpedRef = useRef({ x: 0, y: 0 });
   const rafRef = useRef<number>(0);
@@ -170,15 +179,6 @@ export default function Hero() {
   const [transitionPhase, setTransitionPhase] = useState<('idle' | 'exiting' | 'entering')[]>(
     () => FLOATING_SLOTS.map(() => 'idle')
   );
-
-  // Mobile detection
-  useEffect(() => {
-    const mql = window.matchMedia("(max-width: 768px)");
-    setIsMobile(mql.matches);
-    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
-    mql.addEventListener("change", handler);
-    return () => mql.removeEventListener("change", handler);
-  }, []);
 
   // Icon cycling — staggered group timers
   useEffect(() => {

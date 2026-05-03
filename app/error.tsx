@@ -35,13 +35,13 @@ export default function Error({
       <div className="flex flex-wrap items-center justify-center gap-4">
         <button
           onClick={reset}
-          className="btn-shine inline-flex items-center justify-center gap-2.5 rounded-full border-2 border-transparent bg-accent px-7 py-3.5 font-display text-sm font-semibold text-charcoal-deep shadow-[var(--shadow-cta)] hover:bg-accent-light hover:shadow-[var(--shadow-cta-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-deep-green"
+          className="btn-shine inline-flex items-center justify-center gap-2.5 rounded-full border-2 border-transparent bg-accent px-7 py-3.5 font-display text-sm font-semibold text-charcoal-deep shadow-[var(--shadow-cta)] hover:bg-accent-light hover:shadow-[var(--shadow-cta-hover)] focus-ring-accent"
         >
           Reintentar
         </button>
         <Link
           href="/"
-          className="inline-flex items-center justify-center rounded-full border-2 border-offwhite/30 px-7 py-3.5 font-display text-sm font-semibold text-offwhite hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-deep-green"
+          className="inline-flex items-center justify-center rounded-full border-2 border-offwhite/30 px-7 py-3.5 font-display text-sm font-semibold text-offwhite hover:border-accent hover:text-accent focus-ring-accent"
         >
           Volver al inicio
         </Link>

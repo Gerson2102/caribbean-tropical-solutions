@@ -109,7 +109,7 @@ export default function Navbar() {
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 lg:px-8">
           {/* Logo */}
-          <a href="#inicio" className="relative shrink-0 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-deep-green" onClick={(e) => { e.preventDefault(); handleNavClick("#inicio"); }}>
+          <a href="#inicio" className="relative shrink-0 rounded focus-ring-accent" onClick={(e) => { e.preventDefault(); handleNavClick("#inicio"); }}>
             <Image
               src="/images/logo.webp"
               alt="Caribbean Tropical Solutions logo"
@@ -127,7 +127,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
-                className={`relative pb-1 text-sm font-medium transition-colors duration-200 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-deep-green rounded ${
+                className={`relative pb-1 text-sm font-medium transition-colors duration-200 hover:text-accent focus-ring-accent rounded ${
                   activeSection === link.href ? "text-accent" : "text-offwhite/80"
                 }`}
                 style={{ transitionProperty: "color" }}
@@ -149,7 +149,7 @@ export default function Navbar() {
             href={WHATSAPP_URL_WITH_MESSAGE}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden items-center gap-2 rounded-full bg-accent px-5 py-2 text-sm font-semibold text-charcoal-deep transition-transform duration-200 hover:scale-105 active:scale-95 animate-gold-glow-pulse focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-deep-green lg:inline-flex"
+            className="hidden items-center gap-2 rounded-full bg-accent px-5 py-2 text-sm font-semibold text-charcoal-deep transition-transform duration-200 hover:scale-105 active:scale-95 animate-gold-glow-pulse focus-ring-accent lg:inline-flex"
             style={{ transitionProperty: "transform" }}
           >
             <WhatsAppIcon className="h-4 w-4" />
@@ -189,7 +189,7 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.05 * i, duration: 0.2 }}
-                className="font-display text-2xl font-bold text-offwhite transition-colors duration-200 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-deep-green rounded-lg"
+                className="font-display text-2xl font-bold text-offwhite transition-colors duration-200 hover:text-accent focus-ring-accent rounded-lg"
                 style={{ transitionProperty: "color" }}
               >
                 {link.label}
@@ -202,7 +202,7 @@ export default function Navbar() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.05 * NAV_LINKS.length, duration: 0.2 }}
-              className="mt-4 inline-flex items-center gap-3 rounded-full bg-accent px-8 py-3.5 text-base font-bold text-charcoal-deep transition-transform duration-200 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-deep-green"
+              className="mt-4 inline-flex items-center gap-3 rounded-full bg-accent px-8 py-3.5 text-base font-bold text-charcoal-deep transition-transform duration-200 hover:scale-105 active:scale-95 focus-ring-accent"
               style={{ transitionProperty: "transform" }}
             >
               <WhatsAppIcon className="h-5 w-5" />

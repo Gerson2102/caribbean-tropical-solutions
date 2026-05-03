@@ -127,7 +127,7 @@ export default function ProductCarousel({ title, products }: ProductCarouselProp
           aria-label={`${title} productos`}
           tabIndex={0}
           onKeyDown={handleKeyDown}
-          className="carousel-scroll flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-deep-green"
+          className="carousel-scroll flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory focus-ring-accent"
           style={{ scrollPaddingLeft: "0px" }}
         >
           {products.map((product) => (

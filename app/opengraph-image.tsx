@@ -1,7 +1,5 @@
 import { ImageResponse } from "next/og";
 
-export const runtime = "edge";
-
 export const alt =
   "Caribbean Tropical Solutions S.A. — Distribuidora en Guácimo, Costa Rica";
 export const size = { width: 1200, height: 630 };

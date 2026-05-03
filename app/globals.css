@@ -294,6 +294,15 @@ html {
 }
 
 /* ========================================
+   Focus Ring (accent on deep-green offset)
+   ======================================== */
+
+.focus-ring-accent:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-deep-green), 0 0 0 4px var(--color-accent);
+}
+
+/* ========================================
    Reduced Motion
    ======================================== */
 

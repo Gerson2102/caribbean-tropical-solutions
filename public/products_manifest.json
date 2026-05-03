@@ -1,0 +1,1258 @@
+{
+  "generated_at": "2026-03-13",
+  "total_images": 135,
+  "description": "Filtered product images from CTS catalogs. No logos, no covers, products only.",
+  "brands": {
+    "ionics": {
+      "label": "IONICS",
+      "description": "Soluciones para limpieza y desinfección. Fabricantes desde 1991.",
+      "category": "Limpieza & Desinfección",
+      "color": "#4a7c3f",
+      "count": 12,
+      "images": [
+        {
+          "filename": "ionics_p01_img05.jpeg",
+          "path": "product_images/ionics/ionics_p01_img05.jpeg",
+          "page": 1,
+          "width": 1080,
+          "height": 720,
+          "size_kb": 283.3,
+          "format": "jpeg"
+        },
+        {
+          "filename": "ionics_p03_img04.jpeg",
+          "path": "product_images/ionics/ionics_p03_img04.jpeg",
+          "page": 3,
+          "width": 637,
+          "height": 425,
+          "size_kb": 106.0,
+          "format": "jpeg"
+        },
+        {
+          "filename": "ionics_p05_img17.jpeg",
+          "path": "product_images/ionics/ionics_p05_img17.jpeg",
+          "page": 5,
+          "width": 888,
+          "height": 588,
+          "size_kb": 257.0,
+          "format": "jpeg"
+        },
+        {
+          "filename": "ionics_p06_img04.png",
+          "path": "product_images/ionics/ionics_p06_img04.png",
+          "page": 6,
+          "width": 254,
+          "height": 320,
+          "size_kb": 85.2,
+          "format": "png"
+        },
+        {
+          "filename": "ionics_p07_img14.jpeg",
+          "path": "product_images/ionics/ionics_p07_img14.jpeg",
+          "page": 7,
+          "width": 720,
+          "height": 480,
+          "size_kb": 128.2,
+          "format": "jpeg"
+        },
+        {
+          "filename": "ionics_p08_img13.jpeg",
+          "path": "product_images/ionics/ionics_p08_img13.jpeg",
+          "page": 8,
+          "width": 484,
+          "height": 322,
+          "size_kb": 82.5,
+          "format": "jpeg"
+        },
+        {
+          "filename": "ionics_p11_img04.png",
+          "path": "product_images/ionics/ionics_p11_img04.png",
+          "page": 11,
+          "width": 212,
+          "height": 256,
+          "size_kb": 64.0,
+          "format": "png"
+        },
+        {
+          "filename": "ionics_p11_img05.png",
+          "path": "product_images/ionics/ionics_p11_img05.png",
+          "page": 11,
+          "width": 210,
+          "height": 256,
+          "size_kb": 68.0,
+          "format": "png"
+        },
+        {
+          "filename": "ionics_p14_img03.png",
+          "path": "product_images/ionics/ionics_p14_img03.png",
+          "page": 14,
+          "width": 2197,
+          "height": 653,
+          "size_kb": 25.9,
+          "format": "png"
+        },
+        {
+          "filename": "ionics_p14_img08.png",
+          "path": "product_images/ionics/ionics_p14_img08.png",
+          "page": 14,
+          "width": 187,
+          "height": 170,
+          "size_kb": 39.5,
+          "format": "png"
+        },
+        {
+          "filename": "ionics_p16_img12.jpeg",
+          "path": "product_images/ionics/ionics_p16_img12.jpeg",
+          "page": 16,
+          "width": 490,
+          "height": 327,
+          "size_kb": 58.3,
+          "format": "jpeg"
+        },
+        {
+          "filename": "ionics_p18_img11.jpeg",
+          "path": "product_images/ionics/ionics_p18_img11.jpeg",
+          "page": 18,
+          "width": 461,
+          "height": 308,
+          "size_kb": 80.9,
+          "format": "jpeg"
+        }
+      ]
+    },
+    "limpieza": {
+      "label": "Suministros de Limpieza",
+      "description": "Catálogo completo de suministros y productos de limpieza para empresas.",
+      "category": "Limpieza & Desinfección",
+      "color": "#2563eb",
+      "count": 48,
+      "images": [
+        {
+          "filename": "limpieza_p03_img04.png",
+          "path": "product_images/limpieza/limpieza_p03_img04.png",
+          "page": 3,
+          "width": 257,
+          "height": 196,
+          "size_kb": 18.4,
+          "format": "png"
+        },
+        {
+          "filename": "limpieza_p03_img05.jpeg",
+          "path": "product_images/limpieza/limpieza_p03_img05.jpeg",
+          "page": 3,
+          "width": 370,
+          "height": 136,
+          "size_kb": 11.9,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p03_img10.jpeg",
+          "path": "product_images/limpieza/limpieza_p03_img10.jpeg",
+          "page": 3,
+          "width": 276,
+          "height": 319,
+          "size_kb": 13.0,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p04_img01.jpeg",
+          "path": "product_images/limpieza/limpieza_p04_img01.jpeg",
+          "page": 4,
+          "width": 481,
+          "height": 358,
+          "size_kb": 19.4,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p04_img02.jpeg",
+          "path": "product_images/limpieza/limpieza_p04_img02.jpeg",
+          "page": 4,
+          "width": 499,
+          "height": 378,
+          "size_kb": 19.4,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p04_img03.jpeg",
+          "path": "product_images/limpieza/limpieza_p04_img03.jpeg",
+          "page": 4,
+          "width": 550,
+          "height": 264,
+          "size_kb": 16.1,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p04_img04.jpeg",
+          "path": "product_images/limpieza/limpieza_p04_img04.jpeg",
+          "page": 4,
+          "width": 749,
+          "height": 435,
+          "size_kb": 20.7,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p05_img01.jpeg",
+          "path": "product_images/limpieza/limpieza_p05_img01.jpeg",
+          "page": 5,
+          "width": 225,
+          "height": 225,
+          "size_kb": 11.2,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p06_img06.png",
+          "path": "product_images/limpieza/limpieza_p06_img06.png",
+          "page": 6,
+          "width": 173,
+          "height": 201,
+          "size_kb": 12.7,
+          "format": "png"
+        },
+        {
+          "filename": "limpieza_p06_img09.jpeg",
+          "path": "product_images/limpieza/limpieza_p06_img09.jpeg",
+          "page": 6,
+          "width": 288,
+          "height": 507,
+          "size_kb": 11.3,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p08_img06.jpeg",
+          "path": "product_images/limpieza/limpieza_p08_img06.jpeg",
+          "page": 8,
+          "width": 389,
+          "height": 498,
+          "size_kb": 13.2,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p08_img07.jpeg",
+          "path": "product_images/limpieza/limpieza_p08_img07.jpeg",
+          "page": 8,
+          "width": 294,
+          "height": 417,
+          "size_kb": 17.7,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p09_img03.jpeg",
+          "path": "product_images/limpieza/limpieza_p09_img03.jpeg",
+          "page": 9,
+          "width": 454,
+          "height": 272,
+          "size_kb": 15.0,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p09_img04.jpeg",
+          "path": "product_images/limpieza/limpieza_p09_img04.jpeg",
+          "page": 9,
+          "width": 480,
+          "height": 480,
+          "size_kb": 29.4,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p09_img05.jpeg",
+          "path": "product_images/limpieza/limpieza_p09_img05.jpeg",
+          "page": 9,
+          "width": 503,
+          "height": 433,
+          "size_kb": 20.6,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p09_img07.jpeg",
+          "path": "product_images/limpieza/limpieza_p09_img07.jpeg",
+          "page": 9,
+          "width": 270,
+          "height": 349,
+          "size_kb": 14.6,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p09_img11.jpeg",
+          "path": "product_images/limpieza/limpieza_p09_img11.jpeg",
+          "page": 9,
+          "width": 377,
+          "height": 523,
+          "size_kb": 26.5,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p09_img12.jpeg",
+          "path": "product_images/limpieza/limpieza_p09_img12.jpeg",
+          "page": 9,
+          "width": 610,
+          "height": 438,
+          "size_kb": 28.0,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p10_img02.jpeg",
+          "path": "product_images/limpieza/limpieza_p10_img02.jpeg",
+          "page": 10,
+          "width": 465,
+          "height": 738,
+          "size_kb": 46.8,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p10_img03.jpeg",
+          "path": "product_images/limpieza/limpieza_p10_img03.jpeg",
+          "page": 10,
+          "width": 1343,
+          "height": 904,
+          "size_kb": 85.8,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p10_img05.jpeg",
+          "path": "product_images/limpieza/limpieza_p10_img05.jpeg",
+          "page": 10,
+          "width": 579,
+          "height": 656,
+          "size_kb": 27.6,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p11_img02.jpeg",
+          "path": "product_images/limpieza/limpieza_p11_img02.jpeg",
+          "page": 11,
+          "width": 525,
+          "height": 771,
+          "size_kb": 41.5,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p11_img03.jpeg",
+          "path": "product_images/limpieza/limpieza_p11_img03.jpeg",
+          "page": 11,
+          "width": 363,
+          "height": 588,
+          "size_kb": 20.6,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p11_img04.jpeg",
+          "path": "product_images/limpieza/limpieza_p11_img04.jpeg",
+          "page": 11,
+          "width": 307,
+          "height": 573,
+          "size_kb": 22.7,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p11_img05.jpeg",
+          "path": "product_images/limpieza/limpieza_p11_img05.jpeg",
+          "page": 11,
+          "width": 559,
+          "height": 1010,
+          "size_kb": 43.6,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p11_img06.jpeg",
+          "path": "product_images/limpieza/limpieza_p11_img06.jpeg",
+          "page": 11,
+          "width": 379,
+          "height": 545,
+          "size_kb": 23.1,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p11_img07.jpeg",
+          "path": "product_images/limpieza/limpieza_p11_img07.jpeg",
+          "page": 11,
+          "width": 338,
+          "height": 505,
+          "size_kb": 15.2,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p12_img03.jpeg",
+          "path": "product_images/limpieza/limpieza_p12_img03.jpeg",
+          "page": 12,
+          "width": 245,
+          "height": 636,
+          "size_kb": 18.8,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p12_img05.jpeg",
+          "path": "product_images/limpieza/limpieza_p12_img05.jpeg",
+          "page": 12,
+          "width": 234,
+          "height": 562,
+          "size_kb": 17.5,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p12_img06.jpeg",
+          "path": "product_images/limpieza/limpieza_p12_img06.jpeg",
+          "page": 12,
+          "width": 266,
+          "height": 654,
+          "size_kb": 20.6,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p13_img02.jpeg",
+          "path": "product_images/limpieza/limpieza_p13_img02.jpeg",
+          "page": 13,
+          "width": 214,
+          "height": 588,
+          "size_kb": 15.6,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p13_img03.jpeg",
+          "path": "product_images/limpieza/limpieza_p13_img03.jpeg",
+          "page": 13,
+          "width": 205,
+          "height": 556,
+          "size_kb": 13.4,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p13_img05.jpeg",
+          "path": "product_images/limpieza/limpieza_p13_img05.jpeg",
+          "page": 13,
+          "width": 236,
+          "height": 558,
+          "size_kb": 16.8,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p14_img03.jpeg",
+          "path": "product_images/limpieza/limpieza_p14_img03.jpeg",
+          "page": 14,
+          "width": 600,
+          "height": 600,
+          "size_kb": 16.4,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p14_img05.jpeg",
+          "path": "product_images/limpieza/limpieza_p14_img05.jpeg",
+          "page": 14,
+          "width": 547,
+          "height": 340,
+          "size_kb": 11.2,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p14_img06.jpeg",
+          "path": "product_images/limpieza/limpieza_p14_img06.jpeg",
+          "page": 14,
+          "width": 900,
+          "height": 418,
+          "size_kb": 19.8,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p15_img01.jpeg",
+          "path": "product_images/limpieza/limpieza_p15_img01.jpeg",
+          "page": 15,
+          "width": 520,
+          "height": 336,
+          "size_kb": 12.0,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p15_img03.jpeg",
+          "path": "product_images/limpieza/limpieza_p15_img03.jpeg",
+          "page": 15,
+          "width": 504,
+          "height": 344,
+          "size_kb": 14.0,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p16_img01.jpeg",
+          "path": "product_images/limpieza/limpieza_p16_img01.jpeg",
+          "page": 16,
+          "width": 384,
+          "height": 384,
+          "size_kb": 15.4,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p16_img02.jpeg",
+          "path": "product_images/limpieza/limpieza_p16_img02.jpeg",
+          "page": 16,
+          "width": 405,
+          "height": 678,
+          "size_kb": 26.2,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p16_img03.jpeg",
+          "path": "product_images/limpieza/limpieza_p16_img03.jpeg",
+          "page": 16,
+          "width": 390,
+          "height": 655,
+          "size_kb": 23.4,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p16_img04.jpeg",
+          "path": "product_images/limpieza/limpieza_p16_img04.jpeg",
+          "page": 16,
+          "width": 221,
+          "height": 612,
+          "size_kb": 12.6,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p16_img06.jpeg",
+          "path": "product_images/limpieza/limpieza_p16_img06.jpeg",
+          "page": 16,
+          "width": 400,
+          "height": 667,
+          "size_kb": 24.1,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p16_img07.jpeg",
+          "path": "product_images/limpieza/limpieza_p16_img07.jpeg",
+          "page": 16,
+          "width": 261,
+          "height": 772,
+          "size_kb": 16.0,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p16_img08.jpeg",
+          "path": "product_images/limpieza/limpieza_p16_img08.jpeg",
+          "page": 16,
+          "width": 429,
+          "height": 701,
+          "size_kb": 25.8,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p17_img01.jpeg",
+          "path": "product_images/limpieza/limpieza_p17_img01.jpeg",
+          "page": 17,
+          "width": 384,
+          "height": 384,
+          "size_kb": 15.4,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p17_img04.jpeg",
+          "path": "product_images/limpieza/limpieza_p17_img04.jpeg",
+          "page": 17,
+          "width": 325,
+          "height": 584,
+          "size_kb": 11.8,
+          "format": "jpeg"
+        },
+        {
+          "filename": "limpieza_p17_img07.jpeg",
+          "path": "product_images/limpieza/limpieza_p17_img07.jpeg",
+          "page": 17,
+          "width": 297,
+          "height": 530,
+          "size_kb": 10.6,
+          "format": "jpeg"
+        }
+      ]
+    },
+    "portwest": {
+      "label": "Portwest",
+      "description": "Equipos de protección personal y ropa de trabajo de alta calidad.",
+      "category": "Salud Ocupacional",
+      "color": "#dc2626",
+      "count": 22,
+      "images": [
+        {
+          "filename": "portwest_p09_img02.jpeg",
+          "path": "product_images/portwest/portwest_p09_img02.jpeg",
+          "page": 9,
+          "width": 1699,
+          "height": 2199,
+          "size_kb": 279.3,
+          "format": "jpeg"
+        },
+        {
+          "filename": "portwest_p10_img02.jpeg",
+          "path": "product_images/portwest/portwest_p10_img02.jpeg",
+          "page": 10,
+          "width": 1699,
+          "height": 2199,
+          "size_kb": 293.0,
+          "format": "jpeg"
+        },
+        {
+          "filename": "portwest_p11_img02.jpeg",
+          "path": "product_images/portwest/portwest_p11_img02.jpeg",
+          "page": 11,
+          "width": 1699,
+          "height": 2199,
+          "size_kb": 301.9,
+          "format": "jpeg"
+        },
+        {
+          "filename": "portwest_p13_img02.jpeg",
+          "path": "product_images/portwest/portwest_p13_img02.jpeg",
+          "page": 13,
+          "width": 1699,
+          "height": 2199,
+          "size_kb": 284.2,
+          "format": "jpeg"
+        },
+        {
+          "filename": "portwest_p14_img02.jpeg",
+          "path": "product_images/portwest/portwest_p14_img02.jpeg",
+          "page": 14,
+          "width": 1699,
+          "height": 2199,
+          "size_kb": 249.8,
+          "format": "jpeg"
+        },
+        {
+          "filename": "portwest_p15_img02.jpeg",
+          "path": "product_images/portwest/portwest_p15_img02.jpeg",
+          "page": 15,
+          "width": 1699,
+          "height": 2199,
+          "size_kb": 288.5,
+          "format": "jpeg"
+        },
+        {
+          "filename": "portwest_p16_img02.jpeg",
+          "path": "product_images/portwest/portwest_p16_img02.jpeg",
+          "page": 16,
+          "width": 1699,
+          "height": 2199,
+          "size_kb": 268.7,
+          "format": "jpeg"
+        },
+        {
+          "filename": "portwest_p17_img02.jpeg",
+          "path": "product_images/portwest/portwest_p17_img02.jpeg",
+          "page": 17,
+          "width": 1699,
+          "height": 2199,
+          "size_kb": 298.4,
+          "format": "jpeg"
+        },
+        {
+          "filename": "portwest_p18_img02.jpeg",
+          "path": "product_images/portwest/portwest_p18_img02.jpeg",
+          "page": 18,
+          "width": 1699,
+          "height": 2199,
+          "size_kb": 308.2,
+          "format": "jpeg"
+        },
+        {
+          "filename": "portwest_p19_img03.jpeg",
+          "path": "product_images/portwest/portwest_p19_img03.jpeg",
+          "page": 19,
+          "width": 1699,
+          "height": 2199,
+          "size_kb": 293.7,
+          "format": "jpeg"
+        },
+        {
+          "filename": "portwest_p20_img02.jpeg",
+          "path": "product_images/portwest/portwest_p20_img02.jpeg",
+          "page": 20,
+          "width": 1699,
+          "height": 2199,
+          "size_kb": 310.7,
+          "format": "jpeg"
+        },
+        {
+          "filename": "portwest_p21_img03.jpeg",
+          "path": "product_images/portwest/portwest_p21_img03.jpeg",
+          "page": 21,
+          "width": 1699,
+          "height": 2199,
+          "size_kb": 301.4,
+          "format": "jpeg"
+        },
+        {
+          "filename": "portwest_p23_img03.jpeg",
+          "path": "product_images/portwest/portwest_p23_img03.jpeg",
+          "page": 23,
+          "width": 1699,
+          "height": 2199,
+          "size_kb": 279.4,
+          "format": "jpeg"
+        },
+        {
+          "filename": "portwest_p24_img01.jpeg",
+          "path": "product_images/portwest/portwest_p24_img01.jpeg",
+          "page": 24,
+          "width": 1699,
+          "height": 2199,
+          "size_kb": 327.0,
+          "format": "jpeg"
+        },
+        {
+          "filename": "portwest_p27_img02.jpeg",
+          "path": "product_images/portwest/portwest_p27_img02.jpeg",
+          "page": 27,
+          "width": 1697,
+          "height": 2199,
+          "size_kb": 305.1,
+          "format": "jpeg"
+        },
+        {
+          "filename": "portwest_p30_img02.jpeg",
+          "path": "product_images/portwest/portwest_p30_img02.jpeg",
+          "page": 30,
+          "width": 1697,
+          "height": 2198,
+          "size_kb": 300.8,
+          "format": "jpeg"
+        },
+        {
+          "filename": "portwest_p31_img04.jpeg",
+          "path": "product_images/portwest/portwest_p31_img04.jpeg",
+          "page": 31,
+          "width": 1699,
+          "height": 2199,
+          "size_kb": 312.6,
+          "format": "jpeg"
+        },
+        {
+          "filename": "portwest_p32_img02.jpeg",
+          "path": "product_images/portwest/portwest_p32_img02.jpeg",
+          "page": 32,
+          "width": 1697,
+          "height": 2199,
+          "size_kb": 315.0,
+          "format": "jpeg"
+        },
+        {
+          "filename": "portwest_p33_img03.jpeg",
+          "path": "product_images/portwest/portwest_p33_img03.jpeg",
+          "page": 33,
+          "width": 1699,
+          "height": 2199,
+          "size_kb": 295.3,
+          "format": "jpeg"
+        },
+        {
+          "filename": "portwest_p34_img03.jpeg",
+          "path": "product_images/portwest/portwest_p34_img03.jpeg",
+          "page": 34,
+          "width": 1699,
+          "height": 2197,
+          "size_kb": 269.6,
+          "format": "jpeg"
+        },
+        {
+          "filename": "portwest_p36_img03.jpeg",
+          "path": "product_images/portwest/portwest_p36_img03.jpeg",
+          "page": 36,
+          "width": 1699,
+          "height": 2198,
+          "size_kb": 319.0,
+          "format": "jpeg"
+        },
+        {
+          "filename": "portwest_p39_img02.jpeg",
+          "path": "product_images/portwest/portwest_p39_img02.jpeg",
+          "page": 39,
+          "width": 1695,
+          "height": 2199,
+          "size_kb": 286.3,
+          "format": "jpeg"
+        }
+      ]
+    },
+    "salud_ocupacional": {
+      "label": "Salud Ocupacional",
+      "description": "Equipos y suministros para la seguridad y salud en el trabajo.",
+      "category": "Salud Ocupacional",
+      "color": "#ea580c",
+      "count": 53,
+      "images": [
+        {
+          "filename": "salud_ocupacional_p03_img02.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p03_img02.jpeg",
+          "page": 3,
+          "width": 494,
+          "height": 405,
+          "size_kb": 20.8,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p03_img03.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p03_img03.jpeg",
+          "page": 3,
+          "width": 500,
+          "height": 500,
+          "size_kb": 18.7,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p03_img04.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p03_img04.jpeg",
+          "page": 3,
+          "width": 568,
+          "height": 568,
+          "size_kb": 22.8,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p03_img05.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p03_img05.jpeg",
+          "page": 3,
+          "width": 633,
+          "height": 633,
+          "size_kb": 24.8,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p04_img01.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p04_img01.jpeg",
+          "page": 4,
+          "width": 700,
+          "height": 700,
+          "size_kb": 25.0,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p04_img02.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p04_img02.jpeg",
+          "page": 4,
+          "width": 418,
+          "height": 272,
+          "size_kb": 13.8,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p04_img03.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p04_img03.jpeg",
+          "page": 4,
+          "width": 639,
+          "height": 347,
+          "size_kb": 15.7,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p05_img02.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p05_img02.jpeg",
+          "page": 5,
+          "width": 533,
+          "height": 533,
+          "size_kb": 16.8,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p06_img04.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p06_img04.jpeg",
+          "page": 6,
+          "width": 164,
+          "height": 308,
+          "size_kb": 11.1,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p06_img06.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p06_img06.jpeg",
+          "page": 6,
+          "width": 206,
+          "height": 452,
+          "size_kb": 14.8,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p07_img03.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p07_img03.jpeg",
+          "page": 7,
+          "width": 367,
+          "height": 536,
+          "size_kb": 12.4,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p07_img05.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p07_img05.jpeg",
+          "page": 7,
+          "width": 400,
+          "height": 400,
+          "size_kb": 14.5,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p07_img06.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p07_img06.jpeg",
+          "page": 7,
+          "width": 359,
+          "height": 359,
+          "size_kb": 12.7,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p08_img01.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p08_img01.jpeg",
+          "page": 8,
+          "width": 701,
+          "height": 696,
+          "size_kb": 81.3,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p08_img02.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p08_img02.jpeg",
+          "page": 8,
+          "width": 773,
+          "height": 692,
+          "size_kb": 59.7,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p08_img03.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p08_img03.jpeg",
+          "page": 8,
+          "width": 701,
+          "height": 713,
+          "size_kb": 47.4,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p08_img04.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p08_img04.jpeg",
+          "page": 8,
+          "width": 751,
+          "height": 677,
+          "size_kb": 39.1,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p08_img05.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p08_img05.jpeg",
+          "page": 8,
+          "width": 689,
+          "height": 665,
+          "size_kb": 48.0,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p09_img01.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p09_img01.jpeg",
+          "page": 9,
+          "width": 774,
+          "height": 735,
+          "size_kb": 50.2,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p09_img03.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p09_img03.jpeg",
+          "page": 9,
+          "width": 746,
+          "height": 630,
+          "size_kb": 34.4,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p09_img04.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p09_img04.jpeg",
+          "page": 9,
+          "width": 736,
+          "height": 661,
+          "size_kb": 34.5,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p10_img01.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p10_img01.jpeg",
+          "page": 10,
+          "width": 228,
+          "height": 204,
+          "size_kb": 13.7,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p12_img03.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p12_img03.jpeg",
+          "page": 12,
+          "width": 443,
+          "height": 461,
+          "size_kb": 18.9,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p12_img05.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p12_img05.jpeg",
+          "page": 12,
+          "width": 205,
+          "height": 467,
+          "size_kb": 10.7,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p13_img06.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p13_img06.jpeg",
+          "page": 13,
+          "width": 378,
+          "height": 379,
+          "size_kb": 11.9,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p14_img05.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p14_img05.jpeg",
+          "page": 14,
+          "width": 251,
+          "height": 201,
+          "size_kb": 11.0,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p15_img06.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p15_img06.jpeg",
+          "page": 15,
+          "width": 591,
+          "height": 773,
+          "size_kb": 54.5,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p16_img02.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p16_img02.jpeg",
+          "page": 16,
+          "width": 841,
+          "height": 557,
+          "size_kb": 41.9,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p16_img03.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p16_img03.jpeg",
+          "page": 16,
+          "width": 850,
+          "height": 530,
+          "size_kb": 35.9,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p16_img05.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p16_img05.jpeg",
+          "page": 16,
+          "width": 894,
+          "height": 500,
+          "size_kb": 29.1,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p16_img06.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p16_img06.jpeg",
+          "page": 16,
+          "width": 846,
+          "height": 560,
+          "size_kb": 53.3,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p17_img02.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p17_img02.jpeg",
+          "page": 17,
+          "width": 905,
+          "height": 565,
+          "size_kb": 41.5,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p17_img03.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p17_img03.jpeg",
+          "page": 17,
+          "width": 914,
+          "height": 575,
+          "size_kb": 58.3,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p17_img04.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p17_img04.jpeg",
+          "page": 17,
+          "width": 933,
+          "height": 548,
+          "size_kb": 52.2,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p19_img01.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p19_img01.jpeg",
+          "page": 19,
+          "width": 748,
+          "height": 626,
+          "size_kb": 48.1,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p19_img03.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p19_img03.jpeg",
+          "page": 19,
+          "width": 718,
+          "height": 764,
+          "size_kb": 55.5,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p19_img04.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p19_img04.jpeg",
+          "page": 19,
+          "width": 713,
+          "height": 542,
+          "size_kb": 32.4,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p19_img05.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p19_img05.jpeg",
+          "page": 19,
+          "width": 541,
+          "height": 441,
+          "size_kb": 14.8,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p20_img01.png",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p20_img01.png",
+          "page": 20,
+          "width": 1206,
+          "height": 627,
+          "size_kb": 154.6,
+          "format": "png"
+        },
+        {
+          "filename": "salud_ocupacional_p20_img02.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p20_img02.jpeg",
+          "page": 20,
+          "width": 833,
+          "height": 457,
+          "size_kb": 20.7,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p20_img03.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p20_img03.jpeg",
+          "page": 20,
+          "width": 867,
+          "height": 453,
+          "size_kb": 22.8,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p20_img04.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p20_img04.jpeg",
+          "page": 20,
+          "width": 340,
+          "height": 200,
+          "size_kb": 11.3,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p20_img05.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p20_img05.jpeg",
+          "page": 20,
+          "width": 938,
+          "height": 528,
+          "size_kb": 58.3,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p20_img07.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p20_img07.jpeg",
+          "page": 20,
+          "width": 913,
+          "height": 469,
+          "size_kb": 25.3,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p21_img07.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p21_img07.jpeg",
+          "page": 21,
+          "width": 771,
+          "height": 438,
+          "size_kb": 17.6,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p22_img04.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p22_img04.jpeg",
+          "page": 22,
+          "width": 347,
+          "height": 434,
+          "size_kb": 26.9,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p22_img05.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p22_img05.jpeg",
+          "page": 22,
+          "width": 442,
+          "height": 500,
+          "size_kb": 30.8,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p22_img06.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p22_img06.jpeg",
+          "page": 22,
+          "width": 734,
+          "height": 566,
+          "size_kb": 24.1,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p23_img01.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p23_img01.jpeg",
+          "page": 23,
+          "width": 453,
+          "height": 494,
+          "size_kb": 14.9,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p23_img06.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p23_img06.jpeg",
+          "page": 23,
+          "width": 532,
+          "height": 442,
+          "size_kb": 26.4,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p23_img07.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p23_img07.jpeg",
+          "page": 23,
+          "width": 500,
+          "height": 767,
+          "size_kb": 20.5,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p23_img08.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p23_img08.jpeg",
+          "page": 23,
+          "width": 387,
+          "height": 366,
+          "size_kb": 13.1,
+          "format": "jpeg"
+        },
+        {
+          "filename": "salud_ocupacional_p23_img10.jpeg",
+          "path": "product_images/salud_ocupacional/salud_ocupacional_p23_img10.jpeg",
+          "page": 23,
+          "width": 504,
+          "height": 429,
+          "size_kb": 14.8,
+          "format": "jpeg"
+        }
+      ]
+    }
+  }
+}
