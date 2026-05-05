@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { type Category } from "@/lib/constants";
 import { imageZoomEnhanced } from "@/lib/animations";
+import { NotebookIcon } from "@/components/ui/Icons";
 
 interface CategoryCardProps {
   category: Category;
@@ -13,6 +14,7 @@ interface CategoryCardProps {
 export default function CategoryCard({ category }: CategoryCardProps) {
   const cardRef = useRef<HTMLAnchorElement>(null);
   const [arrowOffset, setArrowOffset] = useState({ x: 0, y: 0 });
+  const isComingSoon = category.comingSoon === true;
 
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     if (!cardRef.current) return;
@@ -41,24 +43,55 @@ export default function CategoryCard({ category }: CategoryCardProps) {
     >
       {/* Image Area — top ~65% */}
       <div className="relative flex-1 overflow-hidden">
-        <motion.div className="absolute inset-0" variants={imageZoomEnhanced}>
-          <Image
-            src={category.image}
-            alt={category.altText}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          />
-        </motion.div>
-        {/* Light color tint over image */}
-        <div className="absolute inset-0 bg-primary/10 mix-blend-multiply" />
+        {isComingSoon ? (
+          <div
+            className="absolute inset-0 flex items-center justify-center"
+            style={{
+              background: "linear-gradient(135deg, #0f1f0f 0%, #1f3d1f 50%, #0f1f0f 100%)",
+            }}
+            aria-label={category.altText}
+          >
+            <div
+              className="absolute inset-0 opacity-[0.06]"
+              style={{
+                backgroundImage:
+                  "radial-gradient(circle at 25% 30%, rgba(232,168,23,0.5) 0%, transparent 45%), radial-gradient(circle at 75% 70%, rgba(61,122,61,0.6) 0%, transparent 50%)",
+              }}
+            />
+            <NotebookIcon
+              className="relative h-20 w-20 md:h-24 md:w-24 text-accent/70"
+              aria-hidden="true"
+            />
+          </div>
+        ) : (
+          <>
+            <motion.div className="absolute inset-0" variants={imageZoomEnhanced}>
+              <Image
+                src={category.image}
+                alt={category.altText}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              />
+            </motion.div>
+            {/* Light color tint over image */}
+            <div className="absolute inset-0 bg-primary/10 mix-blend-multiply" />
+          </>
+        )}
       </div>
 
       {/* Glassmorphism Dark Panel — bottom ~35% */}
       <div className="relative z-10 border-t border-white/[0.07] backdrop-blur-md bg-deep-green/80 px-6 py-4 md:px-7 md:py-5">
-        <h3 className="font-display text-lg font-bold text-white md:text-xl leading-tight">
-          {category.name}
-        </h3>
+        <div className="flex items-center justify-between gap-3">
+          <h3 className="font-display text-lg font-bold text-white md:text-xl leading-tight">
+            {category.name}
+          </h3>
+          {isComingSoon && (
+            <span className="shrink-0 rounded-full border border-accent/30 bg-accent/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-accent">
+              Próximamente
+            </span>
+          )}
+        </div>
         <p className="mt-1.5 text-sm text-white/70 leading-relaxed line-clamp-2">
           {category.subtitle}
         </p>
@@ -74,7 +107,7 @@ export default function CategoryCard({ category }: CategoryCardProps) {
               : "opacity",
           }}
         >
-          Ver productos
+          {isComingSoon ? "Pronto disponible" : "Ver productos"}
           <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
             <line x1="5" y1="12" x2="19" y2="12" />
             <polyline points="12 5 19 12 12 19" />

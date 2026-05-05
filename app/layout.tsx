@@ -109,7 +109,6 @@ export default function RootLayout({
                 "Limpieza y Desinfección",
                 "Fumigación y Control",
                 "Ferretería Especializada",
-                "Cuidado Personal y Bienestar",
               ],
             }),
           }}

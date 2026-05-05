@@ -20,11 +20,13 @@ export default function FeaturedProducts() {
 
   const carouselGroups = useMemo(() => {
     if (activeFilter === "todos") {
-      return CATEGORIES.map((cat) => ({
-        key: cat.slug,
-        title: cat.name,
-        products: PRODUCTS.filter((p) => p.category === cat.slug),
-      }));
+      return CATEGORIES
+        .map((cat) => ({
+          key: cat.slug,
+          title: cat.name,
+          products: PRODUCTS.filter((p) => p.category === cat.slug),
+        }))
+        .filter((g) => g.products.length > 0);
     }
 
     const filtered = PRODUCTS.filter((p) => p.category === activeFilter);
@@ -37,6 +39,7 @@ export default function FeaturedProducts() {
   }, [activeFilter]);
 
   const totalCount = carouselGroups.reduce((sum, g) => sum + g.products.length, 0);
+  const isEmpty = totalCount === 0;
 
   return (
     <section
@@ -99,20 +102,37 @@ export default function FeaturedProducts() {
             transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
             className="space-y-12"
           >
-            {carouselGroups.map((group) => (
-              <ProductCarousel
-                key={group.key}
-                title={group.title}
-                products={group.products}
-              />
-            ))}
+            {isEmpty ? (
+              <div className="rounded-2xl border border-offwhite/10 bg-deep-green-light/40 px-8 py-16 text-center">
+                <span className="inline-block rounded-full border border-accent/30 bg-accent/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.15em] text-accent">
+                  Próximamente
+                </span>
+                <h3 className="mt-4 font-display text-xl font-bold text-offwhite md:text-2xl">
+                  Catálogo en preparación
+                </h3>
+                <p className="mx-auto mt-2 max-w-md text-sm text-offwhite/60">
+                  Estamos curando la selección de productos para esta línea.
+                  Contactanos por WhatsApp si necesitás algo específico.
+                </p>
+              </div>
+            ) : (
+              carouselGroups.map((group) => (
+                <ProductCarousel
+                  key={group.key}
+                  title={group.title}
+                  products={group.products}
+                />
+              ))
+            )}
           </motion.div>
         </AnimatePresence>
 
         {/* Results count */}
-        <p className="mt-8 text-center text-sm text-offwhite/30">
-          {totalCount} producto{totalCount !== 1 ? "s" : ""}
-        </p>
+        {!isEmpty && (
+          <p className="mt-8 text-center text-sm text-offwhite/30">
+            {totalCount} producto{totalCount !== 1 ? "s" : ""}
+          </p>
+        )}
       </div>
     </section>
   );

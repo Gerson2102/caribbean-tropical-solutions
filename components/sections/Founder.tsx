@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { FOUNDER, FOUNDER_WHATSAPP_URL_WITH_MESSAGE } from "@/lib/constants";
+import { FOUNDER, WHATSAPP_URL_WITH_MESSAGE } from "@/lib/constants";
 import SectionLabel from "@/components/ui/SectionLabel";
 import ScrollTextReveal from "@/components/ui/ScrollTextReveal";
 import ScrollReveal from "@/components/ui/ScrollReveal";
@@ -69,10 +69,10 @@ export default function Founder() {
               <div className="mt-8">
                 <Button
                   variant="primary"
-                  href={FOUNDER_WHATSAPP_URL_WITH_MESSAGE}
+                  href={WHATSAPP_URL_WITH_MESSAGE}
                   icon={<WhatsAppIcon className="h-5 w-5" />}
                 >
-                  Hablá con Kendall por WhatsApp
+                  Escríbenos por WhatsApp
                 </Button>
               </div>
             </div>
