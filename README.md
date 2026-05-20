@@ -1,24 +1,30 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Caribbean Tropical Solutions
+
+Single-page Next.js marketing site for a Costa Rican industrial distributor (Guácimo, Limón).
+
+## Stack
+
+Next.js 16 · React 19 · TypeScript · Tailwind CSS v4 · GSAP 3 · Framer Motion 12 · Lenis
 
 ## Getting Started
 
-First, run the development server:
+This project uses **pnpm** for dependency management. The pnpm version is pinned via the `packageManager` field in `package.json`, so [Corepack](https://nodejs.org/api/corepack.html) (bundled with Node 20+) will use the correct version automatically — no global install required.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+corepack enable      # one-time, activates Corepack for this Node install
+pnpm install         # install dependencies
+pnpm dev             # http://localhost:3000
+pnpm build           # production build (must produce 9/9 pages)
+pnpm lint            # ESLint (must report 0 errors, 0 warnings)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see the result. The page auto-reloads on edits to `app/page.tsx`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Why pnpm
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Isolated `node_modules`** — code can only import what `package.json` declares, eliminating phantom dependencies.
+- **Postinstall script gating** — third-party install scripts are blocked by default; only packages listed under `allowBuilds:` in `pnpm-workspace.yaml` (currently `sharp`, `unrs-resolver`) are permitted to run, closing a common supply-chain vector.
+- **Content-addressable store** — disk-efficient and reproducible across machines.
 
 ## Learn More
 
