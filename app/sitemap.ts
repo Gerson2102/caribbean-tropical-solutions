@@ -7,7 +7,7 @@ const LAST_UPDATED = "2026-05-02";
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://caribbeantropical.cr",
+      url: "https://www.caribbeantropicalsolutions.com",
       lastModified: LAST_UPDATED,
       changeFrequency: "monthly",
       priority: 1,

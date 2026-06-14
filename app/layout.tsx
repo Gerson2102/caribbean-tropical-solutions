@@ -16,7 +16,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://caribbeantropical.cr"),
+  metadataBase: new URL("https://www.caribbeantropicalsolutions.com"),
   title: "EPP, Limpieza y Ferretería en Limón | Caribbean Tropical",
   description:
     "Distribuidora en Guácimo, Limón. Productos de limpieza, EPP, ferretería y desinfección de DeWalt, IONICS, EVACOL y más. Cotizá por WhatsApp.",
@@ -71,9 +71,9 @@ export default function RootLayout({
               name: "Caribbean Tropical Solutions S.A.",
               description:
                 "Distribuidora de productos de mantenimiento, limpieza, desinfección, EPP, oficina y ferretería en el Caribe de Costa Rica.",
-              url: "https://caribbeantropical.cr",
-              logo: "https://caribbeantropical.cr/images/logo.webp",
-              image: "https://caribbeantropical.cr/images/logo.webp",
+              url: "https://www.caribbeantropicalsolutions.com",
+              logo: "https://www.caribbeantropicalsolutions.com/images/logo.webp",
+              image: "https://www.caribbeantropicalsolutions.com/images/logo.webp",
               telephone: "+50671035467",
               email: "ventas@3dcaribbean.com",
               priceRange: "$$",
