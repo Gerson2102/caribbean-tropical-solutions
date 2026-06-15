@@ -27,14 +27,17 @@ export default function QuoteDrawer() {
   const reduce = useReducedMotion();
 
   const [nombre, setNombre] = useState("");
+  const [empresa, setEmpresa] = useState("");
   const [telefono, setTelefono] = useState("");
   const [nameError, setNameError] = useState(false);
+  const [companyError, setCompanyError] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [confirmClear, setConfirmClear] = useState(false);
 
   const panelRef = useRef<HTMLDivElement>(null);
   const closeBtnRef = useRef<HTMLButtonElement>(null);
   const nameInputRef = useRef<HTMLInputElement>(null);
+  const companyInputRef = useRef<HTMLInputElement>(null);
   const triggerRef = useRef<HTMLElement | null>(null);
 
   const isEmpty = items.length === 0;
@@ -86,16 +89,22 @@ export default function QuoteDrawer() {
   }, []);
 
   const handleSubmit = useCallback(
-    (e: React.FormEvent) => {
+    (e: React.SubmitEvent<HTMLFormElement>) => {
       e.preventDefault();
-      const trimmed = nombre.trim();
-      if (!trimmed) {
-        setNameError(true);
-        nameInputRef.current?.focus();
+      const trimmedName = nombre.trim();
+      const trimmedCompany = empresa.trim();
+      const nameOk = trimmedName !== "";
+      const companyOk = trimmedCompany !== "";
+      if (!nameOk || !companyOk) {
+        setNameError(!nameOk);
+        setCompanyError(!companyOk);
+        // Focus the first invalid field.
+        if (!nameOk) nameInputRef.current?.focus();
+        else companyInputRef.current?.focus();
         return;
       }
       setSubmitting(true);
-      const url = buildQuoteUrl({ nombre: trimmed, telefono }, items);
+      const url = buildQuoteUrl({ nombre: trimmedName, empresa: trimmedCompany, telefono }, items);
       // Trigger an anchor click rather than window.open() — far more reliable on
       // mobile WhatsApp / Safari, which often block scripted window.open().
       const link = document.createElement("a");
@@ -107,7 +116,7 @@ export default function QuoteDrawer() {
       link.remove();
       setSubmitting(false);
     },
-    [nombre, telefono, items],
+    [nombre, empresa, telefono, items],
   );
 
   const goToCatalog = useCallback(() => {
@@ -303,6 +312,41 @@ export default function QuoteDrawer() {
                       style={{ color: ERROR_COLOR }}
                     >
                       Ingresá tu nombre para enviar la cotización.
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <label htmlFor="quote-empresa" className="mb-1.5 block text-sm font-medium text-offwhite/70">
+                    Empresa <span style={{ color: ERROR_COLOR }}>*</span>
+                  </label>
+                  <input
+                    id="quote-empresa"
+                    ref={companyInputRef}
+                    type="text"
+                    name="empresa"
+                    autoComplete="organization"
+                    required
+                    value={empresa}
+                    onChange={(e) => {
+                      setEmpresa(e.target.value);
+                      if (companyError) setCompanyError(false);
+                    }}
+                    onBlur={() => setCompanyError(empresa.trim() === "")}
+                    aria-invalid={companyError}
+                    aria-describedby={companyError ? "quote-empresa-error" : undefined}
+                    placeholder="Nombre de tu empresa…"
+                    className={inputClass}
+                    style={{ borderColor: companyError ? ERROR_COLOR : "rgba(250,250,248,0.2)" }}
+                  />
+                  {companyError && (
+                    <p
+                      id="quote-empresa-error"
+                      role="alert"
+                      className="mt-1.5 text-xs"
+                      style={{ color: ERROR_COLOR }}
+                    >
+                      Ingresá el nombre de tu empresa para enviar la cotización.
                     </p>
                   )}
                 </div>

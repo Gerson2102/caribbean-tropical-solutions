@@ -11,7 +11,7 @@ export default function ContactForm() {
   const mensajeRef = useRef<HTMLTextAreaElement>(null);
   const [submitting, setSubmitting] = useState(false);
 
-  function handleSubmit(e: React.FormEvent) {
+  function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
     setSubmitting(true);
     const nombre = nombreRef.current?.value || "";

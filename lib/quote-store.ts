@@ -21,6 +21,7 @@ export interface QuoteItem {
 export const MAX_QTY = 999;
 const STORAGE_KEY = "cts_quote_v1";
 const MAX_NAME_LEN = 80;
+const MAX_COMPANY_LEN = 80;
 const MAX_PHONE_LEN = 30;
 
 // Only ids that exist in the catalog are ever accepted into the cart.
@@ -217,10 +218,11 @@ export function useDrawerOpen(): boolean {
 // WhatsApp message
 // ------------------------------------------------------------
 export function buildQuoteUrl(
-  contact: { nombre: string; telefono?: string },
+  contact: { nombre: string; empresa: string; telefono?: string },
   list: QuoteItem[],
 ): string {
   const nombre = contact.nombre.trim().slice(0, MAX_NAME_LEN);
+  const empresa = contact.empresa.trim().slice(0, MAX_COMPANY_LEN);
   const telefono = (contact.telefono ?? "").trim().slice(0, MAX_PHONE_LEN);
 
   const lines = list.map((item, i) => {
@@ -229,9 +231,8 @@ export function buildQuoteUrl(
     return `${i + 1}. ${product?.name ?? item.id} (x${item.qty})`;
   });
 
-  const intro = telefono
-    ? `Hola, soy ${nombre} (tel: ${telefono}).`
-    : `Hola, soy ${nombre}.`;
+  const telPart = telefono ? ` (tel: ${telefono})` : "";
+  const intro = `Hola, soy ${nombre} de ${empresa}${telPart}.`;
 
   const message = `${intro}\nMe gustaría cotizar los siguientes productos:\n${lines.join("\n")}`;
   return `${WHATSAPP_URL}?text=${encodeURIComponent(message)}`;
