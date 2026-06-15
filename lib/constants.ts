@@ -52,7 +52,7 @@ export const BRANDS = [
 ] as const;
 
 // === CATEGORIES ===
-export type CategorySlug = "limpieza" | "salud-ocupacional" | "oficina";
+export type CategorySlug = "limpieza" | "salud-ocupacional" | "mantenimiento" | "oficina";
 
 export interface Category {
   slug: CategorySlug;
@@ -79,6 +79,14 @@ export const CATEGORIES: Category[] = [
     altText: "Equipos de salud ocupacional y protección laboral",
   },
   {
+    slug: "mantenimiento",
+    name: "Mantenimiento",
+    subtitle: "Herramientas, lubricantes y suministros para el mantenimiento industrial",
+    image: "/images/categories/mantenimiento.webp",
+    altText: "Productos y herramientas para mantenimiento industrial",
+    comingSoon: true,
+  },
+  {
     slug: "oficina",
     name: "Oficina",
     subtitle: "Suministros y artículos de oficina",
@@ -93,6 +101,7 @@ export const FILTER_TABS = [
   { slug: "todos" as const, label: "Todos" },
   { slug: "limpieza" as const, label: "Limpieza" },
   { slug: "salud-ocupacional" as const, label: "Salud Ocupacional" },
+  { slug: "mantenimiento" as const, label: "Mantenimiento" },
   { slug: "oficina" as const, label: "Oficina" },
 ];
 
@@ -102,6 +111,7 @@ export type FilterSlug = CategorySlug | "todos";
 export const SUBCATEGORY_ORDER: Record<CategorySlug, string[]> = {
   limpieza: ["Limpiadores IONICS", "Línea Industrial IONICS", "Papel y Sanitización", "Aerosoles y Lubricantes", "Detergentes y Jabones", "Equipos de Fumigación", "Suministros y Herramientas"],
   "salud-ocupacional": ["Calzado de Seguridad", "Guantes de Protección", "Ropa de Trabajo", "Protección Visual y Facial", "Protección Cabeza, Respiratoria y Auditiva", "Detectores y Alertas", "Accesorios y Botiquines"],
+  mantenimiento: [],
   oficina: [],
 };
 

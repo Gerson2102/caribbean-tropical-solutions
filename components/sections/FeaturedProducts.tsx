@@ -55,8 +55,8 @@ export default function FeaturedProducts() {
               Productos Destacados
             </ScrollTextReveal>
             <p className="mx-auto mt-4 max-w-2xl text-offwhite/70">
-              Explorá nuestra selección completa. Hacé clic en cualquier producto
-              para cotizar por WhatsApp.
+              Explorá nuestra selección completa. Agregá los productos que te
+              interesen a tu cotización y te pasamos los precios por WhatsApp.
             </p>
           </div>
 

@@ -43,8 +43,8 @@ export default function ProductCategories() {
             Nuestras Líneas
           </ScrollTextReveal>
           <p className="mx-auto mt-4 max-w-2xl text-charcoal-light">
-            Tres líneas de productos para cubrir las necesidades de tu empresa:
-            limpieza, salud ocupacional y oficina.
+            Cuatro líneas de productos para cubrir las necesidades de tu empresa:
+            limpieza, salud ocupacional, mantenimiento y oficina.
           </p>
         </div>
 
@@ -95,7 +95,7 @@ export default function ProductCategories() {
 
         {/* Desktop: Grid (unchanged) */}
         <ScrollReveal selector=".category-card" stagger={0.15}>
-          <div className="hidden md:grid md:grid-cols-3 md:gap-5">
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-5">
             {CATEGORIES.map((cat) => (
               <div key={cat.slug} className="category-card">
                 <CategoryCard category={cat} />

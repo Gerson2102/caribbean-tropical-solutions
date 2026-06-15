@@ -5,6 +5,7 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { NAV_LINKS, WHATSAPP_URL_WITH_MESSAGE } from "@/lib/constants";
 import { WhatsAppIcon, MenuIcon, XIcon } from "@/components/ui/Icons";
+import QuoteCartButton from "@/components/ui/QuoteCartButton";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -144,28 +145,33 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Desktop WhatsApp CTA */}
-          <a
-            href={WHATSAPP_URL_WITH_MESSAGE}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden items-center gap-2 rounded-full bg-accent px-5 py-2 text-sm font-semibold text-charcoal-deep transition-transform duration-200 hover:scale-105 active:scale-95 animate-gold-glow-pulse focus-ring-accent lg:inline-flex"
-            style={{ transitionProperty: "transform" }}
-          >
-            <WhatsAppIcon className="h-4 w-4" />
-            WhatsApp
-          </a>
+          {/* Right-side actions */}
+          <div className="flex items-center gap-1.5">
+            <QuoteCartButton />
 
-          {/* Mobile Hamburger */}
-          <button
-            ref={hamburgerRef}
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="relative z-50 flex h-11 w-11 items-center justify-center rounded-lg text-offwhite lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
-            aria-expanded={menuOpen}
-          >
-            {menuOpen ? <XIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
-          </button>
+            {/* Desktop WhatsApp CTA */}
+            <a
+              href={WHATSAPP_URL_WITH_MESSAGE}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden items-center gap-2 rounded-full bg-accent px-5 py-2 text-sm font-semibold text-charcoal-deep transition-transform duration-200 hover:scale-105 active:scale-95 animate-gold-glow-pulse focus-ring-accent lg:inline-flex"
+              style={{ transitionProperty: "transform" }}
+            >
+              <WhatsAppIcon className="h-4 w-4" />
+              WhatsApp
+            </a>
+
+            {/* Mobile Hamburger */}
+            <button
+              ref={hamburgerRef}
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="relative z-50 flex h-11 w-11 items-center justify-center rounded-lg text-offwhite lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+              aria-expanded={menuOpen}
+            >
+              {menuOpen ? <XIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
+            </button>
+          </div>
         </div>
       </nav>
 

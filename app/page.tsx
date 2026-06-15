@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import Navbar from "@/components/layout/Navbar";
 import ScrollProgress from "@/components/layout/ScrollProgress";
 import FloatingWhatsApp from "@/components/layout/FloatingWhatsApp";
+import QuoteDrawer from "@/components/layout/QuoteDrawer";
 import Footer from "@/components/layout/Footer";
 
 // Above fold — static
@@ -28,6 +29,7 @@ export default function Home() {
       <ScrollProgress />
       <Navbar />
       <FloatingWhatsApp />
+      <QuoteDrawer />
       <main id="main-content">
         <Hero />
         <BrandMarquee />
