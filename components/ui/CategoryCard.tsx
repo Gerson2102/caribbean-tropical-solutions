@@ -78,20 +78,20 @@ export default function CategoryCard({ category }: CategoryCardProps) {
             <div className="absolute inset-0 bg-primary/10 mix-blend-multiply" />
           </>
         )}
+
+        {/* Coming-soon status badge — sits on the media area so it never crowds the title */}
+        {isComingSoon && (
+          <span className="absolute right-3 top-3 z-10 rounded-full border border-accent/30 bg-deep-green/60 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-accent backdrop-blur-sm">
+            Próximamente
+          </span>
+        )}
       </div>
 
       {/* Glassmorphism Dark Panel — bottom ~35% */}
       <div className="relative z-10 border-t border-white/[0.07] backdrop-blur-md bg-deep-green/80 px-6 py-4 md:px-7 md:py-5">
-        <div className="flex items-center justify-between gap-3">
-          <h3 className="font-display text-lg font-bold text-white md:text-xl leading-tight">
-            {category.name}
-          </h3>
-          {isComingSoon && (
-            <span className="shrink-0 rounded-full border border-accent/30 bg-accent/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-accent">
-              Próximamente
-            </span>
-          )}
-        </div>
+        <h3 className="font-display text-lg font-bold text-white md:text-xl leading-tight">
+          {category.name}
+        </h3>
         <p className="mt-1.5 text-sm text-white/70 leading-relaxed line-clamp-2">
           {category.subtitle}
         </p>
