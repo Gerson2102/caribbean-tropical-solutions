@@ -5,10 +5,13 @@ backend:
   name: github
   repo: Gerson2102/caribbean-tropical-solutions
   branch: main
+  # Production login is handled by this app's own OAuth routes (app/api/auth + /api/callback).
+  base_url: https://www.caribbeantropicalsolutions.com
+  auth_endpoint: api/auth
 
 # Local editing with NO accounts needed: run `npx decap-server` in another
 # terminal, then open http://localhost:3000/admin/  — edits write to your files.
-# Remove or set to false once production GitHub login is wired up.
+# This only activates on localhost; production uses the GitHub login above.
 local_backend: true
 
 media_folder: "public/images/uploads"
