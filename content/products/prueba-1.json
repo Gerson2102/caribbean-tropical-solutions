@@ -1,0 +1,13 @@
+{
+  "brand": "Prueba 1",
+  "name": "Prueba 1",
+  "featured": false,
+  "order": 9999,
+  "altText": "Prueba 1",
+  "images": [
+    "/images/uploads/eth-event-sponsors.jpg"
+  ],
+  "image": "/images/uploads/me-eth.jpg",
+  "category": "limpieza",
+  "subcategory": "Prueba 1"
+}
