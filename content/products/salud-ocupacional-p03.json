@@ -1,0 +1,15 @@
+{
+  "name": "Botiquines y Accesorios",
+  "category": "salud-ocupacional",
+  "subcategory": "Accesorios y Botiquines",
+  "brand": "Salud Ocupacional",
+  "image": "/product_images/salud_ocupacional/salud_ocupacional_p03_img02.webp",
+  "altText": "Botiquines y accesorios de primeros auxilios - suministros médicos",
+  "images": [
+    "/product_images/salud_ocupacional/salud_ocupacional_p03_img02.webp",
+    "/product_images/salud_ocupacional/salud_ocupacional_p03_img03.webp",
+    "/product_images/salud_ocupacional/salud_ocupacional_p03_img04.webp",
+    "/product_images/salud_ocupacional/salud_ocupacional_p03_img05.webp"
+  ],
+  "order": 78
+}

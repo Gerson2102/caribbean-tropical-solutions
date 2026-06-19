@@ -1,0 +1,9 @@
+{
+  "name": "Detector Portátil de Rayos",
+  "category": "salud-ocupacional",
+  "subcategory": "Detectores y Alertas",
+  "brand": "IONICS",
+  "image": "/images/detectores/detector2.webp",
+  "altText": "Detector portátil de rayos y tormentas eléctricas",
+  "order": 27
+}

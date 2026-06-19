@@ -1,0 +1,10 @@
+{
+  "name": "DeWalt Kirksville",
+  "category": "salud-ocupacional",
+  "subcategory": "Calzado de Seguridad",
+  "brand": "DeWalt",
+  "image": "/images/zapatos/zapatos1.webp",
+  "altText": "Zapato de seguridad DeWalt Kirksville con puntera de aluminio",
+  "featured": true,
+  "order": 3
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Papel Higiénico y Toallas Profesionales",
+  "category": "limpieza",
+  "subcategory": "Papel y Sanitización",
+  "brand": "Limpieza Profesional",
+  "image": "/product_images/limpieza/limpieza_p04_img01.webp",
+  "altText": "Papel higiénico jumbo roll 400m y 500m, rollos de toalla para manos 240m - Limpieza Profesional",
+  "images": [
+    "/product_images/limpieza/limpieza_p04_img01.webp",
+    "/product_images/limpieza/limpieza_p04_img02.webp",
+    "/product_images/limpieza/limpieza_p04_img03.webp",
+    "/product_images/limpieza/limpieza_p04_img04.webp"
+  ],
+  "order": 43
+}

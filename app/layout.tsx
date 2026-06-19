@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Sora, DM_Sans } from "next/font/google";
 import SmoothScroll from "@/components/layout/SmoothScroll";
+import { EMAIL, WHATSAPP_NUMBER, INSTAGRAM_URL, FACEBOOK_URL } from "@/lib/constants";
 import "./globals.css";
 
 const sora = Sora({
@@ -74,8 +75,8 @@ export default function RootLayout({
               url: "https://www.caribbeantropicalsolutions.com",
               logo: "https://www.caribbeantropicalsolutions.com/images/logo.webp",
               image: "https://www.caribbeantropicalsolutions.com/images/logo.webp",
-              telephone: "+50671035467",
-              email: "ventas@3dcaribbean.com",
+              telephone: `+${WHATSAPP_NUMBER}`,
+              email: EMAIL,
               priceRange: "$$",
               paymentAccepted: "Cash, Credit Card, Bank Transfer",
               hasMap: "https://www.google.com/maps?q=10.2167,-83.6833",
@@ -94,13 +95,10 @@ export default function RootLayout({
                 "@type": "Country",
                 name: "Costa Rica",
               },
-              sameAs: [
-                "https://www.instagram.com/caribbean_troprical_solutions/",
-                "https://www.facebook.com/people/Caribbean-Tropical-Solutions-SA/61561018101440/",
-              ],
+              sameAs: [INSTAGRAM_URL, FACEBOOK_URL],
               contactPoint: {
                 "@type": "ContactPoint",
-                telephone: "+50671035467",
+                telephone: `+${WHATSAPP_NUMBER}`,
                 contactType: "sales",
                 availableLanguage: "Spanish",
               },

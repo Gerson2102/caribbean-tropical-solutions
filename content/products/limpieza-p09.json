@@ -1,0 +1,17 @@
+{
+  "name": "Detergentes y Lavaplatos Irex y Orix",
+  "category": "limpieza",
+  "subcategory": "Detergentes y Jabones",
+  "brand": "Grupo Irex",
+  "image": "/product_images/limpieza/limpieza_p09_img03.webp",
+  "altText": "Jabón Irex Cera Cremosa, crema lavaplatos Orix Limón y Orange, detergente Fort 3 e Irex Evolution",
+  "images": [
+    "/product_images/limpieza/limpieza_p09_img03.webp",
+    "/product_images/limpieza/limpieza_p09_img04.webp",
+    "/product_images/limpieza/limpieza_p09_img05.webp",
+    "/product_images/limpieza/limpieza_p09_img07.webp",
+    "/product_images/limpieza/limpieza_p09_img11.webp",
+    "/product_images/limpieza/limpieza_p09_img12.webp"
+  ],
+  "order": 47
+}

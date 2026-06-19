@@ -1,0 +1,14 @@
+{
+  "name": "Protección Brazos y Manos Pyramex",
+  "category": "salud-ocupacional",
+  "subcategory": "Guantes de Protección",
+  "brand": "Pyramex",
+  "image": "/product_images/salud_ocupacional/salud_ocupacional_p07_img03.webp",
+  "altText": "Guantes Pyramex GL401, GL601, GL610C, GL614 y GL617DP",
+  "images": [
+    "/product_images/salud_ocupacional/salud_ocupacional_p07_img03.webp",
+    "/product_images/salud_ocupacional/salud_ocupacional_p07_img05.webp",
+    "/product_images/salud_ocupacional/salud_ocupacional_p07_img06.webp"
+  ],
+  "order": 82
+}

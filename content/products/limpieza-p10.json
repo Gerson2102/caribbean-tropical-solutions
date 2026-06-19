@@ -1,0 +1,14 @@
+{
+  "name": "Detergente Industrial y Línea Irex Solutions",
+  "category": "limpieza",
+  "subcategory": "Detergentes y Jabones",
+  "brand": "Grupo Irex",
+  "image": "/product_images/limpieza/limpieza_p10_img02.webp",
+  "altText": "Detergente industrial 15kg, suavizante Irex Frescura Primaveral y línea Irex Solutions DOC-15, DM-2, LB-5",
+  "images": [
+    "/product_images/limpieza/limpieza_p10_img02.webp",
+    "/product_images/limpieza/limpieza_p10_img03.webp",
+    "/product_images/limpieza/limpieza_p10_img05.webp"
+  ],
+  "order": 48
+}

@@ -1,0 +1,13 @@
+{
+  "name": "Protección Brazos y Manos DeltaPlus",
+  "category": "salud-ocupacional",
+  "subcategory": "Guantes de Protección",
+  "brand": "DeltaPlus",
+  "image": "/product_images/salud_ocupacional/salud_ocupacional_p06_img04.webp",
+  "altText": "Guantes de protección DeltaPlus - mangas, guantes de soldador, nitrilo y látex",
+  "images": [
+    "/product_images/salud_ocupacional/salud_ocupacional_p06_img04.webp",
+    "/product_images/salud_ocupacional/salud_ocupacional_p06_img06.webp"
+  ],
+  "order": 81
+}

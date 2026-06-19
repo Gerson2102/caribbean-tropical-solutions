@@ -21,8 +21,13 @@ export default function ProductCard({ product }: { product: Product }) {
   const springRotateY = useSpring(rotateY, springConfig);
   const springScale = useSpring(scale, springConfig);
 
-  // Gallery state
-  const images = product.images && product.images.length > 1 ? product.images : [product.image];
+  // Gallery = main image first, then any additional images (deduped). Works for
+  // both legacy data (where `images` already includes the main) and CMS entries
+  // (where "Imágenes adicionales" holds only the extras).
+  const images =
+    product.images && product.images.length > 0
+      ? [product.image, ...product.images.filter((src) => src !== product.image)]
+      : [product.image];
   const hasGallery = images.length > 1;
   const [activeIndex, setActiveIndex] = useState(0);
 

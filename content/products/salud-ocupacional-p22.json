@@ -1,0 +1,14 @@
+{
+  "name": "Protección Facial y Caretas",
+  "category": "salud-ocupacional",
+  "subcategory": "Protección Visual y Facial",
+  "brand": "Salud Ocupacional",
+  "image": "/product_images/salud_ocupacional/salud_ocupacional_p22_img04.webp",
+  "altText": "Caretas y visores de protección facial - malla y policarbonato",
+  "images": [
+    "/product_images/salud_ocupacional/salud_ocupacional_p22_img04.webp",
+    "/product_images/salud_ocupacional/salud_ocupacional_p22_img05.webp",
+    "/product_images/salud_ocupacional/salud_ocupacional_p22_img06.webp"
+  ],
+  "order": 95
+}

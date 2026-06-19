@@ -1,0 +1,14 @@
+{
+  "name": "Guantes Pyramex Piel y Para-amid",
+  "category": "salud-ocupacional",
+  "subcategory": "Guantes de Protección",
+  "brand": "Pyramex",
+  "image": "/product_images/salud_ocupacional/salud_ocupacional_p09_img01.webp",
+  "altText": "Guantes Pyramex de nitrilo, piel de vaqueta y para-amid",
+  "images": [
+    "/product_images/salud_ocupacional/salud_ocupacional_p09_img01.webp",
+    "/product_images/salud_ocupacional/salud_ocupacional_p09_img03.webp",
+    "/product_images/salud_ocupacional/salud_ocupacional_p09_img04.webp"
+  ],
+  "order": 84
+}

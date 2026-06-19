@@ -1,0 +1,15 @@
+{
+  "name": "Zapatos de Cuero Ban Ver y Safety Jogger",
+  "category": "salud-ocupacional",
+  "subcategory": "Calzado de Seguridad",
+  "brand": "Safety Jogger",
+  "image": "/product_images/salud_ocupacional/salud_ocupacional_p16_img02.webp",
+  "altText": "Botas de seguridad Ban Ver M-7 y Safety Jogger de cuero",
+  "images": [
+    "/product_images/salud_ocupacional/salud_ocupacional_p16_img02.webp",
+    "/product_images/salud_ocupacional/salud_ocupacional_p16_img03.webp",
+    "/product_images/salud_ocupacional/salud_ocupacional_p16_img05.webp",
+    "/product_images/salud_ocupacional/salud_ocupacional_p16_img06.webp"
+  ],
+  "order": 90
+}

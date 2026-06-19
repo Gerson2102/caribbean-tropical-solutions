@@ -1,0 +1,9 @@
+{
+  "name": "Máscara de Protección Respiratoria",
+  "category": "salud-ocupacional",
+  "subcategory": "Protección Cabeza, Respiratoria y Auditiva",
+  "brand": "CTS",
+  "image": "/images/seguridad/mascara.webp",
+  "altText": "Máscara de protección respiratoria industrial con filtros",
+  "order": 11
+}

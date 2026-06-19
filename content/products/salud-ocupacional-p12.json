@@ -1,0 +1,13 @@
+{
+  "name": "Protección Cuerpo",
+  "category": "salud-ocupacional",
+  "subcategory": "Ropa de Trabajo",
+  "brand": "Salud Ocupacional",
+  "image": "/product_images/salud_ocupacional/salud_ocupacional_p12_img03.webp",
+  "altText": "Ropa de protección corporal - chaquetas y pantalones de lluvia reflectivos",
+  "images": [
+    "/product_images/salud_ocupacional/salud_ocupacional_p12_img03.webp",
+    "/product_images/salud_ocupacional/salud_ocupacional_p12_img05.webp"
+  ],
+  "order": 86
+}
