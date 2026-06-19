@@ -1,0 +1,14 @@
+{
+  "name": "Cuchillos y Chairas Tramontina",
+  "category": "limpieza",
+  "subcategory": "Suministros y Herramientas",
+  "brand": "Tramontina",
+  "image": "/product_images/limpieza/limpieza_p14_img03.webp",
+  "altText": "Chairas para afilar, cuchillo profesional de deshuesar y machetes Tramontina",
+  "images": [
+    "/product_images/limpieza/limpieza_p14_img03.webp",
+    "/product_images/limpieza/limpieza_p14_img05.webp",
+    "/product_images/limpieza/limpieza_p14_img06.webp"
+  ],
+  "order": 52
+}

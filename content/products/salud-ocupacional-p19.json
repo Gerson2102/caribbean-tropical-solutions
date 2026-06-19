@@ -1,0 +1,15 @@
+{
+  "name": "Calzado Institucional EVACOL",
+  "category": "salud-ocupacional",
+  "subcategory": "Calzado de Seguridad",
+  "brand": "EVACOL",
+  "image": "/product_images/salud_ocupacional/salud_ocupacional_p19_img01.webp",
+  "altText": "Calzado institucional EVACOL - zuecos y zapatos antideslizantes ref. 219, 080 y 114",
+  "images": [
+    "/product_images/salud_ocupacional/salud_ocupacional_p19_img01.webp",
+    "/product_images/salud_ocupacional/salud_ocupacional_p19_img03.webp",
+    "/product_images/salud_ocupacional/salud_ocupacional_p19_img04.webp",
+    "/product_images/salud_ocupacional/salud_ocupacional_p19_img05.webp"
+  ],
+  "order": 92
+}

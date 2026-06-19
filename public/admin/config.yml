@@ -1,0 +1,70 @@
+# Decap CMS configuration — Caribbean Tropical Solutions
+# Free & open-source. Content is saved straight into this GitHub repo (no database).
+
+backend:
+  name: github
+  repo: Gerson2102/caribbean-tropical-solutions
+  branch: main
+
+# Local editing with NO accounts needed: run `npx decap-server` in another
+# terminal, then open http://localhost:3000/admin/  — edits write to your files.
+# Remove or set to false once production GitHub login is wired up.
+local_backend: true
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+locale: es
+
+collections:
+  - name: products
+    label: Productos
+    label_singular: Producto
+    description: "Agregá, editá o eliminá productos del catálogo."
+    folder: content/products
+    create: true
+    delete: true
+    extension: json
+    format: json
+    identifier_field: name
+    slug: "{{slug}}"
+    summary: "{{name}} — {{brand}}"
+    sortable_fields: [name, brand, category]
+    fields:
+      - { name: name, label: Nombre, widget: string }
+      - name: category
+        label: Categoría
+        widget: select
+        options:
+          - { label: "Limpieza y Desinfección", value: limpieza }
+          - { label: "Salud Ocupacional", value: salud-ocupacional }
+          - { label: "Mantenimiento", value: mantenimiento }
+          - { label: "Oficina", value: oficina }
+      - { name: subcategory, label: Subcategoría, widget: string, hint: "Ej.: Calzado de Seguridad, Limpiadores IONICS" }
+      - { name: brand, label: Marca, widget: string }
+      - { name: image, label: Imagen principal, widget: image }
+      - name: images
+        label: Imágenes adicionales
+        widget: list
+        required: false
+        hint: "Fotos extra del producto. Se muestran como galería junto a la imagen principal (no repitas la principal aquí)."
+        field: { name: image, label: Imagen, widget: image }
+      - { name: altText, label: "Texto alternativo (SEO / accesibilidad)", widget: string, hint: "Describí la imagen: marca + tipo de producto" }
+      - { name: price, label: Precio, widget: string, required: false }
+      - { name: featured, label: Producto destacado, widget: boolean, default: false, required: false }
+      - { name: order, label: Orden, widget: hidden, default: 9999 }
+
+  - name: settings
+    label: Configuración del sitio
+    description: "Datos de contacto y redes sociales. Se actualizan en todo el sitio (pie de página, menú, sección de contacto y SEO)."
+    files:
+      - name: contacto
+        label: Contacto y redes sociales
+        file: content/settings.json
+        fields:
+          - { name: email, label: Correo electrónico, widget: string }
+          - { name: phone, label: "Teléfono (como se muestra)", widget: string, hint: "Ej.: 7103-5467" }
+          - { name: whatsappNumber, label: "Número de WhatsApp", widget: string, hint: "Con código de país, solo números. Ej.: 50671035467" }
+          - { name: address, label: Dirección, widget: string }
+          - { name: facebookUrl, label: "Facebook (enlace completo)", widget: string }
+          - { name: instagramUrl, label: "Instagram (enlace completo)", widget: string }

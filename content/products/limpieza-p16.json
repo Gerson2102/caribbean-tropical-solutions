@@ -1,0 +1,17 @@
+{
+  "name": "Línea de Limpieza General Yulcer",
+  "category": "limpieza",
+  "subcategory": "Detergentes y Jabones",
+  "brand": "Yulcer",
+  "image": "/product_images/limpieza/limpieza_p16_img02.webp",
+  "altText": "Productos Yulcer - suavizante para ropa, jabón de manos, abrillantador de superficies, limpiador de vidrios y desinfectante multiuso",
+  "images": [
+    "/product_images/limpieza/limpieza_p16_img02.webp",
+    "/product_images/limpieza/limpieza_p16_img03.webp",
+    "/product_images/limpieza/limpieza_p16_img04.webp",
+    "/product_images/limpieza/limpieza_p16_img06.webp",
+    "/product_images/limpieza/limpieza_p16_img07.webp",
+    "/product_images/limpieza/limpieza_p16_img08.webp"
+  ],
+  "order": 54
+}

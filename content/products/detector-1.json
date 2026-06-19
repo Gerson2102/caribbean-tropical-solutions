@@ -1,0 +1,10 @@
+{
+  "name": "Detector de Tormentas SkyScan",
+  "category": "salud-ocupacional",
+  "subcategory": "Detectores y Alertas",
+  "brand": "IONICS",
+  "image": "/images/detectores/detector1.webp",
+  "altText": "Detector de tormentas y rayos SkyScan Storm Pro con pantalla LCD",
+  "featured": true,
+  "order": 26
+}

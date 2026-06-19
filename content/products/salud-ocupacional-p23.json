@@ -1,0 +1,16 @@
+{
+  "name": "Cascos, Conos y Accesorios",
+  "category": "salud-ocupacional",
+  "subcategory": "Protección Cabeza, Respiratoria y Auditiva",
+  "brand": "Salud Ocupacional",
+  "image": "/product_images/salud_ocupacional/salud_ocupacional_p23_img01.webp",
+  "altText": "Conos viales, cascos de seguridad, fajas lumbares y protectores de espinilla",
+  "images": [
+    "/product_images/salud_ocupacional/salud_ocupacional_p23_img01.webp",
+    "/product_images/salud_ocupacional/salud_ocupacional_p23_img06.webp",
+    "/product_images/salud_ocupacional/salud_ocupacional_p23_img07.webp",
+    "/product_images/salud_ocupacional/salud_ocupacional_p23_img08.webp",
+    "/product_images/salud_ocupacional/salud_ocupacional_p23_img10.webp"
+  ],
+  "order": 96
+}

@@ -1,0 +1,13 @@
+{
+  "name": "Basureros y Bolsas de Basura",
+  "category": "limpieza",
+  "subcategory": "Suministros y Herramientas",
+  "brand": "Suministros de Limpieza",
+  "image": "/product_images/limpieza/limpieza_p08_img06.webp",
+  "altText": "Basurero Trash Box rojo con tapa push y bolsas de basura Bolmax Jumbo 66 galones",
+  "images": [
+    "/product_images/limpieza/limpieza_p08_img06.webp",
+    "/product_images/limpieza/limpieza_p08_img07.webp"
+  ],
+  "order": 46
+}

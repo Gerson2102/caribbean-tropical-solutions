@@ -1,0 +1,13 @@
+{
+  "name": "Kit para Derrames Profesional",
+  "category": "limpieza",
+  "subcategory": "Suministros y Herramientas",
+  "brand": "Suministros de Limpieza",
+  "image": "/product_images/limpieza/limpieza_p15_img01.webp",
+  "altText": "Kit universal para derrames y kit para derrames peligrosos con absorbentes profesionales",
+  "images": [
+    "/product_images/limpieza/limpieza_p15_img01.webp",
+    "/product_images/limpieza/limpieza_p15_img03.webp"
+  ],
+  "order": 53
+}

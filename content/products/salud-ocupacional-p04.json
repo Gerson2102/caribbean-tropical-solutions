@@ -1,0 +1,14 @@
+{
+  "name": "Guantes Descartables",
+  "category": "salud-ocupacional",
+  "subcategory": "Guantes de Protección",
+  "brand": "Salud Ocupacional",
+  "image": "/product_images/salud_ocupacional/salud_ocupacional_p04_img01.webp",
+  "altText": "Guantes descartables de nitrilo libre de polvo",
+  "images": [
+    "/product_images/salud_ocupacional/salud_ocupacional_p04_img01.webp",
+    "/product_images/salud_ocupacional/salud_ocupacional_p04_img02.webp",
+    "/product_images/salud_ocupacional/salud_ocupacional_p04_img03.webp"
+  ],
+  "order": 79
+}

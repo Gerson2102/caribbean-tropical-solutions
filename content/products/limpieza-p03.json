@@ -1,0 +1,13 @@
+{
+  "name": "Papel y Sanitización Kimberly-Clark",
+  "category": "limpieza",
+  "subcategory": "Papel y Sanitización",
+  "brand": "Kimberly-Clark",
+  "image": "/product_images/limpieza/limpieza_p03_img04.webp",
+  "altText": "Servilletas y jabón antibacterial Scott - papel, lavado y sanitización de manos",
+  "images": [
+    "/product_images/limpieza/limpieza_p03_img04.webp",
+    "/product_images/limpieza/limpieza_p03_img10.webp"
+  ],
+  "order": 42
+}

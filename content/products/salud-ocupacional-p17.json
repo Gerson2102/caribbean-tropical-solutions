@@ -1,0 +1,14 @@
+{
+  "name": "Calzado Safety Jogger",
+  "category": "salud-ocupacional",
+  "subcategory": "Calzado de Seguridad",
+  "brand": "Safety Jogger",
+  "image": "/product_images/salud_ocupacional/salud_ocupacional_p17_img02.webp",
+  "altText": "Calzado de seguridad Safety Jogger Dakar EH, Climber S3 y Bestboy2 S3",
+  "images": [
+    "/product_images/salud_ocupacional/salud_ocupacional_p17_img02.webp",
+    "/product_images/salud_ocupacional/salud_ocupacional_p17_img03.webp",
+    "/product_images/salud_ocupacional/salud_ocupacional_p17_img04.webp"
+  ],
+  "order": 91
+}

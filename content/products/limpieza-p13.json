@@ -1,0 +1,14 @@
+{
+  "name": "Aerosoles Especializados IONICS",
+  "category": "limpieza",
+  "subcategory": "Aerosoles y Lubricantes",
+  "brand": "IONICS",
+  "image": "/product_images/limpieza/limpieza_p13_img02.webp",
+  "altText": "Aerosoles IONICS Film Brite silicón multiuso, Duster aire comprimido y Electro Ionics desplazador de humedad",
+  "images": [
+    "/product_images/limpieza/limpieza_p13_img02.webp",
+    "/product_images/limpieza/limpieza_p13_img03.webp",
+    "/product_images/limpieza/limpieza_p13_img05.webp"
+  ],
+  "order": 51
+}

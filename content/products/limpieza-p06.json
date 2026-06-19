@@ -1,0 +1,13 @@
+{
+  "name": "Accesorios de Limpieza Profesional",
+  "category": "limpieza",
+  "subcategory": "Suministros y Herramientas",
+  "brand": "Suministros de Limpieza",
+  "image": "/product_images/limpieza/limpieza_p06_img06.webp",
+  "altText": "Cepillo de baño con base y señal de precaución piso mojado",
+  "images": [
+    "/product_images/limpieza/limpieza_p06_img06.webp",
+    "/product_images/limpieza/limpieza_p06_img09.webp"
+  ],
+  "order": 45
+}

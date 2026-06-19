@@ -1,0 +1,14 @@
+{
+  "name": "Aerosoles Industriales IONICS",
+  "category": "limpieza",
+  "subcategory": "Aerosoles y Lubricantes",
+  "brand": "IONICS",
+  "image": "/product_images/limpieza/limpieza_p12_img03.webp",
+  "altText": "Aerosoles IONICS Fast Degreaser heavy duty, Let Out penetrante y lubricante, y LF Oil aceite grado alimenticio",
+  "images": [
+    "/product_images/limpieza/limpieza_p12_img03.webp",
+    "/product_images/limpieza/limpieza_p12_img05.webp",
+    "/product_images/limpieza/limpieza_p12_img06.webp"
+  ],
+  "order": 50
+}

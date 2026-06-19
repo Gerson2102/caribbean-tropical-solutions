@@ -1,0 +1,17 @@
+{
+  "name": "Lentes de Seguridad Pyramex",
+  "category": "salud-ocupacional",
+  "subcategory": "Protección Visual y Facial",
+  "brand": "Pyramex",
+  "image": "/product_images/salud_ocupacional/salud_ocupacional_p20_img01.webp",
+  "altText": "Lentes y gafas de seguridad Pyramex - goggles y protección ocular",
+  "images": [
+    "/product_images/salud_ocupacional/salud_ocupacional_p20_img01.webp",
+    "/product_images/salud_ocupacional/salud_ocupacional_p20_img02.webp",
+    "/product_images/salud_ocupacional/salud_ocupacional_p20_img03.webp",
+    "/product_images/salud_ocupacional/salud_ocupacional_p20_img04.webp",
+    "/product_images/salud_ocupacional/salud_ocupacional_p20_img05.webp",
+    "/product_images/salud_ocupacional/salud_ocupacional_p20_img07.webp"
+  ],
+  "order": 93
+}

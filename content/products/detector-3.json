@@ -1,0 +1,9 @@
+{
+  "name": "Detector de Tormentas Pro",
+  "category": "salud-ocupacional",
+  "subcategory": "Detectores y Alertas",
+  "brand": "IONICS",
+  "image": "/images/detectores/detector3.webp",
+  "altText": "Detector profesional de tormentas con alerta temprana",
+  "order": 28
+}
