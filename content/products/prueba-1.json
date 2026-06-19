@@ -5,9 +5,9 @@
   "order": 9999,
   "altText": "Prueba 1",
   "images": [
-    "/images/uploads/eth-event-sponsors.jpg"
+    "/images/uploads/eth-event-sponsors.webp"
   ],
-  "image": "/images/uploads/me-eth.jpg",
+  "image": "/images/uploads/me-eth.webp",
   "category": "limpieza",
   "subcategory": "Prueba 1"
 }
