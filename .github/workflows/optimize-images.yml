@@ -1,0 +1,43 @@
+name: Optimize uploaded images
+
+# When a client uploads an image through the CMS, Decap commits it to main.
+# This converts it to resized WebP, rewrites the references, and commits back.
+# The commit uses GITHUB_TOKEN, which does NOT re-trigger this workflow (no loop),
+# but Vercel still redeploys the optimized result.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "public/images/uploads/**"
+
+permissions:
+  contents: write
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: node scripts/optimize-uploads.mjs
+
+      - name: Commit optimized images
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "chore: optimize uploaded images to webp"
+            git push
+          else
+            echo "Nothing to optimize."
+          fi
