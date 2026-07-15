@@ -73,7 +73,7 @@ export default function WhyCaribbean() {
         <div className="mb-14 text-center">
           <SectionLabel>Nuestra Propuesta</SectionLabel>
           <ScrollTextReveal className="text-section mt-4 font-display font-extrabold text-offwhite">
-            ¿Por Qué Caribbean?
+            ¿Por Qué Comprar en Caribbean Tropical?
           </ScrollTextReveal>
         </div>
 
