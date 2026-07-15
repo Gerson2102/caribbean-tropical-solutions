@@ -18,9 +18,12 @@ function Word({
   progress: MotionValue<number>;
 }) {
   const opacity = useTransform(progress, range, [0.15, 1]);
+  // Trailing space inside the span is invisible (trimmed by whitespace
+  // collapsing — the gap comes from mr) but keeps the extracted text real
+  // words: without it, Google and screen readers see "NuestrasLíneas".
   return (
     <motion.span style={{ opacity }} className="inline-block mr-[0.25em]">
-      {word}
+      {word}{" "}
     </motion.span>
   );
 }

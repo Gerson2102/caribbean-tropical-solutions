@@ -40,7 +40,7 @@ export default function BrandMarquee() {
   return (
     <section id="marcas" className="relative overflow-hidden bg-deep-green py-14 border-t border-b border-offwhite/5">
       <div className="mb-8 text-center">
-        <SectionLabel>Nuestras Marcas</SectionLabel>
+        <SectionLabel as="h2">Marcas que Distribuimos</SectionLabel>
       </div>
 
       <div

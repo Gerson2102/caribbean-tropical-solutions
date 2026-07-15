@@ -40,7 +40,7 @@ export default function ProductCategories() {
         <div className="mb-12 text-center lg:mb-16">
           <SectionLabel>Lo Que Distribuimos</SectionLabel>
           <ScrollTextReveal className="text-section mt-4 font-display font-extrabold text-charcoal-deep">
-            Nuestras Líneas
+            Nuestras Líneas: Limpieza, EPP y Ferretería
           </ScrollTextReveal>
           <p className="mx-auto mt-4 max-w-2xl text-charcoal-light">
             Cuatro líneas de productos para cubrir las necesidades de tu empresa:
