@@ -3,9 +3,13 @@
 import { motion } from "framer-motion";
 import { CartIcon } from "@/components/ui/Icons";
 import { openDrawer, useQuoteCount } from "@/lib/quote-store";
+import { PRODUCTS } from "@/lib/constants";
 
 export default function QuoteCartButton({ className = "" }: { className?: string }) {
   const count = useQuoteCount();
+
+  // Sin catálogo no hay nada que cotizar; reaparece solo al volver los productos.
+  if (PRODUCTS.length === 0) return null;
   const label =
     count > 0
       ? `Ver cotización (${count} ${count === 1 ? "producto" : "productos"})`

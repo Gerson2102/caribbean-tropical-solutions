@@ -2,7 +2,6 @@
 // Caribbean Tropical Solutions S.A. — Central Data & Constants
 // ============================================================
 
-import productsData from "./products.generated.json";
 // Site-wide contact & social info — editable from the CMS ("Configuración del sitio").
 import siteSettings from "../content/settings.json";
 
@@ -15,19 +14,6 @@ export const PHONE = siteSettings.phone;
 export const ADDRESS = siteSettings.address;
 export const INSTAGRAM_URL = siteSettings.instagramUrl;
 export const FACEBOOK_URL = siteSettings.facebookUrl;
-
-// === FOUNDER ===
-export const FOUNDER = {
-  name: "Kendall Ramírez Leitón",
-  role: "Cofundador · Asesor en Contratación Pública",
-  image: "/images/team/kendall-ramirez.webp",
-  altText: "Kendall Ramírez Leitón, cofundador de Caribbean Tropical Solutions",
-  bio: [
-    "Soy cofundador de una empresa con capital 100% del Caribe, comprometida con el desarrollo empresarial y la generación de valor sostenible. Me especializo en materia de contratación pública, desempeñándome como asesor y consultor en procesos relacionados con la gestión, análisis y participación en el ámbito de las compras públicas.",
-    "Como joven comerciante con visión empresarial, promuevo una gestión basada en principios de gobernanza, sostenibilidad y transparencia, donde los valores y la ética empresarial constituyen la base para el crecimiento responsable y la construcción de relaciones de confianza con el sector público y privado.",
-    "Mi enfoque profesional se orienta a impulsar proyectos y oportunidades que contribuyan al desarrollo económico, fortaleciendo prácticas empresariales sólidas, responsables y alineadas con los más altos estándares de integridad.",
-  ],
-} as const;
 
 // === NAVIGATION ===
 export const NAV_LINKS = [
@@ -134,7 +120,9 @@ export interface Product {
   order?: number;
 }
 
-export const PRODUCTS: Product[] = productsData as Product[];
+// Catálogo vaciado a petición del cliente — pendiente el nuevo set de productos.
+// products.generated.json se conserva en disco; para restaurar, reimportarlo aquí.
+export const PRODUCTS: Product[] = [];
 
 // === SUBCATEGORY HELPERS ===
 export function groupProductsBySubcategory(

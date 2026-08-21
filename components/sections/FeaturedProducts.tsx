@@ -54,14 +54,16 @@ export default function FeaturedProducts() {
             <ScrollTextReveal className="text-section mt-4 font-display font-extrabold text-offwhite">
               Productos Destacados
             </ScrollTextReveal>
-            <p className="mx-auto mt-4 max-w-2xl text-offwhite/70">
-              Explorá nuestra selección completa. Agregá los productos que te
-              interesen a tu cotización y te pasamos los precios por WhatsApp.
-            </p>
+            {!isEmpty && (
+              <p className="mx-auto mt-4 max-w-2xl text-offwhite/70">
+                Explorá nuestra selección completa. Agregá los productos que te
+                interesen a tu cotización y te pasamos los precios por WhatsApp.
+              </p>
+            )}
           </div>
 
           {/* Filter Tabs */}
-          <div className="fp-header mb-10 flex justify-center">
+          <div className={`fp-header mb-10 flex justify-center ${isEmpty ? "hidden" : ""}`}>
             <div className="flex flex-wrap justify-center gap-2 rounded-2xl bg-deep-green-light p-2">
               {FILTER_TABS.map((tab) => (
                 <button
@@ -111,8 +113,9 @@ export default function FeaturedProducts() {
                   Catálogo en preparación
                 </h3>
                 <p className="mx-auto mt-2 max-w-md text-sm text-offwhite/60">
-                  Estamos curando la selección de productos para esta línea.
-                  Contactanos por WhatsApp si necesitás algo específico.
+                  {PRODUCTS.length === 0
+                    ? "Estamos renovando nuestro catálogo con nuevos productos. Contactanos por WhatsApp y con gusto te cotizamos lo que necesités."
+                    : "Estamos curando la selección de productos para esta línea. Contactanos por WhatsApp si necesitás algo específico."}
                 </p>
               </div>
             ) : (
