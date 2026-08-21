@@ -32,7 +32,7 @@ export default function CategoryCard({ category }: CategoryCardProps) {
     <motion.a
       ref={cardRef}
       href="#catalogo"
-      className="group relative flex h-full min-h-[360px] md:min-h-[420px] flex-col overflow-hidden rounded-2xl"
+      className="group relative flex h-full flex-col overflow-hidden rounded-2xl"
       style={{ boxShadow: "var(--shadow-card)" }}
       initial="rest"
       whileHover="hover"
@@ -41,8 +41,8 @@ export default function CategoryCard({ category }: CategoryCardProps) {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Image Area — top ~65% */}
-      <div className="relative flex-1 overflow-hidden">
+      {/* Image Area — fixed 4:3 so the full photo shows without cropping */}
+      <div className="relative aspect-[4/3] w-full overflow-hidden">
         {isComingSoon ? (
           <div
             className="absolute inset-0 flex items-center justify-center"
@@ -87,8 +87,8 @@ export default function CategoryCard({ category }: CategoryCardProps) {
         )}
       </div>
 
-      {/* Glassmorphism Dark Panel — bottom ~35% */}
-      <div className="relative z-10 border-t border-white/[0.07] backdrop-blur-md bg-deep-green/80 px-6 py-4 md:px-7 md:py-5">
+      {/* Glassmorphism Dark Panel — absorbs the remaining height */}
+      <div className="relative z-10 flex flex-1 flex-col border-t border-white/[0.07] backdrop-blur-md bg-deep-green/80 px-6 py-4 md:px-7 md:py-5">
         <h3 className="font-display text-lg font-bold text-white md:text-xl leading-tight">
           {category.name}
         </h3>

@@ -73,16 +73,14 @@ export const CATEGORIES: Category[] = [
     name: "Mantenimiento",
     subtitle: "Herramientas, lubricantes y suministros para el mantenimiento industrial",
     image: "/images/categories/mantenimiento.webp",
-    altText: "Productos y herramientas para mantenimiento industrial",
-    comingSoon: true,
+    altText: "Herramientas manuales para mantenimiento industrial sobre superficie de madera",
   },
   {
     slug: "oficina",
     name: "Oficina",
     subtitle: "Suministros y artículos de oficina",
     image: "/images/categories/oficina.webp",
-    altText: "Suministros y artículos de oficina",
-    comingSoon: true,
+    altText: "Bloc de notas, lápices, tijeras y sobre — suministros y artículos de oficina",
   },
 ];
 
