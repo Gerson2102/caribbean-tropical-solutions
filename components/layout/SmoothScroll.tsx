@@ -5,6 +5,7 @@ import Lenis from "lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "@/lib/animations"; // centralizes gsap.registerPlugin(ScrollTrigger)
+import { registerLenis } from "@/lib/smooth-scroll";
 
 export default function SmoothScroll() {
   useEffect(() => {
@@ -18,6 +19,8 @@ export default function SmoothScroll() {
       duration: 1.2,
     });
 
+    registerLenis(lenis);
+
     // Sync Lenis scroll position with GSAP ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);
 
@@ -30,6 +33,7 @@ export default function SmoothScroll() {
 
     return () => {
       gsap.ticker.remove(tickerCallback);
+      registerLenis(null);
       lenis.destroy();
     };
   }, []);

@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { NAV_LINKS, WHATSAPP_URL_WITH_MESSAGE } from "@/lib/constants";
 import { WhatsAppIcon, MenuIcon, XIcon } from "@/components/ui/Icons";
 import QuoteCartButton from "@/components/ui/QuoteCartButton";
+import { scrollToSection } from "@/lib/smooth-scroll";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -89,10 +90,7 @@ export default function Navbar() {
 
   function handleNavClick(href: string) {
     setMenuOpen(false);
-    const el = document.querySelector(href);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
+    scrollToSection(href);
   }
 
   return (

@@ -17,6 +17,7 @@ import {
 } from "@/lib/quote-store";
 import { CartIcon, TrashIcon, WhatsAppIcon, XIcon } from "@/components/ui/Icons";
 import QuantityStepper from "@/components/ui/QuantityStepper";
+import { scrollToSection } from "@/lib/smooth-scroll";
 
 const PRODUCT_BY_ID = new Map(PRODUCTS.map((p) => [p.id, p]));
 const ERROR_COLOR = "#ff8a80"; // semantic danger, readable on deep-green
@@ -121,7 +122,7 @@ export default function QuoteDrawer() {
 
   const goToCatalog = useCallback(() => {
     closeDrawer();
-    document.getElementById("catalogo")?.scrollIntoView({ behavior: "smooth" });
+    scrollToSection("catalogo");
   }, []);
 
   const handleClear = useCallback(() => {

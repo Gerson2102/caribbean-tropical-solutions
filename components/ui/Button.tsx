@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { type ReactNode } from "react";
+import { handleSectionLinkClick } from "@/lib/smooth-scroll";
 
 interface ButtonProps {
   variant?: "primary" | "outline";
@@ -45,6 +46,9 @@ export default function Button({
         href={href}
         target={href.startsWith("http") ? "_blank" : undefined}
         rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+        onClick={(e) => {
+          if (href.startsWith("#")) handleSectionLinkClick(e, href);
+        }}
         className={combinedClasses}
         {...motionProps}
       >

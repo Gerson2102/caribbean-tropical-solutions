@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { type Category } from "@/lib/constants";
 import { imageZoomEnhanced } from "@/lib/animations";
+import { handleSectionLinkClick } from "@/lib/smooth-scroll";
 import { NotebookIcon } from "@/components/ui/Icons";
 
 interface CategoryCardProps {
@@ -28,10 +29,16 @@ export default function CategoryCard({ category }: CategoryCardProps) {
     setArrowOffset({ x: 0, y: 0 });
   }, []);
 
+  const handleClick = useCallback(
+    (e: React.MouseEvent) => handleSectionLinkClick(e, "#catalogo"),
+    []
+  );
+
   return (
     <motion.a
       ref={cardRef}
       href="#catalogo"
+      onClick={handleClick}
       className="group relative flex h-full flex-col overflow-hidden rounded-2xl"
       style={{ boxShadow: "var(--shadow-card)" }}
       initial="rest"
