@@ -2,6 +2,7 @@
 // Caribbean Tropical Solutions S.A. — Central Data & Constants
 // ============================================================
 
+import productsData from "./products.generated.json";
 // Site-wide contact & social info — editable from the CMS ("Configuración del sitio").
 import siteSettings from "../content/settings.json";
 
@@ -118,9 +119,7 @@ export interface Product {
   order?: number;
 }
 
-// Catálogo vaciado a petición del cliente — pendiente el nuevo set de productos.
-// products.generated.json se conserva en disco; para restaurar, reimportarlo aquí.
-export const PRODUCTS: Product[] = [];
+export const PRODUCTS: Product[] = productsData as Product[];
 
 // === SUBCATEGORY HELPERS ===
 export function groupProductsBySubcategory(
