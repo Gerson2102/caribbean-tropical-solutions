@@ -15,9 +15,9 @@ const nextConfig: NextConfig = {
     deviceSizes: [640, 768, 1024, 1280, 1536],
     imageSizes: [90, 120, 180, 220, 260],
     minimumCacheTTL: 31536000,
-    // Allow "Insertar desde URL" in the CMS: optimize images from any https host.
-    // Safe here because only CMS editors (with repo access) set these URLs.
-    remotePatterns: [{ protocol: "https", hostname: "**" }],
+    // No remotePatterns: every image is a local file (CMS uploads are committed to
+    // public/images/uploads). /_next/image is public, so allowing remote hosts
+    // would let anyone use this site as an image proxy on its quota.
   },
   async rewrites() {
     // Serve the Decap CMS admin panel at /admin

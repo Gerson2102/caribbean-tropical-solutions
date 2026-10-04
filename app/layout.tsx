@@ -108,7 +108,8 @@ export default function RootLayout({
                 "Fumigación y Control",
                 "Ferretería Especializada",
               ],
-            }),
+              // Some values come from the CMS: escape "<" so none can close the <script> tag.
+            }).replace(/</g, "\\u003c"),
           }}
         />
         <noscript>

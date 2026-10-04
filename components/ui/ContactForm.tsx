@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { WHATSAPP_URL } from "@/lib/constants";
 import Button from "@/components/ui/Button";
 
@@ -9,18 +9,23 @@ export default function ContactForm() {
   const empresaRef = useRef<HTMLInputElement>(null);
   const telefonoRef = useRef<HTMLInputElement>(null);
   const mensajeRef = useRef<HTMLTextAreaElement>(null);
-  const [submitting, setSubmitting] = useState(false);
 
   function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmitting(true);
     const nombre = nombreRef.current?.value || "";
     const empresa = empresaRef.current?.value || "";
     const telefono = telefonoRef.current?.value || "";
     const mensaje = mensajeRef.current?.value || "";
     const msg = `Hola, soy ${nombre}${empresa ? ` de ${empresa}` : ""}. ${mensaje}${telefono ? ` Mi teléfono: ${telefono}` : ""}`;
-    window.open(`${WHATSAPP_URL}?text=${encodeURIComponent(msg)}`, "_blank");
-    setSubmitting(false);
+    // Trigger an anchor click rather than window.open() — far more reliable on
+    // mobile WhatsApp / Safari, which often block scripted window.open().
+    const link = document.createElement("a");
+    link.href = `${WHATSAPP_URL}?text=${encodeURIComponent(msg)}`;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
   }
 
   const inputClass =
@@ -88,7 +93,7 @@ export default function ContactForm() {
         />
       </div>
       <Button variant="primary" type="submit" className="w-full">
-        {submitting ? "Abriendo WhatsApp..." : "Enviar por WhatsApp"}
+        Enviar por WhatsApp
       </Button>
     </form>
   );

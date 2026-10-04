@@ -45,13 +45,14 @@ collections:
           - { label: "Oficina", value: oficina }
       - { name: subcategory, label: Subcategoría, widget: string, hint: "Ej.: Calzado de Seguridad, Limpiadores IONICS" }
       - { name: brand, label: Marca, widget: string }
-      - { name: image, label: Imagen principal, widget: image }
+      # choose_url: false — images must be uploaded; the site only serves local images.
+      - { name: image, label: Imagen principal, widget: image, choose_url: false }
       - name: images
         label: Imágenes adicionales
         widget: list
         required: false
         hint: "Fotos extra del producto. Se muestran como galería junto a la imagen principal (no repitas la principal aquí)."
-        field: { name: image, label: Imagen, widget: image }
+        field: { name: image, label: Imagen, widget: image, choose_url: false }
       - { name: altText, label: "Texto alternativo (SEO / accesibilidad)", widget: string, hint: "Describí la imagen: marca + tipo de producto" }
       - { name: price, label: Precio, widget: string, required: false }
       - { name: featured, label: Producto destacado, widget: boolean, default: false, required: false }
