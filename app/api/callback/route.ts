@@ -32,16 +32,26 @@ export async function GET(req: NextRequest) {
     ? `authorization:github:success:${JSON.stringify({ token, provider: "github" })}`
     : `authorization:github:error:${JSON.stringify({ message: data.error_description || "No se pudo obtener el token" })}`;
 
-  // JSON.stringify(message) embeds it as a safely-escaped JS string literal.
+  // The admin (/admin) and this popup share the site's origin, so the token is
+  // only ever sent to that origin: never broadcast with "*", and never to
+  // whichever window happens to answer first.
+  const proto = req.headers.get("x-forwarded-proto") ?? "https";
+  const origin = `${proto}://${req.headers.get("host")}`;
+
+  // JSON.stringify embeds each value as a JS string literal; escaping "<" keeps
+  // a value from closing the <script> tag.
+  const js = (value: string) => JSON.stringify(value).replace(/</g, "\\u003c");
   const html = `<!doctype html>
 <html><body><script>
   (function () {
+    var ORIGIN = ${js(origin)};
     function receive(e) {
-      window.opener.postMessage(${JSON.stringify(message)}, e.origin);
+      if (e.origin !== ORIGIN || e.source !== window.opener) return;
+      window.opener.postMessage(${js(message)}, ORIGIN);
       window.removeEventListener("message", receive, false);
     }
     window.addEventListener("message", receive, false);
-    window.opener.postMessage("authorizing:github", "*");
+    window.opener.postMessage("authorizing:github", ORIGIN);
   })();
 </script></body></html>`;
 
