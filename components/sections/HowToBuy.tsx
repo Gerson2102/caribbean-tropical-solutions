@@ -1,8 +1,10 @@
 "use client";
 
-import { useRef, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import { motion, useInView } from "framer-motion";
+import { gsap } from "gsap";
 import { WHATSAPP_URL_WITH_MESSAGE } from "@/lib/constants";
+import { prefersReducedMotion } from "@/lib/animations";
 import SectionLabel from "@/components/ui/SectionLabel";
 import ScrollTextReveal from "@/components/ui/ScrollTextReveal";
 import Button from "@/components/ui/Button";
@@ -85,9 +87,92 @@ const lineDraw = {
   },
 };
 
+// Walk loop timing, in seconds.
+const STEP_DWELL = 0.4; // a lit step holds this long before the line travels on
+const END_HOLD = 1.2; // the finished walk holds this long before it resets
+const ENTRANCE = 1.6; // the entrance above finishes before the first pass
+
+// Overlay the walk loop lights on a step's tile; invisible until the loop runs.
+function TileHighlight({ step }: { step: Step }) {
+  return (
+    <>
+      <span
+        aria-hidden="true"
+        className={`loop-ring pointer-events-none absolute inset-0 rounded-xl border-2 opacity-0 ${
+          step.accent ? "border-accent" : "border-primary"
+        }`}
+      />
+      <span
+        aria-hidden="true"
+        className={`loop-fill absolute inset-0 flex items-center justify-center rounded-xl opacity-0 ${
+          step.accent
+            ? "bg-accent text-charcoal-deep shadow-[var(--shadow-cta)]"
+            : "bg-primary text-offwhite shadow-[var(--shadow-card-hover)]"
+        }`}
+      >
+        {step.icon}
+      </span>
+    </>
+  );
+}
+
 export default function HowToBuy() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
+
+  // Walk loop: each step's tile lights up as the connector draws in from the
+  // previous one; after the last step everything clears and the walk repeats.
+  // Only the overlays move, so the steps read the same with or without it.
+  useEffect(() => {
+    const root = sectionRef.current;
+    if (!root || prefersReducedMotion()) return;
+
+    let walk: gsap.core.Timeline | null = null;
+    const ctx = gsap.context(() => {
+      // fromTo everywhere: explicit start values keep every repeat identical.
+      const tl = gsap.timeline({ paused: true, repeat: -1, defaults: { ease: "expo.out", immediateRender: false } });
+      STEPS.forEach((_, i) => {
+        const step = `[data-step="${i}"]`;
+        if (i > 0) {
+          const prev = `[data-step="${i - 1}"]`;
+          // opacity sits in both halves: a from-only value is set once and lost after the first repeat.
+          tl.fromTo(`${prev} .loop-link-x`, { scaleX: 0, opacity: 1 }, { scaleX: 1, opacity: 1, duration: 0.6, ease: "power2.inOut" }, `+=${STEP_DWELL}`)
+            .fromTo(`${prev} .loop-link-y`, { scaleY: 0, opacity: 1 }, { scaleY: 1, opacity: 1, duration: 0.6, ease: "power2.inOut" }, "<")
+            .fromTo(`${prev} .loop-num`, { opacity: 0.25 }, { opacity: 0.08, duration: 0.5, ease: "power2.out" }, "<");
+        }
+        tl.fromTo(`${step} .loop-fill`, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.6 }, i > 0 ? "-=0.15" : 0)
+          .fromTo(`${step} .loop-ring`, { opacity: 0.6, scale: 1 }, { opacity: 0, scale: 1.7, duration: 0.9, ease: "power2.out" }, "<")
+          .fromTo(`${step} .loop-num`, { opacity: 0.08 }, { opacity: 0.25, duration: 0.6 }, "<");
+      });
+      tl.to(".loop-fill", { opacity: 0, scale: 0.6, duration: 0.5, ease: "power2.inOut" }, `+=${END_HOLD}`)
+        .to(".loop-link-x, .loop-link-y", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, "<")
+        .to(`[data-step="${STEPS.length - 1}"] .loop-num`, { opacity: 0.08, duration: 0.5, ease: "power2.inOut" }, "<")
+        .to({}, { duration: 0.3 }); // a breath before step one relights
+      walk = tl;
+    }, root);
+
+    // Runs only while the steps are on screen; the first pass waits for the entrance.
+    let visible = false;
+    const firstPass = gsap.delayedCall(ENTRANCE, () => {
+      if (visible) walk?.play();
+    }).pause();
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        visible = entry.isIntersecting;
+        if (!visible) walk?.pause();
+        else if (firstPass.progress() < 1) firstPass.play();
+        else walk?.play();
+      },
+      { threshold: 0.3 }
+    );
+    io.observe(root);
+
+    return () => {
+      io.disconnect();
+      firstPass.kill();
+      ctx.revert();
+    };
+  }, []);
 
   return (
     <section
@@ -117,6 +202,7 @@ export default function HowToBuy() {
             {STEPS.map((step, i) => (
               <motion.li
                 key={step.number}
+                data-step={i}
                 className="relative flex flex-col items-center text-center px-6"
                 variants={itemVariants}
               >
@@ -140,9 +226,17 @@ export default function HowToBuy() {
                   </svg>
                 )}
 
+                {/* Walk-loop progress over the connector */}
+                {i < STEPS.length - 1 && (
+                  <span
+                    aria-hidden="true"
+                    className="loop-link-x absolute top-7 left-[calc(50%+28px)] h-[2px] w-[calc(100%-56px)] origin-left rounded-full bg-primary opacity-0"
+                  />
+                )}
+
                 {/* Step number watermark */}
                 <span
-                  className="absolute -top-2 right-4 font-display text-7xl font-black text-primary/[0.08] select-none pointer-events-none"
+                  className="loop-num absolute -top-2 right-4 font-display text-7xl font-black text-primary opacity-[0.08] select-none pointer-events-none"
                   aria-hidden="true"
                 >
                   {step.number}
@@ -158,6 +252,7 @@ export default function HowToBuy() {
                   variants={iconPulse}
                 >
                   {step.icon}
+                  <TileHighlight step={step} />
                 </motion.div>
 
                 {/* Text */}
@@ -195,12 +290,21 @@ export default function HowToBuy() {
             </svg>
 
             <ol className="flex flex-col gap-5 list-none">
-              {STEPS.map((step) => (
+              {STEPS.map((step, i) => (
                 <motion.li
                   key={step.number}
+                  data-step={i}
                   className="relative flex items-start gap-4 pl-0"
                   variants={itemVariants}
                 >
+                  {/* Walk-loop progress down to the next step's icon */}
+                  {i < STEPS.length - 1 && (
+                    <span
+                      aria-hidden="true"
+                      className="loop-link-y absolute left-[22px] top-11 -bottom-5 w-[2px] origin-top rounded-full bg-primary opacity-0"
+                    />
+                  )}
+
                   {/* Icon circle (overlapping the timeline) */}
                   <motion.div
                     className={`relative z-10 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${
@@ -211,6 +315,7 @@ export default function HowToBuy() {
                     variants={iconPulse}
                   >
                     {step.icon}
+                    <TileHighlight step={step} />
                   </motion.div>
 
                   {/* Text */}
