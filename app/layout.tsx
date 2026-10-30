@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Sora, DM_Sans } from "next/font/google";
 import SmoothScroll from "@/components/layout/SmoothScroll";
-import { EMAIL, WHATSAPP_NUMBER, INSTAGRAM_URL, FACEBOOK_URL, CATEGORIES } from "@/lib/constants";
+import { EMAIL, WHATSAPP_NUMBER, INSTAGRAM_URL, FACEBOOK_URL, CATEGORIES, BUSINESS_SENTENCE } from "@/lib/constants";
 import "./globals.css";
 
 const sora = Sora({
@@ -18,9 +18,11 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.caribbeantropicalsolutions.com"),
-  title: "EPP, Limpieza y Ferretería en Limón | Caribbean Tropical",
-  description:
-    "Distribuidora en Guácimo, Limón. Productos de limpieza, EPP, ferretería y desinfección de DeWalt, IONICS, EVACOL y más. Cotizá por WhatsApp.",
+  title: {
+    default: "EPP, Limpieza y Ferretería en Limón | Caribbean Tropical",
+    template: "%s | Caribbean Tropical",
+  },
+  description: `${BUSINESS_SENTENCE} Cotizá por WhatsApp.`,
   alternates: {
     canonical: "/",
   },
@@ -36,8 +38,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Caribbean Tropical Solutions S.A.",
-    description:
-      "Distribuidora de productos industriales, limpieza, EPP y ferretería en el Caribe de Costa Rica.",
+    description: BUSINESS_SENTENCE,
     locale: "es_CR",
     type: "website",
     siteName: "Caribbean Tropical Solutions S.A.",
@@ -46,8 +47,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Caribbean Tropical Solutions S.A.",
-    description:
-      "Distribuidora de productos industriales, limpieza, EPP y ferretería en el Caribe de Costa Rica.",
+    description: BUSINESS_SENTENCE,
   },
 };
 
@@ -71,8 +71,7 @@ export default function RootLayout({
               "@type": "Store",
               name: "Caribbean Tropical Solutions S.A.",
               alternateName: "Caribbean Tropical Solutions",
-              description:
-                "Distribuidora en San Luis de Guácimo, Limón, de productos de limpieza y desinfección, equipo de protección personal (EPP), salud ocupacional, mantenimiento, ferretería y oficina. Envíos a todo Costa Rica.",
+              description: `${BUSINESS_SENTENCE} Envíos a todo Costa Rica y retiro en el local.`,
               url: "https://www.caribbeantropicalsolutions.com",
               logo: "https://www.caribbeantropicalsolutions.com/images/logo.webp",
               image: "https://www.caribbeantropicalsolutions.com/images/logo.webp",
@@ -80,6 +79,13 @@ export default function RootLayout({
               email: EMAIL,
               priceRange: "$$",
               paymentAccepted: "Cash, Credit Card, Bank Transfer",
+              // Matches OPENING_HOURS in lib/constants.ts.
+              openingHoursSpecification: {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                opens: "08:00",
+                closes: "17:00",
+              },
               hasMap: "https://www.google.com/maps?q=10.2167,-83.6833",
               address: {
                 "@type": "PostalAddress",

@@ -1,7 +1,7 @@
 "use client";
 
 import { useId, useState, type ReactNode } from "react";
-import { FAQS, WHATSAPP_URL, WHATSAPP_URL_WITH_MESSAGE } from "@/lib/constants";
+import { FAQS, WHATSAPP_URL, WHATSAPP_URL_WITH_MESSAGE, type Faq } from "@/lib/constants";
 import ScrollTextReveal from "@/components/ui/ScrollTextReveal";
 import Button from "@/components/ui/Button";
 import { ChevronDownIcon, WhatsAppIcon } from "@/components/ui/Icons";
@@ -69,7 +69,13 @@ function AskCta() {
   );
 }
 
-export default function FAQ() {
+export default function FAQ({
+  faqs = FAQS,
+  intro = "Lo que más nos consultan antes de cotizar: envíos, precios, productos y marcas.",
+}: {
+  faqs?: Faq[];
+  intro?: string;
+}) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const id = useId();
 
@@ -81,7 +87,7 @@ export default function FAQ() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            mainEntity: FAQS.map(({ question, answer }) => ({
+            mainEntity: faqs.map(({ question, answer }) => ({
               "@type": "Question",
               name: question,
               acceptedAnswer: { "@type": "Answer", text: answer },
@@ -97,9 +103,7 @@ export default function FAQ() {
           <ScrollTextReveal className="text-section font-display font-extrabold tracking-[-0.03em] text-offwhite">
             Preguntas Frecuentes
           </ScrollTextReveal>
-          <p className="mt-5 max-w-md text-base leading-relaxed text-offwhite/70 lg:text-lg">
-            Lo que más nos consultan antes de cotizar: envíos, precios, productos y marcas.
-          </p>
+          <p className="mt-5 max-w-md text-base leading-relaxed text-offwhite/70 lg:text-lg">{intro}</p>
           <div className="mt-10 hidden lg:block">
             <AskCta />
           </div>
@@ -108,7 +112,7 @@ export default function FAQ() {
         <div>
           {/* One answer open at a time */}
           <div className="space-y-2">
-            {FAQS.map((f, i) => {
+            {faqs.map((f, i) => {
               const open = openIndex === i;
               return (
                 <div

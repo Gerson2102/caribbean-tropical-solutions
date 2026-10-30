@@ -13,8 +13,13 @@ export function registerLenis(instance: Lenis | null) {
 
 /** Scroll to a section, given its id or "#id". Cancels in-flight momentum. */
 export function scrollToSection(target: string) {
-  const el = document.getElementById(target.replace(/^#/, ""));
-  if (!el) return;
+  const id = target.replace(/^\/?#/, "");
+  const el = document.getElementById(id);
+  // Not on this page (e.g. a product line page): open that section on the home page.
+  if (!el) {
+    window.location.assign(`/#${id}`);
+    return;
+  }
 
   // Lenis already applies the section's CSS scroll-margin-top.
   if (lenis) lenis.scrollTo(el);

@@ -3,13 +3,14 @@ import {
   EMAIL,
   PHONE,
   ADDRESS,
+  OPENING_HOURS,
 } from "@/lib/constants";
 import SectionLabel from "@/components/ui/SectionLabel";
 import ScrollTextReveal from "@/components/ui/ScrollTextReveal";
 import Button from "@/components/ui/Button";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import ContactForm from "@/components/ui/ContactForm";
-import { WhatsAppIcon, MailIcon, PhoneIcon, MapPinIcon } from "@/components/ui/Icons";
+import { WhatsAppIcon, MailIcon, PhoneIcon, MapPinIcon, ClockIcon } from "@/components/ui/Icons";
 
 export default function Contact() {
   return (
@@ -107,6 +108,16 @@ export default function Contact() {
                 <div>
                   <h4 className="font-display text-sm font-bold text-offwhite">Ubicación</h4>
                   <address className="text-sm text-offwhite/70 not-italic">{ADDRESS}</address>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/15">
+                  <ClockIcon className="h-5 w-5 text-accent" />
+                </div>
+                <div>
+                  <h4 className="font-display text-sm font-bold text-offwhite">Horario</h4>
+                  <p className="text-sm text-offwhite/70">Abierto {OPENING_HOURS}</p>
                 </div>
               </div>
             </div>

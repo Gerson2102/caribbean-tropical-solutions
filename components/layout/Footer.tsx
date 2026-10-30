@@ -392,7 +392,7 @@ export default function Footer() {
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.href}
-                  href={link.href}
+                  href={`/${link.href}`}
                   className="group relative inline-flex w-fit items-center gap-1 py-2 text-sm transition-colors duration-200 hover:text-accent focus-ring-accent"
                   style={{ transitionProperty: "color" }}
                 >
