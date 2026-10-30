@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { NAV_LINKS, WHATSAPP_URL_WITH_MESSAGE } from "@/lib/constants";
 import { WhatsAppIcon, MenuIcon, XIcon } from "@/components/ui/Icons";
@@ -11,7 +12,9 @@ import { scrollToSection } from "@/lib/smooth-scroll";
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("#inicio");
+  // Off the home page (a product line page) "Productos" is the current link.
+  const pathname = usePathname();
+  const [activeSection, setActiveSection] = useState(pathname === "/" ? "#inicio" : "#categorias");
 
   useEffect(() => {
     // Use a sentinel element at 60px to detect scroll via IntersectionObserver

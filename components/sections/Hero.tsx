@@ -2,7 +2,7 @@
 
 import { type SVGProps, useEffect, useRef, useState, useCallback, useSyncExternalStore } from "react";
 import { gsap } from "gsap";
-import { WHATSAPP_URL_WITH_MESSAGE } from "@/lib/constants";
+import { WHATSAPP_URL_WITH_MESSAGE, BUSINESS_SENTENCE } from "@/lib/constants";
 import { prefersReducedMotion } from "@/lib/animations"; // side-effect: registers gsap ScrollTrigger plugin
 import Button from "@/components/ui/Button";
 import {
@@ -529,8 +529,7 @@ export default function Hero() {
 
           {/* Subtitle */}
           <p className="hero-subtitle mx-auto mt-6 max-w-[520px] text-base leading-relaxed text-offwhite/70 md:text-lg">
-            Distribuidora de productos de mantenimiento, protección, limpieza,
-            oficina y ferretería en el Caribe de Costa Rica.
+            {BUSINESS_SENTENCE}
           </p>
 
           {/* CTAs */}

@@ -3,7 +3,7 @@
 import { useRef, useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { type Category } from "@/lib/constants";
+import { type Category, CATEGORY_PAGES } from "@/lib/constants";
 import { imageZoomEnhanced } from "@/lib/animations";
 import { handleSectionLinkClick } from "@/lib/smooth-scroll";
 import { NotebookIcon } from "@/components/ui/Icons";
@@ -16,6 +16,8 @@ export default function CategoryCard({ category }: CategoryCardProps) {
   const cardRef = useRef<HTMLAnchorElement>(null);
   const [arrowOffset, setArrowOffset] = useState({ x: 0, y: 0 });
   const isComingSoon = category.comingSoon === true;
+  // Lines with their own page link there; the rest scroll to the catalog.
+  const pageHref = CATEGORY_PAGES[category.slug] ? `/productos/${category.slug}` : null;
 
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     if (!cardRef.current) return;
@@ -37,8 +39,8 @@ export default function CategoryCard({ category }: CategoryCardProps) {
   return (
     <motion.a
       ref={cardRef}
-      href="#catalogo"
-      onClick={handleClick}
+      href={pageHref ?? "#catalogo"}
+      onClick={pageHref ? undefined : handleClick}
       className="group relative flex h-full flex-col overflow-hidden rounded-2xl"
       style={{ boxShadow: "var(--shadow-card)" }}
       initial="rest"

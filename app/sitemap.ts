@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { CATEGORY_PAGES } from "@/lib/constants";
 
 // Bump this when site content changes substantively. A static value avoids
 // emitting a fresh `lastmod` on every crawl, which trains Google to ignore the field.
@@ -12,5 +13,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 1,
     },
+    ...Object.keys(CATEGORY_PAGES).map((slug) => ({
+      url: `https://www.caribbeantropicalsolutions.com/productos/${slug}`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
   ];
 }
