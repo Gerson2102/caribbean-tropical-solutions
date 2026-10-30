@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Sora, DM_Sans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import {
   EMAIL,
@@ -140,6 +141,7 @@ export default function RootLayout({
         </noscript>
         <SmoothScroll />
         {children}
+        <Analytics />
       </body>
     </html>
   );
