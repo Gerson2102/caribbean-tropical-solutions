@@ -34,7 +34,7 @@ export default function ProductCategories() {
   }, []);
 
   return (
-    <section id="categorias" className="bg-offwhite py-20 lg:py-28">
+    <section id="categorias" className="bg-offwhite py-14 md:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         {/* Header */}
         <div className="mb-12 text-center lg:mb-16">

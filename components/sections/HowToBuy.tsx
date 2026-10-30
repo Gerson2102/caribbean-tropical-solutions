@@ -177,11 +177,11 @@ export default function HowToBuy() {
   return (
     <section
       id="como-comprar"
-      className="bg-offwhite py-20 lg:py-28"
+      className="bg-offwhite py-14 md:py-20 lg:py-28"
     >
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         {/* Header */}
-        <div className="mb-14 text-center">
+        <div className="mb-10 text-center lg:mb-14">
           <SectionLabel>Proceso</SectionLabel>
           <ScrollTextReveal className="text-section mt-4 font-display font-extrabold text-charcoal-deep">
             ¿Cómo Comprar?
@@ -337,7 +337,7 @@ export default function HowToBuy() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="mt-14 text-center">
+        <div className="mt-10 text-center lg:mt-14">
           <Button
             variant="primary"
             href={WHATSAPP_URL_WITH_MESSAGE}

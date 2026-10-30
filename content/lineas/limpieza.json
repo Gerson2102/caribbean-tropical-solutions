@@ -1,0 +1,30 @@
+{
+  "title": "Limpieza y Desinfección en Limón",
+  "description": "Limpiadores y desinfectantes IONICS, papel, detergentes, aerosoles y equipos de fumigación en Guácimo, Limón. Retiro en local y envíos a todo Costa Rica.",
+  "heading": "Productos de Limpieza y Desinfección",
+  "intro": "Distribuimos productos profesionales de limpieza, sanitización y fumigación desde Guácimo, Limón, para empresas y particulares. Retirá tu pedido en nuestro local o recibilo en cualquier punto de Costa Rica.",
+  "brands": ["IONICS", "Kimberly-Clark"],
+  "quoteMessage": "Hola, quiero cotizar productos de limpieza.",
+  "faqs": [
+    {
+      "question": "¿Dónde comprar productos de limpieza industrial en Limón?",
+      "answer": "En Caribbean Tropical Solutions, en {direccion}. Distribuimos limpiadores y desinfectantes IONICS, papel y productos de sanitización, detergentes, aerosoles y equipos de fumigación para empresas y particulares. Cotizá por WhatsApp al +506 {telefono}."
+    },
+    {
+      "question": "¿Qué marcas de limpieza distribuyen?",
+      "answer": "IONICS, con sus limpiadores y su línea industrial, y Kimberly-Clark en papel y sanitización."
+    },
+    {
+      "question": "¿Venden equipos de fumigación?",
+      "answer": "Sí. Tenemos equipos de fumigación junto con productos de limpieza y sanitización. Escribinos por WhatsApp y te ayudamos a elegir el equipo para tu trabajo."
+    },
+    {
+      "question": "¿Puedo retirar mi pedido en el local?",
+      "answer": "Sí. Podés retirar tu pedido en nuestro local en {direccion}, {horario}. Si preferís, te lo enviamos a cualquier punto de Costa Rica."
+    },
+    {
+      "question": "¿Hacen envíos a todo Costa Rica?",
+      "answer": "Sí. Preparamos tu pedido y lo enviamos a cualquier punto del Caribe y del resto de Costa Rica. Los detalles de la entrega se coordinan por WhatsApp al confirmar el pedido."
+    }
+  ]
+}

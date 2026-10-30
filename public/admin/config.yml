@@ -72,3 +72,60 @@ collections:
           - { name: address, label: Dirección, widget: string }
           - { name: facebookUrl, label: "Facebook (enlace completo)", widget: string }
           - { name: instagramUrl, label: "Instagram (enlace completo)", widget: string }
+          # Opening hours: shown in Contacto, used by the FAQ ({horario}) and sent to Google.
+          - name: hoursDays
+            label: "Días de atención"
+            widget: select
+            options:
+              - { label: "Lunes a viernes", value: lunes-viernes }
+              - { label: "Lunes a sábado", value: lunes-sabado }
+              - { label: "Todos los días", value: todos }
+          - { name: hoursOpen, label: "Hora de apertura", widget: string, hint: "Formato 24 horas. Ej.: 08:00", pattern: ['^([01]\d|2[0-3]):[0-5]\d$', "Usá el formato 24 horas, por ejemplo 08:00"] }
+          - { name: hoursClose, label: "Hora de cierre", widget: string, hint: "Formato 24 horas. Ej.: 17:00 (5:00 p.m.)", pattern: ['^([01]\d|2[0-3]):[0-5]\d$', "Usá el formato 24 horas, por ejemplo 17:00"] }
+
+  - name: faq
+    label: Preguntas frecuentes
+    description: "Preguntas y respuestas de la página de inicio. Google y los asistentes de IA las citan tal cual: escribí solo datos confirmados."
+    files:
+      - name: inicio
+        label: Preguntas frecuentes (inicio)
+        file: content/faq.json
+        fields:
+          - name: items
+            label: Preguntas
+            label_singular: Pregunta
+            widget: list
+            summary: "{{fields.question}}"
+            fields:
+              - { name: question, label: Pregunta, widget: string }
+              - { name: answer, label: Respuesta, widget: text, hint: "Podés escribir {telefono}, {correo}, {direccion} o {horario}: se reemplazan por los datos de Configuración del sitio. La palabra WhatsApp se convierte en un enlace al chat." }
+
+  - name: lineas
+    label: Páginas de líneas de productos
+    description: "Textos de cada página de línea (/productos/...). El título y la descripción son los que muestra Google."
+    files:
+      - name: limpieza
+        label: Limpieza y Desinfección
+        file: content/lineas/limpieza.json
+        fields: &line_fields
+          - { name: title, label: "Título en Google", widget: string, hint: "Máximo 38 caracteres (se agrega «| Caribbean Tropical»)", pattern: ['^.{1,38}$', "Máximo 38 caracteres"] }
+          - { name: description, label: "Descripción en Google", widget: text, hint: "Máximo 155 caracteres", pattern: ['^.{1,155}$', "Máximo 155 caracteres"] }
+          - { name: heading, label: "Título de la página", widget: string }
+          - { name: intro, label: Introducción, widget: text }
+          - name: brands
+            label: Marcas
+            widget: list
+            field: { name: brand, label: Marca, widget: string }
+          - { name: quoteMessage, label: "Mensaje de WhatsApp precargado", widget: string }
+          - name: faqs
+            label: Preguntas frecuentes
+            label_singular: Pregunta
+            widget: list
+            summary: "{{fields.question}}"
+            fields:
+              - { name: question, label: Pregunta, widget: string }
+              - { name: answer, label: Respuesta, widget: text, hint: "Podés escribir {telefono}, {correo}, {direccion} o {horario}: se reemplazan por los datos de Configuración del sitio." }
+      - name: salud-ocupacional
+        label: EPP y Salud Ocupacional
+        file: content/lineas/salud-ocupacional.json
+        fields: *line_fields

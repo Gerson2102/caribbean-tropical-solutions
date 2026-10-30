@@ -1,12 +1,21 @@
 "use client";
 
-import { useId, useState, type ReactNode } from "react";
+import { useId, useState, useSyncExternalStore, type ReactNode } from "react";
 import { FAQS, WHATSAPP_URL, WHATSAPP_URL_WITH_MESSAGE, type Faq } from "@/lib/constants";
 import ScrollTextReveal from "@/components/ui/ScrollTextReveal";
 import Button from "@/components/ui/Button";
 import { ChevronDownIcon, WhatsAppIcon } from "@/components/ui/Icons";
 
 const ASK_URL = `${WHATSAPP_URL}?text=${encodeURIComponent("Hola, tengo una pregunta.")}`;
+
+const DESKTOP_QUERY = "(min-width: 1024px)";
+const subscribeDesktop = (cb: () => void) => {
+  const mql = window.matchMedia(DESKTOP_QUERY);
+  mql.addEventListener("change", cb);
+  return () => mql.removeEventListener("change", cb);
+};
+const getDesktopSnapshot = () => window.matchMedia(DESKTOP_QUERY).matches;
+const getDesktopServerSnapshot = () => false;
 
 // Unfolds to the answer's natural height (grid rows 0fr → 1fr) on the Lenis
 // expo-out curve. ~1s matches Lenis' lerp 0.1 (half the distance in ~110ms,
@@ -76,11 +85,15 @@ export default function FAQ({
   faqs?: Faq[];
   intro?: string;
 }) {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  // Until a question is tapped: desktop opens the first answer to fill its
+  // column; phones start closed so the list stays short.
+  const isDesktop = useSyncExternalStore(subscribeDesktop, getDesktopSnapshot, getDesktopServerSnapshot);
+  const [chosen, setChosen] = useState<number | null | undefined>(undefined);
+  const openIndex = chosen === undefined ? (isDesktop ? 0 : null) : chosen;
   const id = useId();
 
   return (
-    <section id="preguntas-frecuentes" className="noise-overlay relative bg-charcoal-deep py-20 lg:py-28">
+    <section id="preguntas-frecuentes" className="noise-overlay relative bg-charcoal-deep py-14 md:py-20 lg:py-28">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -97,7 +110,7 @@ export default function FAQ({
         }}
       />
 
-      <div className="relative z-10 mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20 lg:px-8">
+      <div className="relative z-10 mx-auto grid max-w-7xl gap-8 px-5 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20 lg:px-8">
         {/* Heading column stays pinned while the questions scroll past */}
         <div className="lg:sticky lg:top-28 lg:self-start">
           <ScrollTextReveal className="text-section font-display font-extrabold tracking-[-0.03em] text-offwhite">
@@ -111,7 +124,7 @@ export default function FAQ({
 
         <div>
           {/* One answer open at a time */}
-          <div className="space-y-2">
+          <div className="space-y-1 sm:space-y-2">
             {faqs.map((f, i) => {
               const open = openIndex === i;
               return (
@@ -125,13 +138,13 @@ export default function FAQ({
                       id={`${id}-q${i}`}
                       aria-expanded={open}
                       aria-controls={`${id}-a${i}`}
-                      onClick={() => setOpenIndex(open ? null : i)}
-                      className="focus-ring-accent flex w-full cursor-pointer items-center justify-between gap-6 rounded-2xl px-5 py-5 text-left font-display text-base font-bold text-offwhite active:bg-offwhite/[0.04] sm:px-7 sm:py-6 sm:text-xl"
+                      onClick={() => setChosen(open ? null : i)}
+                      className="focus-ring-accent flex w-full cursor-pointer items-center justify-between gap-4 rounded-2xl px-4 py-4 text-left font-display text-[15px] leading-snug font-bold text-offwhite active:bg-offwhite/[0.04] sm:gap-6 sm:px-7 sm:py-6 sm:text-xl"
                     >
                       {f.question}
                       <span
                         aria-hidden="true"
-                        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-colors duration-500 ${
+                        className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors duration-500 sm:h-9 sm:w-9 ${
                           open ? "bg-accent text-charcoal-deep" : "bg-accent/15 text-accent"
                         }`}
                       >
@@ -142,7 +155,7 @@ export default function FAQ({
                     </button>
                   </h3>
                   <Collapse open={open} id={`${id}-a${i}`} labelledBy={`${id}-q${i}`}>
-                    <p className="max-w-[60ch] px-5 pb-6 text-base leading-relaxed text-offwhite/75 sm:px-7 sm:pb-7 sm:text-lg">
+                    <p className="max-w-[60ch] px-4 pb-5 text-base leading-relaxed text-offwhite/75 sm:px-7 sm:pb-7 sm:text-lg">
                       {linkWhatsApp(f.answer)}
                     </p>
                   </Collapse>
@@ -150,7 +163,7 @@ export default function FAQ({
               );
             })}
           </div>
-          <div className="mt-10 text-center lg:hidden">
+          <div className="mt-8 text-center lg:hidden">
             <AskCta />
           </div>
         </div>

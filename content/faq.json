@@ -1,0 +1,56 @@
+{
+  "items": [
+    {
+      "question": "¿Qué es Caribbean Tropical Solutions?",
+      "answer": "Caribbean Tropical Solutions es una distribuidora de productos de limpieza, EPP y ferretería en Guácimo, Limón, Costa Rica. Vendemos productos de limpieza y desinfección, equipo de protección personal (EPP), artículos de salud ocupacional, herramientas y suministros de mantenimiento, ferretería y suministros de oficina a empresas y particulares de todo el país."
+    },
+    {
+      "question": "¿Dónde comprar EPP y productos de limpieza industrial en Limón?",
+      "answer": "En Caribbean Tropical Solutions, en {direccion}. Atendemos a empresas y particulares de toda la zona del Caribe —Guácimo, Guápiles, Siquirres, Limón, Matina y Talamanca— y enviamos al resto de Costa Rica. Cotizá por WhatsApp al +506 {telefono}."
+    },
+    {
+      "question": "¿Venden a particulares o solo a empresas?",
+      "answer": "A los dos: vendemos tanto a empresas como a particulares. Escribinos por WhatsApp con lo que necesitás y te cotizamos."
+    },
+    {
+      "question": "¿Hacen envíos a todo Costa Rica?",
+      "answer": "Sí. Preparamos tu pedido y lo enviamos a cualquier punto del Caribe y del resto de Costa Rica. Los detalles de la entrega se coordinan por WhatsApp al confirmar el pedido."
+    },
+    {
+      "question": "¿Puedo retirar mi pedido en el local?",
+      "answer": "Sí. Podés retirar tu pedido en nuestro local en {direccion}, {horario}. Si preferís, te lo enviamos a cualquier punto de Costa Rica."
+    },
+    {
+      "question": "¿Cuál es el horario de atención?",
+      "answer": "Atendemos {horario} en {direccion}."
+    },
+    {
+      "question": "¿Cómo hago un pedido o pido una cotización?",
+      "answer": "Escribinos por WhatsApp al +506 {telefono} con los productos y cantidades que necesitás; respondemos en minutos. Te enviamos la cotización, confirmás cantidades y coordinamos el pago y la entrega. También podés escribirnos a {correo} o usar el formulario de contacto."
+    },
+    {
+      "question": "¿Qué formas de pago aceptan?",
+      "answer": "Aceptamos efectivo, tarjeta de crédito y transferencia bancaria."
+    },
+    {
+      "question": "¿Dónde veo los precios?",
+      "answer": "Cotizamos cada pedido según el producto y la cantidad. Escribinos por WhatsApp con lo que necesitás y te pasamos los precios sin compromiso."
+    },
+    {
+      "question": "¿Qué productos de limpieza y desinfección venden?",
+      "answer": "Limpiadores y desinfectantes IONICS (incluida su línea industrial), papel y productos de sanitización, aerosoles y lubricantes, detergentes y jabones, equipos de fumigación, y suministros y herramientas de limpieza."
+    },
+    {
+      "question": "¿Qué equipo de protección personal (EPP) venden?",
+      "answer": "Calzado y botas de seguridad, guantes de protección, ropa de trabajo, protección visual y facial, cascos, protección respiratoria y auditiva, detectores y alertas, y botiquines y accesorios de seguridad."
+    },
+    {
+      "question": "¿Qué marcas distribuyen?",
+      "answer": "Trabajamos con marcas como DeWalt, IONICS, EVACOL, Portwest, Kimberly-Clark, Tramontina, Elmerc, Carpi, Grupo Irex y Yulcer."
+    },
+    {
+      "question": "¿Me ayudan a elegir los productos correctos?",
+      "answer": "Sí. Te damos asesoría técnica para elegir el EPP, los productos de limpieza o las herramientas adecuadas para tu operación. Escribinos por WhatsApp y te respondemos en minutos."
+    }
+  ]
+}
