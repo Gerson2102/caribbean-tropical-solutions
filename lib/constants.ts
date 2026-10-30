@@ -5,6 +5,10 @@
 import productsData from "./products.generated.json";
 // Site-wide contact & social info — editable from the CMS ("Configuración del sitio").
 import siteSettings from "../content/settings.json";
+// FAQ and product line pages — editable from the CMS.
+import faqData from "../content/faq.json";
+import limpiezaLine from "../content/lineas/limpieza.json";
+import saludLine from "../content/lineas/salud-ocupacional.json";
 
 // === CONTACT ===
 export const WHATSAPP_NUMBER = siteSettings.whatsappNumber;
@@ -21,8 +25,29 @@ export const FACEBOOK_URL = siteSettings.facebookUrl;
 // description, hero, JSON-LD, FAQ) so search engines and AI read one identity.
 export const BUSINESS_SENTENCE =
   "Caribbean Tropical Solutions es una distribuidora de productos de limpieza, EPP y ferretería en Guácimo, Limón, Costa Rica.";
-// Keep in sync with openingHoursSpecification in app/layout.tsx.
-export const OPENING_HOURS = "de lunes a sábado, de 8:00 a.m. a 5:00 p.m.";
+
+// Opening hours from the CMS: a days preset plus 24-hour open/close times.
+// Feed the FAQ ({horario}), the Contact section and the Store JSON-LD.
+const HOURS_PRESETS: Record<string, { label: string; days: string[] }> = {
+  "lunes-viernes": { label: "de lunes a viernes", days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] },
+  "lunes-sabado": { label: "de lunes a sábado", days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] },
+  todos: { label: "todos los días", days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] },
+};
+const hoursPreset = HOURS_PRESETS[siteSettings.hoursDays] ?? HOURS_PRESETS["lunes-sabado"];
+
+/** "17:00" → "5:00 p.m." */
+function to12h(time: string) {
+  const [h, m] = time.split(":").map(Number);
+  return `${h % 12 || 12}:${String(m).padStart(2, "0")} ${h < 12 ? "a.m." : "p.m."}`;
+}
+
+export const OPENING_HOURS = `${hoursPreset.label}, de ${to12h(siteSettings.hoursOpen)} a ${to12h(siteSettings.hoursClose)}`;
+export const OPENING_HOURS_SCHEMA = {
+  "@type": "OpeningHoursSpecification",
+  dayOfWeek: hoursPreset.days,
+  opens: siteSettings.hoursOpen,
+  closes: siteSettings.hoursClose,
+};
 
 // === NAVIGATION ===
 export const NAV_LINKS = [
@@ -152,84 +177,32 @@ export function groupProductsBySubcategory(
     .map(([subcategory, items]) => ({ subcategory, products: items }));
 }
 
-// === FAQ ===
-// Shown on the pages and emitted as FAQPage JSON-LD — AI assistants quote these
-// answers verbatim, so only state confirmed facts.
+// === FAQ & PRODUCT LINE PAGES (edited in the CMS) ===
+// content/faq.json holds the home FAQ; content/lineas/<slug>.json one product
+// line page each. AI assistants quote these answers verbatim, so they should
+// only state confirmed facts.
 export interface Faq {
   question: string;
   answer: string;
 }
 
-// Shared by the home FAQ and the product line pages.
-const FAQ_SHIPPING: Faq = {
-  question: "¿Hacen envíos a todo Costa Rica?",
-  answer:
-    "Sí. Preparamos tu pedido y lo enviamos a cualquier punto del Caribe y del resto de Costa Rica. Los detalles de la entrega se coordinan por WhatsApp al confirmar el pedido.",
+// CMS text can say {telefono}, {correo}, {direccion} or {horario}; they're
+// filled from "Configuración del sitio", so an edited phone never goes stale here.
+const FACTS: Record<string, string> = {
+  telefono: PHONE,
+  correo: EMAIL,
+  direccion: ADDRESS,
+  horario: OPENING_HOURS,
 };
-const FAQ_PICKUP: Faq = {
-  question: "¿Puedo retirar mi pedido en el local?",
-  answer: `Sí. Podés retirar tu pedido en nuestro local en ${ADDRESS}, ${OPENING_HOURS}. Si preferís, te lo enviamos a cualquier punto de Costa Rica.`,
-};
+const fillFacts = (text: string) => text.replace(/\{(\w+)\}/g, (tag, key: string) => FACTS[key] ?? tag);
+const fillFaqs = (faqs: Faq[]) => faqs.map((f) => ({ question: f.question, answer: fillFacts(f.answer) }));
 
-export const FAQS: Faq[] = [
-  {
-    question: "¿Qué es Caribbean Tropical Solutions?",
-    answer: `${BUSINESS_SENTENCE} Vendemos productos de limpieza y desinfección, equipo de protección personal (EPP), artículos de salud ocupacional, herramientas y suministros de mantenimiento, ferretería y suministros de oficina a empresas y particulares de todo el país.`,
-  },
-  {
-    question: "¿Dónde comprar EPP y productos de limpieza industrial en Limón?",
-    answer: `En Caribbean Tropical Solutions, en ${ADDRESS}. Atendemos a empresas y particulares de toda la zona del Caribe —Guácimo, Guápiles, Siquirres, Limón, Matina y Talamanca— y enviamos al resto de Costa Rica. Cotizá por WhatsApp al +506 ${PHONE}.`,
-  },
-  {
-    question: "¿Venden a particulares o solo a empresas?",
-    answer:
-      "A los dos: vendemos tanto a empresas como a particulares. Escribinos por WhatsApp con lo que necesitás y te cotizamos.",
-  },
-  FAQ_SHIPPING,
-  FAQ_PICKUP,
-  {
-    question: "¿Cuál es el horario de atención?",
-    answer: `Atendemos ${OPENING_HOURS} en ${ADDRESS}.`,
-  },
-  {
-    question: "¿Cómo hago un pedido o pido una cotización?",
-    answer: `Escribinos por WhatsApp al +506 ${PHONE} con los productos y cantidades que necesitás; respondemos en minutos. Te enviamos la cotización, confirmás cantidades y coordinamos el pago y la entrega. También podés escribirnos a ${EMAIL} o usar el formulario de contacto.`,
-  },
-  {
-    question: "¿Qué formas de pago aceptan?",
-    answer: "Aceptamos efectivo, tarjeta de crédito y transferencia bancaria.",
-  },
-  {
-    question: "¿Dónde veo los precios?",
-    answer:
-      "Cotizamos cada pedido según el producto y la cantidad. Escribinos por WhatsApp con lo que necesitás y te pasamos los precios sin compromiso.",
-  },
-  {
-    question: "¿Qué productos de limpieza y desinfección venden?",
-    answer:
-      "Limpiadores y desinfectantes IONICS (incluida su línea industrial), papel y productos de sanitización, aerosoles y lubricantes, detergentes y jabones, equipos de fumigación, y suministros y herramientas de limpieza.",
-  },
-  {
-    question: "¿Qué equipo de protección personal (EPP) venden?",
-    answer:
-      "Calzado y botas de seguridad, guantes de protección, ropa de trabajo, protección visual y facial, cascos, protección respiratoria y auditiva, detectores y alertas, y botiquines y accesorios de seguridad.",
-  },
-  {
-    question: "¿Qué marcas distribuyen?",
-    answer:
-      "Trabajamos con marcas como DeWalt, IONICS, EVACOL, Portwest, Kimberly-Clark, Tramontina, Elmerc, Carpi, Grupo Irex y Yulcer.",
-  },
-  {
-    question: "¿Me ayudan a elegir los productos correctos?",
-    answer:
-      "Sí. Te damos asesoría técnica para elegir el EPP, los productos de limpieza o las herramientas adecuadas para tu operación. Escribinos por WhatsApp y te respondemos en minutos.",
-  },
-];
+export const FAQS: Faq[] = fillFaqs(faqData.items);
 
-// === PRODUCT LINE PAGES (/productos/[slug]) ===
-// A line gets its own page only once it has real content to carry it: add an
-// entry when Mantenimiento or Oficina does. Product types come from
-// SUBCATEGORY_ORDER and products from the CMS catalog.
+// A line gets its own page (/productos/[slug]) only once it has real content to
+// carry it. To add Mantenimiento or Oficina: create content/lineas/<slug>.json,
+// import it above, add it below and to public/admin/config.yml.
+// Product types come from SUBCATEGORY_ORDER and products from the CMS catalog.
 export interface CategoryPage {
   title: string; // before " | Caribbean Tropical"; full title ≤ 60 chars
   description: string; // ≤ 155 chars
@@ -240,65 +213,11 @@ export interface CategoryPage {
   faqs: Faq[];
 }
 
+const linePage = (page: CategoryPage): CategoryPage => ({ ...page, intro: fillFacts(page.intro), faqs: fillFaqs(page.faqs) });
+
 export const CATEGORY_PAGES: Partial<Record<CategorySlug, CategoryPage>> = {
-  limpieza: {
-    title: "Limpieza y Desinfección en Limón",
-    description:
-      "Limpiadores y desinfectantes IONICS, papel, detergentes, aerosoles y equipos de fumigación en Guácimo, Limón. Retiro en local y envíos a todo Costa Rica.",
-    heading: "Productos de Limpieza y Desinfección",
-    intro:
-      "Distribuimos productos profesionales de limpieza, sanitización y fumigación desde Guácimo, Limón, para empresas y particulares. Retirá tu pedido en nuestro local o recibilo en cualquier punto de Costa Rica.",
-    brands: ["IONICS", "Kimberly-Clark"],
-    quoteMessage: "Hola, quiero cotizar productos de limpieza.",
-    faqs: [
-      {
-        question: "¿Dónde comprar productos de limpieza industrial en Limón?",
-        answer: `En Caribbean Tropical Solutions, en ${ADDRESS}. Distribuimos limpiadores y desinfectantes IONICS, papel y productos de sanitización, detergentes, aerosoles y equipos de fumigación para empresas y particulares. Cotizá por WhatsApp al +506 ${PHONE}.`,
-      },
-      {
-        question: "¿Qué marcas de limpieza distribuyen?",
-        answer: "IONICS, con sus limpiadores y su línea industrial, y Kimberly-Clark en papel y sanitización.",
-      },
-      {
-        question: "¿Venden equipos de fumigación?",
-        answer:
-          "Sí. Tenemos equipos de fumigación junto con productos de limpieza y sanitización. Escribinos por WhatsApp y te ayudamos a elegir el equipo para tu trabajo.",
-      },
-      FAQ_PICKUP,
-      FAQ_SHIPPING,
-    ],
-  },
-  "salud-ocupacional": {
-    title: "EPP y Salud Ocupacional en Limón",
-    description:
-      "Calzado de seguridad, guantes, ropa de trabajo, cascos y protección auditiva y respiratoria en Guácimo, Limón. Retiro en local y envíos a todo el país.",
-    heading: "EPP y Salud Ocupacional",
-    intro:
-      "Distribuimos equipo de protección personal, calzado de seguridad y ropa de trabajo desde Guácimo, Limón, para empresas y particulares. Retirá tu pedido en nuestro local o recibilo en cualquier punto de Costa Rica.",
-    brands: ["Portwest", "EVACOL"],
-    quoteMessage: "Hola, quiero cotizar equipo de protección personal.",
-    faqs: [
-      {
-        question: "¿Dónde comprar EPP en Limón?",
-        answer: `En Caribbean Tropical Solutions, en ${ADDRESS}. Vendemos calzado de seguridad, guantes, ropa de trabajo, cascos y protección visual, auditiva y respiratoria a empresas y particulares. Cotizá por WhatsApp al +506 ${PHONE}.`,
-      },
-      {
-        question: "¿Venden calzado de seguridad?",
-        answer: "Sí. Tenemos calzado de seguridad y de trabajo, como el calzado antideslizante de EVACOL.",
-      },
-      {
-        question: "¿Qué marcas de EPP distribuyen?",
-        answer: "Portwest en ropa de trabajo y equipo de protección, y EVACOL en calzado de trabajo.",
-      },
-      {
-        question: "¿Me ayudan a elegir el EPP correcto?",
-        answer:
-          "Sí. Te asesoramos para elegir el equipo de protección adecuado para tu trabajo. Escribinos por WhatsApp y te respondemos en minutos.",
-      },
-      FAQ_PICKUP,
-      FAQ_SHIPPING,
-    ],
-  },
+  limpieza: linePage(limpiezaLine),
+  "salud-ocupacional": linePage(saludLine),
 };
 
 // === VALUE PROPOSITIONS ===

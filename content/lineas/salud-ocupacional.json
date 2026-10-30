@@ -1,0 +1,34 @@
+{
+  "title": "EPP y Salud Ocupacional en Limón",
+  "description": "Calzado de seguridad, guantes, ropa de trabajo, cascos y protección auditiva y respiratoria en Guácimo, Limón. Retiro en local y envíos a todo el país.",
+  "heading": "EPP y Salud Ocupacional",
+  "intro": "Distribuimos equipo de protección personal, calzado de seguridad y ropa de trabajo desde Guácimo, Limón, para empresas y particulares. Retirá tu pedido en nuestro local o recibilo en cualquier punto de Costa Rica.",
+  "brands": ["Portwest", "EVACOL"],
+  "quoteMessage": "Hola, quiero cotizar equipo de protección personal.",
+  "faqs": [
+    {
+      "question": "¿Dónde comprar EPP en Limón?",
+      "answer": "En Caribbean Tropical Solutions, en {direccion}. Vendemos calzado de seguridad, guantes, ropa de trabajo, cascos y protección visual, auditiva y respiratoria a empresas y particulares. Cotizá por WhatsApp al +506 {telefono}."
+    },
+    {
+      "question": "¿Venden calzado de seguridad?",
+      "answer": "Sí. Tenemos calzado de seguridad y de trabajo, como el calzado antideslizante de EVACOL."
+    },
+    {
+      "question": "¿Qué marcas de EPP distribuyen?",
+      "answer": "Portwest en ropa de trabajo y equipo de protección, y EVACOL en calzado de trabajo."
+    },
+    {
+      "question": "¿Me ayudan a elegir el EPP correcto?",
+      "answer": "Sí. Te asesoramos para elegir el equipo de protección adecuado para tu trabajo. Escribinos por WhatsApp y te respondemos en minutos."
+    },
+    {
+      "question": "¿Puedo retirar mi pedido en el local?",
+      "answer": "Sí. Podés retirar tu pedido en nuestro local en {direccion}, {horario}. Si preferís, te lo enviamos a cualquier punto de Costa Rica."
+    },
+    {
+      "question": "¿Hacen envíos a todo Costa Rica?",
+      "answer": "Sí. Preparamos tu pedido y lo enviamos a cualquier punto del Caribe y del resto de Costa Rica. Los detalles de la entrega se coordinan por WhatsApp al confirmar el pedido."
+    }
+  ]
+}

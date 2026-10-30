@@ -1,7 +1,15 @@
 import type { Metadata, Viewport } from "next";
 import { Sora, DM_Sans } from "next/font/google";
 import SmoothScroll from "@/components/layout/SmoothScroll";
-import { EMAIL, WHATSAPP_NUMBER, INSTAGRAM_URL, FACEBOOK_URL, CATEGORIES, BUSINESS_SENTENCE } from "@/lib/constants";
+import {
+  EMAIL,
+  WHATSAPP_NUMBER,
+  INSTAGRAM_URL,
+  FACEBOOK_URL,
+  CATEGORIES,
+  BUSINESS_SENTENCE,
+  OPENING_HOURS_SCHEMA,
+} from "@/lib/constants";
 import "./globals.css";
 
 const sora = Sora({
@@ -79,13 +87,7 @@ export default function RootLayout({
               email: EMAIL,
               priceRange: "$$",
               paymentAccepted: "Cash, Credit Card, Bank Transfer",
-              // Matches OPENING_HOURS in lib/constants.ts.
-              openingHoursSpecification: {
-                "@type": "OpeningHoursSpecification",
-                dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-                opens: "08:00",
-                closes: "17:00",
-              },
+              openingHoursSpecification: OPENING_HOURS_SCHEMA,
               hasMap: "https://www.google.com/maps?q=10.2167,-83.6833",
               address: {
                 "@type": "PostalAddress",

@@ -21,7 +21,8 @@ Postinstall scripts are gated for security. Only packages listed under `allowBui
 - `app/` — routes, metadata (`layout.tsx`), error boundaries, `sitemap.ts`, `robots.ts`, `opengraph-image.tsx`
 - `app/globals.css` — design tokens, custom utilities (`.focus-ring-accent`, `.btn-shine`), keyframes
 - `components/{layout,sections,ui}/` — follow existing file patterns
-- `lib/constants.ts` — single source of truth for products, categories, brands, NAP/contact
+- `lib/constants.ts` — single source of truth for products, categories, brands, NAP/contact; loads the CMS content below
+- `content/` — Decap CMS-edited JSON: `settings.json` (contact, opening hours), `faq.json` (home FAQ), `lineas/<slug>.json` (product line pages), `products/`. Fields are declared in `public/admin/config.yml`; keep both in sync. FAQ/page text may use `{telefono}` `{correo}` `{direccion}` `{horario}`
 - `lib/animations.ts` — `prefersReducedMotion()` + side-effect registers GSAP ScrollTrigger
 - `public/images/` — logo + section/category images
 - `public/product_images/` — catalog images by brand (index at `products_manifest.json`)
