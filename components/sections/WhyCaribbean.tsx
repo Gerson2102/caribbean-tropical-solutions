@@ -66,11 +66,11 @@ export default function WhyCaribbean() {
   return (
     <section
       id="por-que-elegirnos"
-      className="noise-overlay relative border-t border-offwhite/10 bg-charcoal-deep py-20 lg:py-28"
+      className="noise-overlay relative border-t border-offwhite/10 bg-charcoal-deep py-14 md:py-20 lg:py-28"
     >
       <div className="relative z-10 mx-auto max-w-7xl px-5 lg:px-8">
         {/* Header */}
-        <div className="mb-14 text-center">
+        <div className="mb-10 text-center lg:mb-14">
           <SectionLabel>Nuestra Propuesta</SectionLabel>
           <ScrollTextReveal className="text-section mt-4 font-display font-extrabold text-offwhite">
             ¿Por Qué Comprar en Caribbean Tropical?

@@ -29,7 +29,7 @@ export default function ProductLine({ category, page }: { category: Category; pa
 
   return (
     <>
-      <section className="noise-overlay relative overflow-hidden bg-deep-green pt-32 pb-20 lg:pt-40 lg:pb-28">
+      <section className="noise-overlay relative overflow-hidden bg-deep-green pt-28 pb-14 md:pt-32 md:pb-20 lg:pt-40 lg:pb-28">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -68,7 +68,7 @@ export default function ProductLine({ category, page }: { category: Category; pa
               </Button>
             </div>
           </div>
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl" style={{ boxShadow: "var(--shadow-card)" }}>
+          <div className="relative aspect-[16/10] overflow-hidden rounded-2xl sm:aspect-[4/3]" style={{ boxShadow: "var(--shadow-card)" }}>
             <Image
               src={category.image}
               alt={category.altText}
@@ -81,8 +81,8 @@ export default function ProductLine({ category, page }: { category: Category; pa
         </div>
       </section>
 
-      <section className="bg-offwhite py-20 lg:py-28">
-        <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20 lg:px-8">
+      <section className="bg-offwhite py-14 md:py-20 lg:py-28">
+        <div className="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20 lg:px-8">
           <div>
             <ScrollTextReveal className="text-section font-display font-extrabold tracking-[-0.03em] text-charcoal-deep">
               Lo Que Distribuimos
@@ -117,11 +117,11 @@ export default function ProductLine({ category, page }: { category: Category; pa
               </>
             )}
           </div>
-          <ul className="grid content-start gap-3 sm:grid-cols-2">
+          <ul className="grid content-start gap-2 sm:grid-cols-2 sm:gap-3">
             {SUBCATEGORY_ORDER[category.slug].map((type) => (
               <li
                 key={type}
-                className="flex items-center gap-3 rounded-2xl bg-white px-5 py-4 font-display text-base font-semibold text-charcoal-deep"
+                className="flex items-center gap-3 rounded-2xl bg-white px-4 py-3 font-display text-[15px] sm:px-5 sm:py-4 sm:text-base font-semibold text-charcoal-deep"
                 style={{ boxShadow: "var(--shadow-card)" }}
               >
                 <span aria-hidden="true" className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
@@ -135,7 +135,7 @@ export default function ProductLine({ category, page }: { category: Category; pa
       </section>
 
       {groups.length > 0 && (
-        <section className="bg-deep-green py-20 lg:py-28">
+        <section className="bg-deep-green py-14 md:py-20 lg:py-28">
           <div className="mx-auto max-w-7xl space-y-12 px-5 lg:px-8">
             <ScrollTextReveal className="text-section font-display font-extrabold text-offwhite">Catálogo</ScrollTextReveal>
             {groups.map((g) => (

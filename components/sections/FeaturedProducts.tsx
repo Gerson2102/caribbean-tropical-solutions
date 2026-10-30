@@ -44,7 +44,7 @@ export default function FeaturedProducts() {
   return (
     <section
       id="catalogo"
-      className="bg-deep-green py-20 lg:py-28"
+      className="bg-deep-green py-14 md:py-20 lg:py-28"
     >
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <ScrollReveal selector=".fp-header" stagger={0.12}>
@@ -105,7 +105,7 @@ export default function FeaturedProducts() {
             className="space-y-12"
           >
             {isEmpty ? (
-              <div className="rounded-2xl border border-offwhite/10 bg-deep-green-light/40 px-8 py-16 text-center">
+              <div className="rounded-2xl border border-offwhite/10 bg-deep-green-light/40 px-6 py-10 text-center md:px-8 md:py-16">
                 <span className="inline-block rounded-full border border-accent/30 bg-accent/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.15em] text-accent">
                   Próximamente
                 </span>

@@ -16,7 +16,7 @@ export default function Contact() {
   return (
     <section
       id="contacto"
-      className="noise-overlay relative overflow-hidden bg-deep-green py-20 lg:py-28"
+      className="noise-overlay relative overflow-hidden bg-deep-green py-14 md:py-20 lg:py-28"
     >
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-primary/10 blur-[150px]" />
@@ -37,23 +37,23 @@ export default function Contact() {
           </p>
 
           {/* Giant WhatsApp CTA */}
-          <div className="contact-animate mt-10 flex justify-center">
+          <div className="contact-animate mt-8 flex justify-center sm:mt-10">
             <Button
               variant="primary"
               href={`${WHATSAPP_URL}?text=${encodeURIComponent("Hola, me gustaría hacer un pedido.")}`}
               icon={<WhatsAppIcon className="h-6 w-6" />}
-              className="!px-10 !py-5 !text-lg"
+              className="w-full sm:w-auto sm:!px-10 sm:!py-5 sm:!text-lg"
             >
               Escríbenos por WhatsApp
             </Button>
           </div>
 
           {/* Form + Contact Info */}
-          <div className="mx-auto mt-16 grid max-w-4xl gap-8 lg:grid-cols-[1fr_auto] lg:gap-16">
+          <div className="mx-auto mt-10 grid max-w-4xl gap-10 lg:mt-16 lg:grid-cols-[1fr_auto] lg:gap-16">
             <ContactForm />
 
             {/* Contact Info */}
-            <div className="contact-animate flex flex-col justify-center gap-8">
+            <div className="contact-animate flex flex-col justify-center gap-5 lg:gap-8">
               <a
                 href={`${WHATSAPP_URL}?text=${encodeURIComponent("Hola, necesito información.")}`}
                 target="_blank"

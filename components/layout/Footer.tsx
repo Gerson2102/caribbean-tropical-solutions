@@ -363,8 +363,8 @@ export default function Footer() {
       />
 
       {/* ── Main content ── */}
-      <div className="relative mx-auto max-w-7xl px-5 pt-20 pb-0 lg:px-8">
-        <div className="grid gap-12 md:grid-cols-3 md:gap-16">
+      <div className="relative mx-auto max-w-7xl px-5 pt-14 pb-0 md:pt-20 lg:px-8">
+        <div className="grid gap-10 md:grid-cols-3 md:gap-16">
           {/* ──────── Brand Column ──────── */}
           <AnimatedBlock delay={0.1}>
             <Image
@@ -388,7 +388,7 @@ export default function Footer() {
             <h4 className="mb-5 font-display text-sm font-bold uppercase tracking-wider text-offwhite">
               Enlaces
             </h4>
-            <nav className="flex flex-col gap-0.5">
+            <nav className="grid grid-cols-2 gap-x-6 md:flex md:flex-col md:gap-0.5">
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.href}

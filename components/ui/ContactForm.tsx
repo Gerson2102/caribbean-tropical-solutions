@@ -48,7 +48,7 @@ export default function ContactForm() {
           placeholder="Tu nombre completo…"
         />
       </div>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4">
         <div>
           <label htmlFor="empresa" className="mb-1.5 block text-sm font-medium text-offwhite/70">
             Empresa
@@ -60,7 +60,7 @@ export default function ContactForm() {
             autoComplete="organization"
             ref={empresaRef}
             className={inputClass}
-            placeholder="Nombre de empresa…"
+            placeholder="Tu empresa…"
           />
         </div>
         <div>
