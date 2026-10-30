@@ -12,7 +12,7 @@ Single-page Next.js marketing site for a Costa Rican industrial distributor (Gu�
 Package manager: **pnpm** (pinned via `packageManager` field in `package.json`, run through Corepack — no global install needed).
 - `pnpm install` — install/sync dependencies from `pnpm-lock.yaml`
 - `pnpm dev` — local at http://localhost:3000
-- `pnpm build` — production build (**must pass 9/9 pages** before claiming done)
+- `pnpm build` — production build (**must pass 12/12 pages** before claiming done)
 - `pnpm lint` — ESLint (must be 0 errors, 0 warnings)
 
 Postinstall scripts are gated for security. Only packages listed under `allowBuilds:` in `pnpm-workspace.yaml` (currently `sharp`, `unrs-resolver`) are allowed to run lifecycle scripts. If a new dependency needs one, vet it first, then run `pnpm approve-builds <pkg>`.
