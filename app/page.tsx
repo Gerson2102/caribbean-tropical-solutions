@@ -14,6 +14,7 @@ const ProductCategories = dynamic(() => import("@/components/sections/ProductCat
 const FeaturedProducts = dynamic(() => import("@/components/sections/FeaturedProducts"));
 const WhyCaribbean = dynamic(() => import("@/components/sections/WhyCaribbean"));
 const HowToBuy = dynamic(() => import("@/components/sections/HowToBuy"));
+const FAQ = dynamic(() => import("@/components/sections/FAQ"));
 const Contact = dynamic(() => import("@/components/sections/Contact"));
 
 export default function Home() {
@@ -36,6 +37,7 @@ export default function Home() {
         <FeaturedProducts />
         <WhyCaribbean />
         <HowToBuy />
+        <FAQ />
         <Contact />
       </main>
       <Footer />

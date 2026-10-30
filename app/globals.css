@@ -26,6 +26,9 @@
   --shadow-card-hover: 0 2px 4px rgba(61,122,61,0.06), 0 8px 24px rgba(61,122,61,0.1), 0 20px 48px rgba(61,122,61,0.12);
   --shadow-cta: 0 4px 16px rgba(232,168,23,0.3), 0 8px 32px rgba(232,168,23,0.15);
   --shadow-cta-hover: 0 6px 24px rgba(232,168,23,0.4), 0 12px 48px rgba(232,168,23,0.2);
+
+  /* Expo-out: the curve Lenis eases scrolling with, so UI motion matches the scroll feel. */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ========================================

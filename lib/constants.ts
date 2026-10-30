@@ -144,6 +144,54 @@ export function groupProductsBySubcategory(
     .map(([subcategory, items]) => ({ subcategory, products: items }));
 }
 
+// === FAQ ===
+// Shown on the page, emitted as FAQPage JSON-LD and served in /llms.txt — AI
+// assistants quote these answers verbatim, so only state confirmed facts.
+export const FAQS: { question: string; answer: string }[] = [
+  {
+    question: "¿Qué es Caribbean Tropical Solutions?",
+    answer: `Caribbean Tropical Solutions S.A. es una distribuidora de productos industriales ubicada en ${ADDRESS}. Vendemos productos de limpieza y desinfección, equipo de protección personal (EPP), artículos de salud ocupacional, herramientas y suministros de mantenimiento, ferretería y suministros de oficina para empresas de todo Costa Rica.`,
+  },
+  {
+    question: "¿Dónde comprar EPP y productos de limpieza industrial en Limón?",
+    answer: `En Caribbean Tropical Solutions, en ${ADDRESS}. Atendemos a empresas de toda la zona del Caribe —Guácimo, Guápiles, Siquirres, Limón, Matina y Talamanca— y enviamos al resto de Costa Rica. Cotizá por WhatsApp al +506 ${PHONE}.`,
+  },
+  {
+    question: "¿Hacen envíos a todo Costa Rica?",
+    answer:
+      "Sí. Preparamos tu pedido y lo enviamos a cualquier punto del Caribe y del resto de Costa Rica. Los detalles de la entrega se coordinan por WhatsApp al confirmar el pedido.",
+  },
+  {
+    question: "¿Cómo hago un pedido o pido una cotización?",
+    answer: `Escribinos por WhatsApp al +506 ${PHONE} con los productos y cantidades que necesitás; respondemos en minutos. Te enviamos la cotización, confirmás cantidades y coordinamos el pago y la entrega. También podés escribirnos a ${EMAIL} o usar el formulario de contacto.`,
+  },
+  {
+    question: "¿Dónde veo los precios?",
+    answer:
+      "Cotizamos cada pedido según el producto y la cantidad. Escribinos por WhatsApp con lo que necesitás y te pasamos los precios sin compromiso.",
+  },
+  {
+    question: "¿Qué productos de limpieza y desinfección venden?",
+    answer:
+      "Limpiadores y desinfectantes IONICS (incluida su línea industrial), papel y productos de sanitización, aerosoles y lubricantes, detergentes y jabones, equipos de fumigación, y suministros y herramientas de limpieza.",
+  },
+  {
+    question: "¿Qué equipo de protección personal (EPP) venden?",
+    answer:
+      "Calzado y botas de seguridad, guantes de protección, ropa de trabajo, protección visual y facial, cascos, protección respiratoria y auditiva, detectores y alertas, y botiquines y accesorios de seguridad.",
+  },
+  {
+    question: "¿Qué marcas distribuyen?",
+    answer:
+      "Trabajamos con marcas como DeWalt, IONICS, EVACOL, Portwest, Kimberly-Clark, Tramontina, Elmerc, Carpi, Grupo Irex y Yulcer.",
+  },
+  {
+    question: "¿Me ayudan a elegir los productos correctos?",
+    answer:
+      "Sí. Te damos asesoría técnica para elegir el EPP, los productos de limpieza o las herramientas adecuadas para tu operación. Escribinos por WhatsApp y te respondemos en minutos.",
+  },
+];
+
 // === VALUE PROPOSITIONS ===
 export interface ValueProp {
   number: string;

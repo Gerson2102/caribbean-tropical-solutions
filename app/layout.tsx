@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Sora, DM_Sans } from "next/font/google";
 import SmoothScroll from "@/components/layout/SmoothScroll";
-import { EMAIL, WHATSAPP_NUMBER, INSTAGRAM_URL, FACEBOOK_URL } from "@/lib/constants";
+import { EMAIL, WHATSAPP_NUMBER, INSTAGRAM_URL, FACEBOOK_URL, CATEGORIES } from "@/lib/constants";
 import "./globals.css";
 
 const sora = Sora({
@@ -70,8 +70,9 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Store",
               name: "Caribbean Tropical Solutions S.A.",
+              alternateName: "Caribbean Tropical Solutions",
               description:
-                "Distribuidora de productos de mantenimiento, limpieza, desinfección, EPP, oficina y ferretería en el Caribe de Costa Rica.",
+                "Distribuidora en San Luis de Guácimo, Limón, de productos de limpieza y desinfección, equipo de protección personal (EPP), salud ocupacional, mantenimiento, ferretería y oficina. Envíos a todo Costa Rica.",
               url: "https://www.caribbeantropicalsolutions.com",
               logo: "https://www.caribbeantropicalsolutions.com/images/logo.webp",
               image: "https://www.caribbeantropicalsolutions.com/images/logo.webp",
@@ -91,10 +92,10 @@ export default function RootLayout({
                 latitude: 10.2167,
                 longitude: -83.6833,
               },
-              areaServed: {
-                "@type": "Country",
-                name: "Costa Rica",
-              },
+              areaServed: [
+                { "@type": "AdministrativeArea", name: "Limón" },
+                { "@type": "Country", name: "Costa Rica" },
+              ],
               sameAs: [INSTAGRAM_URL, FACEBOOK_URL],
               contactPoint: {
                 "@type": "ContactPoint",
@@ -103,11 +104,25 @@ export default function RootLayout({
                 availableLanguage: "Spanish",
               },
               knowsAbout: [
-                "Equipo de Protección Personal",
+                "Equipo de Protección Personal (EPP)",
+                "Calzado de seguridad",
+                "Ropa de trabajo",
+                "Productos de limpieza industrial",
                 "Limpieza y Desinfección",
                 "Fumigación y Control",
+                "Herramientas de mantenimiento",
                 "Ferretería Especializada",
+                "Suministros de oficina",
               ],
+              hasOfferCatalog: {
+                "@type": "OfferCatalog",
+                name: "Líneas de productos",
+                itemListElement: CATEGORIES.map((c) => ({
+                  "@type": "OfferCatalog",
+                  name: c.name,
+                  description: c.subtitle,
+                })),
+              },
               // Some values come from the CMS: escape "<" so none can close the <script> tag.
             }).replace(/</g, "\\u003c"),
           }}
