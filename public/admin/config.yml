@@ -43,7 +43,30 @@ collections:
           - { label: "Salud Ocupacional", value: salud-ocupacional }
           - { label: "Mantenimiento", value: mantenimiento }
           - { label: "Oficina", value: oficina }
-      - { name: subcategory, label: Subcategoría, widget: string, hint: "Ej.: Calzado de Seguridad, Limpiadores IONICS" }
+      # Dropdown so each product lands in a shared row; keep in sync with SUBCATEGORY_ORDER in lib/constants.ts.
+      - name: subcategory
+        label: Subcategoría
+        widget: select
+        hint: "Grupo (fila) donde aparece el producto en el catálogo. Elegí uno de la misma categoría."
+        options:
+          - { label: "Limpieza › Limpiadores y Desinfectantes", value: "Limpiadores y Desinfectantes" }
+          - { label: "Limpieza › Pisos y Superficies", value: "Pisos y Superficies" }
+          - { label: "Limpieza › Control de Olores", value: "Control de Olores" }
+          - { label: "Limpieza › Papel y Sanitización", value: "Papel y Sanitización" }
+          - { label: "Limpieza › Detergentes y Jabones", value: "Detergentes y Jabones" }
+          - { label: "Limpieza › Equipos de Fumigación", value: "Equipos de Fumigación" }
+          - { label: "Limpieza › Suministros y Herramientas", value: "Suministros y Herramientas" }
+          - { label: "Salud Ocupacional › Calzado de Seguridad", value: "Calzado de Seguridad" }
+          - { label: "Salud Ocupacional › Guantes de Protección", value: "Guantes de Protección" }
+          - { label: "Salud Ocupacional › Ropa de Trabajo", value: "Ropa de Trabajo" }
+          - { label: "Salud Ocupacional › Protección Visual y Facial", value: "Protección Visual y Facial" }
+          - { label: "Salud Ocupacional › Protección Cabeza, Respiratoria y Auditiva", value: "Protección Cabeza, Respiratoria y Auditiva" }
+          - { label: "Salud Ocupacional › Detectores y Alertas", value: "Detectores y Alertas" }
+          - { label: "Salud Ocupacional › Accesorios y Botiquines", value: "Accesorios y Botiquines" }
+          - { label: "Mantenimiento › Automotriz", value: "Automotriz" }
+          - { label: "Mantenimiento › Limpiadores Dieléctricos", value: "Limpiadores Dieléctricos" }
+          - { label: "Mantenimiento › Lubricantes y Grasas", value: "Lubricantes y Grasas" }
+          - { label: "Oficina › Suministros de Oficina", value: "Suministros de Oficina" }
       - { name: brand, label: Marca, widget: string }
       # choose_url: false — images must be uploaded; the site only serves local images.
       - { name: image, label: Imagen principal, widget: image, choose_url: false }

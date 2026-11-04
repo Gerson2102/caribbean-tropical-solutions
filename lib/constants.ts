@@ -130,11 +130,12 @@ export const FILTER_TABS = [
 export type FilterSlug = CategorySlug | "todos";
 
 // === SUBCATEGORY ORDER ===
+// Keep in sync with the subcategory dropdown in public/admin/config.yml.
 export const SUBCATEGORY_ORDER: Record<CategorySlug, string[]> = {
-  limpieza: ["Limpiadores IONICS", "Línea Industrial IONICS", "Papel y Sanitización", "Aerosoles y Lubricantes", "Detergentes y Jabones", "Equipos de Fumigación", "Suministros y Herramientas"],
+  limpieza: ["Limpiadores y Desinfectantes", "Pisos y Superficies", "Control de Olores", "Papel y Sanitización", "Detergentes y Jabones", "Equipos de Fumigación", "Suministros y Herramientas"],
   "salud-ocupacional": ["Calzado de Seguridad", "Guantes de Protección", "Ropa de Trabajo", "Protección Visual y Facial", "Protección Cabeza, Respiratoria y Auditiva", "Detectores y Alertas", "Accesorios y Botiquines"],
-  mantenimiento: [],
-  oficina: [],
+  mantenimiento: ["Automotriz", "Limpiadores Dieléctricos", "Lubricantes y Grasas"],
+  oficina: ["Suministros de Oficina"],
 };
 
 // === PRODUCTS ===
