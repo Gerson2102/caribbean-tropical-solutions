@@ -1,7 +1,7 @@
 {
   "brand": "IONICS",
   "name": "DESINFECTANTE",
-  "featured": false,
+  "featured": true,
   "order": 9999,
   "altText": "Con amonio cuaternario. Presentación: Galón, Pichinga y Estañón",
   "images": [
