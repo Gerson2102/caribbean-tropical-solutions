@@ -1,0 +1,14 @@
+{
+  "brand": "IONICS ",
+  "name": "WASH & WAX",
+  "featured": false,
+  "order": 9999,
+  "altText": "Galón 3,785 litros/ Pichinga 20 litros/ Estañón 208 litros",
+  "images": [
+    "/images/uploads/wash-wax-litro-500x500.png",
+    "/images/uploads/wash-wax-galon-2-500x500.png"
+  ],
+  "image": "/images/uploads/wash-wax-ambos-500x500.png",
+  "category": "mantenimiento",
+  "subcategory": "Shampoo Automotriz Biodegradable con Cera"
+}
