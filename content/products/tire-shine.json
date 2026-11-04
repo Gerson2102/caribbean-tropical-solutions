@@ -1,0 +1,14 @@
+{
+  "brand": "IONICS ",
+  "name": "TIRE SHINE",
+  "featured": false,
+  "order": 9999,
+  "altText": "Litro / Galón 3,78 L",
+  "images": [
+    "/images/uploads/tire-shine-litro-500x500.png",
+    "/images/uploads/tire-shine-1-500x500.png"
+  ],
+  "image": "/images/uploads/tire-shine-ambos-500x500.png",
+  "category": "limpieza",
+  "subcategory": "Carros "
+}
