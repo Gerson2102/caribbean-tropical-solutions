@@ -5,10 +5,10 @@
   "order": 9999,
   "altText": "Litro / Galón 3,785 L. / Pichinga 20 L. / Estañón 208 L.",
   "images": [
-    "/images/uploads/car-wash-litro-500x500.png",
-    "/images/uploads/car-wash-galon-2-500x500.png"
+    "/images/uploads/car-wash-litro-500x500.webp",
+    "/images/uploads/car-wash-galon-2-500x500.webp"
   ],
-  "image": "/images/uploads/car-wash-ambos-500x500.png",
+  "image": "/images/uploads/car-wash-ambos-500x500.webp",
   "category": "mantenimiento",
   "subcategory": "Concentrado para limpieza automotriz – Biodegradable"
 }
