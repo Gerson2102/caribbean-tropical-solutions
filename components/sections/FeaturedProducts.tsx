@@ -40,6 +40,8 @@ export default function FeaturedProducts() {
 
   const totalCount = carouselGroups.reduce((sum, g) => sum + g.products.length, 0);
   const isEmpty = totalCount === 0;
+  // Tabs + intro hide only when there's nothing at all; an empty category keeps them so users can switch back.
+  const catalogEmpty = PRODUCTS.length === 0;
 
   return (
     <section
@@ -54,7 +56,7 @@ export default function FeaturedProducts() {
             <ScrollTextReveal className="text-section mt-4 font-display font-extrabold text-offwhite">
               Productos Destacados
             </ScrollTextReveal>
-            {!isEmpty && (
+            {!catalogEmpty && (
               <p className="mx-auto mt-4 max-w-2xl text-offwhite/70">
                 Explorá nuestra selección completa. Agregá los productos que te
                 interesen a tu cotización y te pasamos los precios por WhatsApp.
@@ -63,7 +65,7 @@ export default function FeaturedProducts() {
           </div>
 
           {/* Filter Tabs */}
-          <div className={`fp-header mb-10 flex justify-center ${isEmpty ? "hidden" : ""}`}>
+          <div className={`fp-header mb-10 flex justify-center ${catalogEmpty ? "hidden" : ""}`}>
             <div className="flex flex-wrap justify-center gap-2 rounded-2xl bg-deep-green-light p-2">
               {FILTER_TABS.map((tab) => (
                 <button
