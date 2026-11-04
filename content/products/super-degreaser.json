@@ -1,0 +1,14 @@
+{
+  "brand": "IONICS ",
+  "name": "SUPER DEGREASER",
+  "featured": false,
+  "order": 9999,
+  "altText": "Litro con Atomizador / Galón 3,785 L. / Pichinga 20 L. / Estañón 208 L.",
+  "images": [
+    "/images/uploads/super-degreaser-litro-500x500.png",
+    "/images/uploads/super-degreaser-galon-500x500.png"
+  ],
+  "image": "/images/uploads/super-degreaser-ambos-500x500.png",
+  "category": "mantenimiento",
+  "subcategory": "AUTOMOTRIZ"
+}
