@@ -43,3 +43,10 @@ next-env.d.ts
 # screenshot tooling
 take-screenshots*.mjs
 /temporary screenshots/
+
+# generated on every dev/build from content/products (scripts/build-products.mjs)
+/lib/products.generated.json
+
+# local-only files
+/docs/
+/scripts/generate-key.mjs
