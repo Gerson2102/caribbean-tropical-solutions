@@ -1,10 +1,15 @@
 {
+  "brand": "IONICS",
+  "name": "DESINFECTANTE",
   "featured": false,
   "order": 9999,
+  "altText": "Con amonio cuaternario. Presentación: Galón, Pichinga y Estañón",
+  "images": [
+    "/images/uploads/desinfectante-bambu-500x500.webp",
+    "/images/uploads/desinfectante-floral-500x500.webp",
+    "/images/uploads/desinfectante-fresh-500x500.webp"
+  ],
   "image": "/images/uploads/desinfectante-lavanda-100x100.webp",
-  "name": "DESINFECTANTE",
   "category": "limpieza",
-  "subcategory": "Limpiador germicida de uso múltiple.",
-  "brand": "IONICS",
-  "altText": "Con amonio cuaternario. Presentación: Galón, Pichinga y Estañón"
+  "subcategory": "Limpiador germicida de uso múltiple."
 }
