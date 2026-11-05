@@ -2,7 +2,6 @@
 
 import { useRef, useState, useEffect, useCallback } from "react";
 import { CATEGORIES } from "@/lib/constants";
-import SectionLabel from "@/components/ui/SectionLabel";
 import ScrollTextReveal from "@/components/ui/ScrollTextReveal";
 import CategoryCard from "@/components/ui/CategoryCard";
 import ScrollReveal from "@/components/ui/ScrollReveal";
@@ -38,8 +37,7 @@ export default function ProductCategories() {
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         {/* Header */}
         <div className="mb-12 text-center lg:mb-16">
-          <SectionLabel>Lo Que Distribuimos</SectionLabel>
-          <ScrollTextReveal className="text-section mt-4 font-display font-extrabold text-charcoal-deep">
+          <ScrollTextReveal className="text-section font-display font-extrabold text-charcoal-deep">
             Nuestras Líneas: Limpieza, EPP y Ferretería
           </ScrollTextReveal>
           <p className="mx-auto mt-4 max-w-2xl text-charcoal-light">

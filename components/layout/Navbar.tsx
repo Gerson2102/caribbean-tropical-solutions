@@ -29,9 +29,10 @@ export default function Navbar() {
     return () => { observer.disconnect(); sentinel.remove(); };
   }, []);
 
-  // Track active section
+  // Track active section. Every section with an id is watched, not only linked ones, so a
+  // section without a link (e.g. #como-comprar) clears the highlight instead of leaving the
+  // previous link lit.
   useEffect(() => {
-    const sectionIds = NAV_LINKS.map((l) => l.href.slice(1));
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -42,10 +43,7 @@ export default function Navbar() {
       },
       { rootMargin: "-40% 0px -50% 0px", threshold: 0 }
     );
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
+    document.querySelectorAll("main section[id]").forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, []);
 
@@ -186,7 +184,8 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 bg-deep-green/98 backdrop-blur-lg lg:hidden"
+            // z-[45]: above the hero content (z-40, later in the DOM, so it won the tie and drew over the menu), below the nav bar (z-50)
+            className="fixed inset-0 z-[45] flex flex-col items-center justify-center gap-8 bg-deep-green/98 backdrop-blur-lg lg:hidden"
           >
             {NAV_LINKS.map((link, i) => (
               <motion.a

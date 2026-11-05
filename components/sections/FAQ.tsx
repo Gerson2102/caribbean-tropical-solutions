@@ -8,6 +8,9 @@ import { ChevronDownIcon, WhatsAppIcon } from "@/components/ui/Icons";
 
 const ASK_URL = `${WHATSAPP_URL}?text=${encodeURIComponent("Hola, tengo una pregunta.")}`;
 
+// Phones list this many questions until "Ver todas" (the rest stay in the HTML + JSON-LD).
+const MOBILE_VISIBLE = 6;
+
 const DESKTOP_QUERY = "(min-width: 1024px)";
 const subscribeDesktop = (cb: () => void) => {
   const mql = window.matchMedia(DESKTOP_QUERY);
@@ -89,6 +92,7 @@ export default function FAQ({
   // column; phones start closed so the list stays short.
   const isDesktop = useSyncExternalStore(subscribeDesktop, getDesktopSnapshot, getDesktopServerSnapshot);
   const [chosen, setChosen] = useState<number | null | undefined>(undefined);
+  const [showAll, setShowAll] = useState(false);
   const openIndex = chosen === undefined ? (isDesktop ? 0 : null) : chosen;
   const id = useId();
 
@@ -124,13 +128,15 @@ export default function FAQ({
 
         <div>
           {/* One answer open at a time */}
-          <div className="space-y-1 sm:space-y-2">
+          <div id={`${id}-list`} className="space-y-1 sm:space-y-2">
             {faqs.map((f, i) => {
               const open = openIndex === i;
               return (
                 <div
                   key={f.question}
-                  className={`rounded-2xl transition-colors duration-500 ${open ? "bg-offwhite/[0.06]" : "hover:bg-offwhite/[0.03]"}`}
+                  className={`rounded-2xl transition-colors duration-500 ${open ? "bg-offwhite/[0.06]" : "hover:bg-offwhite/[0.03]"} ${
+                    !showAll && i >= MOBILE_VISIBLE ? "max-lg:hidden" : ""
+                  }`}
                 >
                   <h3>
                     <button
@@ -163,6 +169,21 @@ export default function FAQ({
               );
             })}
           </div>
+          {faqs.length > MOBILE_VISIBLE && (
+            <button
+              type="button"
+              onClick={() => setShowAll((v) => !v)}
+              aria-expanded={showAll}
+              aria-controls={`${id}-list`}
+              className="mx-auto mt-4 flex h-11 items-center gap-2 rounded-full bg-offwhite/[0.07] px-6 text-sm font-semibold text-offwhite transition-[background-color,scale] duration-200 hover:bg-offwhite/[0.12] active:scale-95 focus-ring-accent lg:hidden"
+            >
+              {showAll ? "Ver menos" : `Ver las ${faqs.length} preguntas`}
+              <ChevronDownIcon
+                aria-hidden="true"
+                className={`h-4 w-4 transition-transform duration-500 ease-out-expo ${showAll ? "rotate-180" : ""}`}
+              />
+            </button>
+          )}
           <div className="mt-8 text-center lg:hidden">
             <AskCta />
           </div>

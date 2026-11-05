@@ -3,7 +3,6 @@
 import { useEffect, useRef } from "react";
 import { motion, useMotionValue, useAnimationFrame, useReducedMotion } from "framer-motion";
 import { BRANDS } from "@/lib/constants";
-import SectionLabel from "@/components/ui/SectionLabel";
 
 export default function BrandMarquee() {
   const allBrands = [...BRANDS, ...BRANDS];
@@ -40,7 +39,7 @@ export default function BrandMarquee() {
   return (
     <section id="marcas" className="relative overflow-hidden bg-deep-green py-14 border-t border-b border-offwhite/5">
       <div className="mb-8 text-center">
-        <SectionLabel as="h2">Marcas que Distribuimos</SectionLabel>
+        <h2 className="font-display text-lg font-bold tracking-[-0.01em] text-offwhite sm:text-xl">Marcas que distribuimos</h2>
       </div>
 
       <div

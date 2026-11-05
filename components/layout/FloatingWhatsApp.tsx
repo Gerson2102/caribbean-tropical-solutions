@@ -11,6 +11,8 @@ export default function FloatingWhatsApp() {
   useEffect(() => {
     let pastThreshold = false;
     let contactVisible = false;
+    let footerVisible = false;
+    const update = () => setVisible(pastThreshold && !contactVisible && !footerVisible);
 
     // Observer for the 400px scroll threshold
     const sentinel = document.createElement("div");
@@ -19,7 +21,7 @@ export default function FloatingWhatsApp() {
     const thresholdObserver = new IntersectionObserver(
       ([entry]) => {
         pastThreshold = !entry.isIntersecting;
-        setVisible(pastThreshold && !contactVisible);
+        update();
       },
       { threshold: 1 }
     );
@@ -29,16 +31,25 @@ export default function FloatingWhatsApp() {
     const contactObserver = new IntersectionObserver(
       ([entry]) => {
         contactVisible = entry.isIntersecting;
-        setVisible(pastThreshold && !contactVisible);
+        update();
       },
       { threshold: 0.3 }
     );
     const contactEl = document.getElementById("contacto");
     if (contactEl) contactObserver.observe(contactEl);
 
+    // Footer has its own WhatsApp link, and the button covered its last lines on phones.
+    const footerObserver = new IntersectionObserver(([entry]) => {
+      footerVisible = entry.isIntersecting;
+      update();
+    });
+    const footerEl = document.querySelector("footer");
+    if (footerEl) footerObserver.observe(footerEl);
+
     return () => {
       thresholdObserver.disconnect();
       contactObserver.disconnect();
+      footerObserver.disconnect();
       sentinel.remove();
     };
   }, []);

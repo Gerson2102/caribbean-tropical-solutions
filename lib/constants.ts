@@ -55,6 +55,7 @@ export const NAV_LINKS = [
   { label: "Productos", href: "#categorias" },
   { label: "Catálogo", href: "#catalogo" },
   { label: "Nosotros", href: "#por-que-elegirnos" },
+  { label: "Preguntas", href: "#preguntas-frecuentes" },
   { label: "Contacto", href: "#contacto" },
 ] as const;
 

@@ -1,6 +1,6 @@
 # CLAUDE.md — Caribbean Tropical Solutions
 
-Single-page Next.js marketing site for a Costa Rican industrial distributor (Guácimo, Limón). Built and live — careful edits, not redesigns.
+Next.js marketing site (home page + `/productos/<linea>` product line pages) for a Costa Rican industrial distributor (Guácimo, Limón). Built and live on Vercel — careful edits, not redesigns.
 
 ## Stack
 - Next.js 16 (App Router, Turbopack) + React 19 + TypeScript strict
@@ -14,15 +14,21 @@ Package manager: **pnpm** (pinned via `packageManager` field in `package.json`, 
 - `pnpm dev` — local at http://localhost:3000
 - `pnpm build` — production build (**must pass 13/13 pages** before claiming done)
 - `pnpm lint` — ESLint (must be 0 errors, 0 warnings)
+- `pnpm build:products` — regenerates `lib/products.generated.json` from `content/products/*.json`. Runs automatically from `next.config.ts` on every dev/build, so manual runs are rarely needed
+- `pnpm optimize:images` — converts CMS uploads in `public/images/uploads/` to WebP and rewrites their references. The `optimize-images.yml` GitHub Action runs it on every push to `main` that touches uploads
+- `node scripts/generate-key.mjs` — prints a random secret for `CMS_ADMIN_KEY`
 
 Postinstall scripts are gated for security. Only packages listed under `allowBuilds:` in `pnpm-workspace.yaml` (currently `sharp`, `unrs-resolver`) are allowed to run lifecycle scripts. If a new dependency needs one, vet it first, then run `pnpm approve-builds <pkg>`.
 
 ## File Layout
-- `app/` — routes, metadata (`layout.tsx`), error boundaries, `sitemap.ts`, `robots.ts`, `opengraph-image.tsx`
+- `app/` — routes, metadata (`layout.tsx`, which also mounts Vercel `<Analytics />`), error boundaries, `sitemap.ts`, `robots.ts`, `opengraph-image.tsx`
+- `app/productos/[linea]/` — SSG product line pages, one per `content/lineas/<slug>.json`
+- `app/api/{auth,callback}/` — GitHub OAuth for the Decap CMS login (`GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`)
+- `proxy.ts` — returns 404 for `/admin` unless the visitor has the signed cookie, which the secret link `/admin?key=…` sets. Only active when `CMS_ADMIN_KEY` is set (Vercel); locally `/admin` stays open. Local CMS editing: run `npx decap-server` alongside `pnpm dev`
 - `app/globals.css` — design tokens, custom utilities (`.focus-ring-accent`, `.btn-shine`), keyframes
 - `components/{layout,sections,ui}/` — follow existing file patterns
 - `lib/constants.ts` — single source of truth for products, categories, brands, NAP/contact; loads the CMS content below
-- `content/` — Decap CMS-edited JSON: `settings.json` (contact, opening hours), `faq.json` (home FAQ), `lineas/<slug>.json` (product line pages), `products/`. Fields are declared in `public/admin/config.yml`; keep both in sync. FAQ/page text may use `{telefono}` `{correo}` `{direccion}` `{horario}`
+- `content/` — Decap CMS-edited JSON: `settings.json` (contact, opening hours), `faq.json` (home FAQ), `lineas/<slug>.json` (product line pages), `products/` (compiled into `lib/products.generated.json`, which is generated, so never edit it by hand). Fields are declared in `public/admin/config.yml`; keep both in sync. FAQ/page text may use `{telefono}` `{correo}` `{direccion}` `{horario}`
 - `lib/animations.ts` — `prefersReducedMotion()` + side-effect registers GSAP ScrollTrigger
 - `public/images/` — logo + section/category images
 - `public/product_images/` — catalog images by brand (index at `products_manifest.json`)
@@ -59,13 +65,12 @@ Postinstall scripts are gated for security. Only packages listed under `allowBui
 - Bug fix = minimal change. Don't refactor neighbors.
 - Don't introduce dead exports or unused imports — lint will catch
 - Don't invent business facts (hours, payment methods, prices) in JSON-LD or copy — confirm first
-- Don't claim "done" without `npm run build` passing
+- Don't claim "done" without `pnpm build` passing
 - Don't break visual fidelity for code-cleanliness wins without flagging the trade-off
 - For risky operations (deletions, destructive git commands, schema changes) — confirm before acting
 
 ## Screenshot Workflow (UI iteration)
-- `screenshot.mjs` lives in project root: `node screenshot.mjs http://localhost:3000 [label]`
-- Saves to `./temporary screenshots/screenshot-N[-label].png` (auto-incremented, never overwritten)
+- `agent-browser open http://localhost:3000` then `agent-browser screenshot "temporary screenshots/<label>.png"` (folder is gitignored; use a new label each time, never overwrite)
 - Read the PNG with the Read tool to compare against reference
 - Critique specifically: "heading 32px vs reference 24px", "card gap 16px should be 24px"
 

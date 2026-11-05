@@ -135,7 +135,7 @@ export default function ProductLine({ category, page }: { category: Category; pa
       </section>
 
       {groups.length > 0 && (
-        <section className="bg-deep-green py-14 md:py-20 lg:py-28">
+        <section className="overflow-x-clip bg-deep-green py-14 md:py-20 lg:py-28">
           <div className="mx-auto max-w-7xl space-y-12 px-5 lg:px-8">
             <ScrollTextReveal className="text-section font-display font-extrabold text-offwhite">Catálogo</ScrollTextReveal>
             {groups.map((g) => (
