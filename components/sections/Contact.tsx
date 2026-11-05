@@ -5,7 +5,6 @@ import {
   ADDRESS,
   OPENING_HOURS,
 } from "@/lib/constants";
-import SectionLabel from "@/components/ui/SectionLabel";
 import ScrollTextReveal from "@/components/ui/ScrollTextReveal";
 import Button from "@/components/ui/Button";
 import ScrollReveal from "@/components/ui/ScrollReveal";
@@ -24,9 +23,6 @@ export default function Contact() {
       <div className="relative z-10 mx-auto max-w-7xl px-5 lg:px-8">
         <ScrollReveal selector=".contact-animate" stagger={0.12}>
           {/* Header */}
-          <div className="contact-animate mb-6 text-center">
-            <SectionLabel>Contacto</SectionLabel>
-          </div>
           <div className="contact-animate">
             <ScrollTextReveal className="text-section text-center font-display font-extrabold text-offwhite">
               ¿Listo para Hacer tu Pedido?

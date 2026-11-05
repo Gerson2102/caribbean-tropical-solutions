@@ -5,7 +5,6 @@ import { motion, useInView } from "framer-motion";
 import { gsap } from "gsap";
 import { WHATSAPP_URL_WITH_MESSAGE } from "@/lib/constants";
 import { prefersReducedMotion } from "@/lib/animations";
-import SectionLabel from "@/components/ui/SectionLabel";
 import ScrollTextReveal from "@/components/ui/ScrollTextReveal";
 import Button from "@/components/ui/Button";
 import {
@@ -182,8 +181,7 @@ export default function HowToBuy() {
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         {/* Header */}
         <div className="mb-10 text-center lg:mb-14">
-          <SectionLabel>Proceso</SectionLabel>
-          <ScrollTextReveal className="text-section mt-4 font-display font-extrabold text-charcoal-deep">
+          <ScrollTextReveal className="text-section font-display font-extrabold text-charcoal-deep">
             ¿Cómo Comprar?
           </ScrollTextReveal>
           <p className="mx-auto mt-4 max-w-xl text-charcoal-light">
@@ -320,13 +318,13 @@ export default function HowToBuy() {
 
                   {/* Text */}
                   <div className="pt-0.5">
-                    <span className="font-display text-[10px] font-bold uppercase tracking-widest text-primary/40">
+                    <span className="font-display text-xs font-semibold text-primary-dark">
                       Paso {step.number}
                     </span>
-                    <h3 className="mt-0.5 font-display text-sm font-bold text-charcoal-deep">
+                    <h3 className="mt-0.5 font-display text-base font-bold text-charcoal-deep">
                       {step.title}
                     </h3>
-                    <p className="mt-1 text-xs leading-relaxed text-charcoal-light">
+                    <p className="mt-1 text-[15px] leading-relaxed text-charcoal-light">
                       {step.description}
                     </p>
                   </div>

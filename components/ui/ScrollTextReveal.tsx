@@ -35,7 +35,9 @@ export default function ScrollTextReveal({
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start 0.9", "start 0.4"],
+    // Fully lit by the time the heading is 60% down the screen: on phones the old 40% end
+    // left headings grey while their section was already being read.
+    offset: ["start 0.95", "start 0.6"],
   });
 
   const words = children.split(" ");

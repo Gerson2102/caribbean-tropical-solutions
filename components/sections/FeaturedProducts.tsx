@@ -10,7 +10,6 @@ import {
   type FilterSlug,
   type CategorySlug,
 } from "@/lib/constants";
-import SectionLabel from "@/components/ui/SectionLabel";
 import ScrollTextReveal from "@/components/ui/ScrollTextReveal";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import ProductCarousel from "@/components/ui/ProductCarousel";
@@ -46,14 +45,13 @@ export default function FeaturedProducts() {
   return (
     <section
       id="catalogo"
-      className="bg-deep-green py-14 md:py-20 lg:py-28"
+      className="overflow-x-clip bg-deep-green py-14 md:py-20 lg:py-28"
     >
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <ScrollReveal selector=".fp-header" stagger={0.12}>
           {/* Header */}
           <div className="fp-header mb-10 text-center">
-            <SectionLabel>Catálogo</SectionLabel>
-            <ScrollTextReveal className="text-section mt-4 font-display font-extrabold text-offwhite">
+            <ScrollTextReveal className="text-section font-display font-extrabold text-offwhite">
               Productos Destacados
             </ScrollTextReveal>
             {!catalogEmpty && (
@@ -65,8 +63,9 @@ export default function FeaturedProducts() {
           </div>
 
           {/* Filter Tabs */}
-          <div className={`fp-header mb-10 flex justify-center ${catalogEmpty ? "hidden" : ""}`}>
-            <div className="flex flex-wrap justify-center gap-2 rounded-2xl bg-deep-green-light p-2">
+          {/* Phones: one swipeable row edge to edge instead of a wrapped 2-row block */}
+          <div className={`fp-header carousel-scroll -mx-5 mb-10 flex overflow-x-auto px-5 sm:mx-0 sm:justify-center sm:overflow-visible sm:px-0 ${catalogEmpty ? "hidden" : ""}`}>
+            <div className="flex shrink-0 gap-1 rounded-2xl bg-deep-green-light p-1.5 sm:shrink sm:flex-wrap sm:justify-center sm:gap-2 sm:p-2">
               {FILTER_TABS.map((tab) => (
                 <button
                   key={tab.slug}
@@ -76,7 +75,7 @@ export default function FeaturedProducts() {
                     });
                   }}
                   aria-current={activeFilter === tab.slug ? "true" : undefined}
-                  className={`relative rounded-xl px-3 py-2.5 text-sm font-medium sm:px-5 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+                  className={`relative whitespace-nowrap rounded-xl px-4 py-2.5 text-sm font-medium sm:px-5 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
                     activeFilter === tab.slug
                       ? "text-charcoal-deep"
                       : "text-offwhite/50 hover:text-offwhite/80"

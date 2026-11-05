@@ -29,6 +29,8 @@
 
   /* Expo-out: the curve Lenis eases scrolling with, so UI motion matches the scroll feel. */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  /* Hover: slow in, slow out, so hover-in and hover-out both glide instead of snapping. */
+  --ease-hover: cubic-bezier(0.65, 0, 0.076, 1);
 }
 
 /* ========================================
