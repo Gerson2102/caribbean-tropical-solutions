@@ -1,0 +1,14 @@
+{
+  "brand": "DeWALT",
+  "name": "ZAPATO DE SEGURIDAD DAKAR S3",
+  "featured": true,
+  "order": 9999,
+  "altText": "US 3 - 13, EU 35 - 47",
+  "images": [
+    "/images/uploads/183.jpg",
+    "/images/uploads/184.jpg"
+  ],
+  "image": "/images/uploads/180.jpg",
+  "category": "salud-ocupacional",
+  "subcategory": "Calzado de Seguridad"
+}
