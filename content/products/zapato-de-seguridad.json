@@ -1,10 +1,11 @@
 {
+  "brand": "DeWALT",
+  "price": "₡67887 ivi",
+  "name": "ZAPATO DE SEGURIDAD KIRKSVILLE",
   "featured": true,
   "order": 9999,
+  "altText": "US 7 - 12, EU 39 - 45",
   "image": "/images/uploads/167.webp",
-  "name": "ZAPATO DE SEGURIDAD KIRKSVILLE",
   "category": "salud-ocupacional",
-  "subcategory": "Calzado de Seguridad",
-  "brand": "DeWALT",
-  "altText": "US 7 - 12, EU 39 - 45"
+  "subcategory": "Calzado de Seguridad"
 }
