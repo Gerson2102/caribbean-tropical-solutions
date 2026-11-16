@@ -1,10 +1,11 @@
 {
+  "brand": "DeWALT",
+  "price": "₡67887 ivi",
+  "name": "ZAPATO DE SEGURIDAD HALOGEN LITE",
   "featured": true,
   "order": 9999,
-  "name": "ZAPATO DE SEGURIDAD HALOGEN LITE",
-  "category": "salud-ocupacional",
-  "subcategory": "Calzado de Seguridad",
-  "brand": "DeWALT",
+  "altText": "US 7 - 12, EU 39 - 45",
   "image": "/images/uploads/169.webp",
-  "altText": "US 7 - 12, EU 39 - 45"
+  "category": "salud-ocupacional",
+  "subcategory": "Calzado de Seguridad"
 }
