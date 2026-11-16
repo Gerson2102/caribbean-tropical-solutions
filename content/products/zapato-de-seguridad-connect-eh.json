@@ -1,0 +1,13 @@
+{
+  "brand": "DeWALT",
+  "name": "ZAPATO DE SEGURIDAD CONNECT EH",
+  "featured": true,
+  "order": 9999,
+  "altText": "EU 39 - 45",
+  "images": [
+    "/images/uploads/176.jpg"
+  ],
+  "image": "/images/uploads/175.jpg",
+  "category": "salud-ocupacional",
+  "subcategory": "Calzado de Seguridad"
+}
