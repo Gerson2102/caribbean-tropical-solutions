@@ -1,10 +1,11 @@
 {
+  "brand": "DeWALT",
+  "price": "₡67887 ivi",
+  "name": "ZAPATO DE SEGURIDAD SHELTON",
   "featured": false,
   "order": 9999,
-  "name": "ZAPATO DE SEGURIDAD SHELTON",
-  "category": "salud-ocupacional",
-  "subcategory": "Calzado de Seguridad",
-  "brand": "DeWALT",
+  "altText": "US 7 - 12, EU 39 - 45",
   "image": "/images/uploads/170.webp",
-  "altText": "US 7 - 12, EU 39 - 45"
+  "category": "salud-ocupacional",
+  "subcategory": "Calzado de Seguridad"
 }
