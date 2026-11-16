@@ -5,10 +5,10 @@
   "order": 9999,
   "altText": "US 3 - 13, EU 35 - 47",
   "images": [
-    "/images/uploads/183.jpg",
-    "/images/uploads/184.jpg"
+    "/images/uploads/183.webp",
+    "/images/uploads/184.webp"
   ],
-  "image": "/images/uploads/180.jpg",
+  "image": "/images/uploads/180.webp",
   "category": "salud-ocupacional",
   "subcategory": "Calzado de Seguridad"
 }
