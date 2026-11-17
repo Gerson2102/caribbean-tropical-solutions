@@ -1,10 +1,13 @@
 {
+  "brand": "SAFETY JOGGER",
+  "name": "ZAPATO DE SEGURIDAD MODULO LEA S3S MID",
   "featured": true,
   "order": 9999,
-  "name": "ZAPATO DE SEGURIDAD MODULO LEA S3S MID",
-  "category": "salud-ocupacional",
-  "subcategory": "Calzado de Seguridad",
-  "brand": "SAFETY JOGGER",
+  "altText": "EU 35 - 50",
+  "images": [
+    "/images/uploads/302.jpg"
+  ],
   "image": "/images/uploads/178.webp",
-  "altText": "EU 35 - 50"
+  "category": "salud-ocupacional",
+  "subcategory": "Calzado de Seguridad"
 }
