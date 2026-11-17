@@ -1,10 +1,9 @@
 {
-  "featured": true,
-  "order": 9999,
-  "name": "ZAPATO DE TRABAJO 224",
+  "name": "BOTA 226",
   "category": "salud-ocupacional",
   "subcategory": "Calzado de Seguridad",
   "brand": "EVACOL",
-  "image": "/images/uploads/715.webp",
-  "altText": "TALLAS 34 - 43"
+  "image": "/images/uploads/716.jpg",
+  "altText": "TALLAS 36 - 45",
+  "featured": true
 }
