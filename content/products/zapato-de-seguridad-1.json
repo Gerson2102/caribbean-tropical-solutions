@@ -1,10 +1,10 @@
 {
-  "featured": false,
+  "featured": true,
   "order": 9999,
   "name": "ZAPATO DE SEGURIDAD",
   "category": "salud-ocupacional",
   "subcategory": "Calzado de Seguridad",
   "brand": "SAFETY JOGGER",
-  "image": "/images/uploads/550.webp",
+  "image": "/images/uploads/550.jpg",
   "altText": "US 4 - 13, EU 36 - 47"
 }
